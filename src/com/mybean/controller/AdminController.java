@@ -25,7 +25,7 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		List<Admin> admin= adminservice.list();
 		mav.addObject("admin", admin);
-		mav.setViewName("Admin");//返回的文件名
+		mav.setViewName("Admin");//返回到的JSP文件名
 		return mav;
 	}
 }
