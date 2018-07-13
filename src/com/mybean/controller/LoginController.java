@@ -31,7 +31,7 @@ public class LoginController {
 		String password =  request.getParameter("password");
 		if(admin.getaPassword().equals(password)){
 			mav.addObject("admin", admin);
-			mav.setViewName("Login");//返回到的JSP文件名
+			mav.setViewName("Main");//返回到的JSP文件名
 		}
 		else{
 			mav.addObject("message", "密码不正确！");

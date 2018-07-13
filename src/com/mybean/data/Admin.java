@@ -9,7 +9,7 @@ public class Admin {
 	private String aTel;	//电话
 	private String aPhoNum;	//手机
 	private String aAddr;	//地址
-	private String aLimit;	//权限
+	private int aLimit;	//权限
 	private String aDate;	//注册日期
 	public int getaId() {
 		return aId;
@@ -47,10 +47,10 @@ public class Admin {
 	public void setaAddr(String aAddr) {
 		this.aAddr = aAddr;
 	}
-	public String getaLimit() {
+	public int getaLimit() {
 		return aLimit;
 	}
-	public void setaLimit(String aLimit) {
+	public void setaLimit(int aLimit) {
 		this.aLimit = aLimit;
 	}
 	public String getaDate() {
