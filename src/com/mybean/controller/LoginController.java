@@ -23,14 +23,19 @@ public class LoginController {
 		ModelAndView mav = new ModelAndView();
 		Admin admin = new Admin();
 		admin=adminservice.get((Integer.parseInt(request.getParameter("id"))));
+		if(admin==null){
+			mav.addObject("message", "用户名不正确！");
+			mav.setViewName("../index");//返回到index
+			return mav;
+		}
 		String password =  request.getParameter("password");
 		if(admin.getaPassword().equals(password)){
 			mav.addObject("admin", admin);
 			mav.setViewName("Login");//返回到的JSP文件名
 		}
 		else{
-			mav.addObject("message", "用户名或密码不正确！");
-			mav.setViewName("../");//返回到的JSP文件名
+			mav.addObject("message", "密码不正确！");
+			mav.setViewName("../index");//返回到index
 		}
 		return mav;
 	}

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" deferredSyntaxAllowedAsLiteral="true"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -62,25 +62,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="container">
 			<div class="sin-w3-agile">
 				<h2>积分管理系统</h2>
-				<form action="./Login" method="get">
+				<form action="./Login" method="post">
 					<div class="username">
-						<span class="username">ID:</span> <input type="text" name="id"
-							class="name" placeholder="0" required="">
+						<span class="username">ID:</span> 
+						<input type="text" name="id" class="name" placeholder="0" required="">
 						<div class="clearfix"></div>
 					</div>
 					<div class="password-agileits">
-						<span class="username">密码:</span> <input type="password"
-							name="password" class="password" placeholder="123456" required="">
+						<span class="username">密码:</span>
+						<input type="password" name="password" class="password" placeholder="123456" required="">
 						<div class="clearfix"></div>
 					</div>
 					<div class="rem-for-agile">
 						<a href="#">忘记密码？</a><br />
 					</div>
 					<br/>
+					
 					<%if(request.getParameter("message")!=null){
 					 %>
-					<p><%=request.getParameter("message") %></p>
+					<p>#{message }</p>
 					<%} %>
+					
 					<div class="login-w3">
 						<input type="submit" class="login" value="登录">
 					</div>
