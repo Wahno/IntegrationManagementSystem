@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="mother-grid-inner">
 		<div class="header-main">
 			<div class="logo-w3-agile">
-				<h1><a href="/Main">积分管理系统</a></h1>
+				<h1><a href="./Main">积分管理系统</a></h1>
 			</div>
 			<%
 				Admin admin=(Admin)request.getAttribute("admin");
@@ -70,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<ul class="dropdown-menu drp-mnu">
 							<li> <a href="#"><i class="fa fa-cog"></i> 设置</a> </li> 
 							<li> <a href="#"><i class="fa fa-user"></i> 个人信息</a> </li> 
-							<li> <a href="#"><i class="fa fa-sign-out"></i> 退出</a> </li>
+							<li> <a href="./Logout"><i class="fa fa-sign-out"></i> 退出</a> </li>
 						</ul>
 					</li>
 				</ul>
