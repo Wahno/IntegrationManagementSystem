@@ -60,7 +60,15 @@ public class LoginController {
 	@RequestMapping("Main")
 	public ModelAndView Main(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("Main");
+		Admin admin = (Admin)session.getAttribute("adminmessage");
+		//已登录直接跳转
+		if(admin!=null){ 
+			mav.addObject("admin", admin);
+			mav.setViewName("Main");//返回到的JSP文件名
+			return mav;
+		}
+		else
+			mav.setViewName("../index");
 		return mav;
 	}
 }
