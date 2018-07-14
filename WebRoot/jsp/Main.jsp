@@ -77,8 +77,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="clearfix"> </div>	
 		</div>
+		
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="/Main">控制台</a> <i class="fa fa-angle-right"></i></li>
+			<div id = "nav">	
+				<jsp:include page="nav.jsp" flush ="true"/>		
+			</div>
+			
+			
 		</ol>
 		<div class="copyrights">
 			<p>Copyright &copy; 2018. All rights reserved.</p>
@@ -96,9 +102,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<a href="index.html">
 					<i class="fa fa-tachometer"></i>
 					<span>控制台</span><div class="clearfix"></div></a>
+					
 				</li>
 				<li id="menu-academico" >
-					<a href="inbox.html">
+					<a href="nav.jsp">
 					<i class="fa fa-list-ul" aria-hidden="true"></i>
 					<span>客户信息</span><div class="clearfix"></div></a>
 				</li>
