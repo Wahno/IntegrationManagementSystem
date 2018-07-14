@@ -61,6 +61,7 @@ public class LoginController {
 	public ModelAndView Main(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		Admin admin = (Admin)session.getAttribute("adminmessage");
+		
 		//已登录直接跳转
 		if(admin!=null){ 
 			mav.addObject("admin", admin);
