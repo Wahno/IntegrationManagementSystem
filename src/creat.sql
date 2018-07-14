@@ -2,26 +2,27 @@ CREATE SCHEMA `integrationdb` ;
 
 --管理员表
 CREATE TABLE `integrationdb`.`admin_info` (
-<<<<<<< HEAD
-  `aId` 		INT 			NOT NULL,												-- 管理员ID
-  `aPassword` 	VARCHAR(45) 	default '123456',										-- 管理员密码
-  `aName` 		VARCHAR(45) 	NULL,													-- 管理员姓名
-  `aSex` 		VARCHAR(2)	 	NULL		CHECK(Usex='男' OR Usex='女'),				-- 管理员性别
-  `aTel` 		VARCHAR(45) 	NULL,													-- 管理员电话
-  `aPhoNum` 	VARCHAR(45) 	NULL,													-- 管理员手机
-  `aAddr` 		VARCHAR(45) 	NULL,													-- 管理员地址
-  `aLimit` 		INT 			NULL,													-- 管理员权限
-  `aDate` 		DATE 			NULL,													-- 管理员注册日期
+  `aId` INT NOT NULL,
+  `aPassword` VARCHAR(45) default '123456',
+  `aName` VARCHAR(45) NULL,
+  `aSex` INT NULL,
+  `aTel` VARCHAR(45) NULL,
+  `aPhoNum` VARCHAR(45) NULL,
+  `aAddr` VARCHAR(45) NULL,
+  `aLimit` INT NULL,
+  `aDate` DATE NULL,
   PRIMARY KEY (`aId`)
+  
  );	
 
-INSERT INTO `integrationdb`.`admin_info` VALUES(1,'123123','wanghao', '男', '15270496554', '15270496554', '南京东路235号', 0, '2018-07-10');
+INSERT INTO `integrationdb`.`admin_info` VALUES(0,'123456','wanghao',0, '15270496554', '15270496554', '南京东路235号', 0, '2018-07-10');
+INSERT INTO `integrationdb`.`admin_info` VALUES(1,'123456','wang',1, '123456789', '123456789', '南京东路235号', 0, '2018-07-10');
 
---客户表
+---客户表
 CREATE TABLE `integrationdb`.`User_info`(
 	`Uid`		INT				NOT NULL,												-- 客户ID
 	`Uname`		VARCHAR(45) 	NULL,													-- 客户姓名
-	`Usex`		VARCHAR(2)		CHECK(Usex='男' OR Usex='女'),							-- 客户性别
+	`Usex`		INT NULL,																--- 客户性别
 	`Ubirth`	DATE			NULL,													-- 客户生日
 	`Utel`		VARCHAR(45) 	NULL,													-- 客户电话
 	`UphoNum`	VARCHAR(45) 	NULL,													-- 客户手机
@@ -39,7 +40,7 @@ CREATE TABLE `integrationdb`.`Staff_info`(
 	`Sid`		INT				NOT NULL,												-- 员工ID
 	`Sname`		VARCHAR(45) 	NULL,													-- 员工姓名
 	`Smark`		VARCHAR(5)		NULL,													-- 员工助记符
-	`Ssex`       VARCHAR(2)		CHECK(Ssex='男' OR Ssex='女'),							-- 员工性别
+	`Ssex`      INT NULL,																--- 员工性别
 	`Stel`		INT,																	-- 员工电话
 	`SphoNum`	INT,																	-- 员工手机
 	`Saddr`		VARCHAR(50),															-- 员工地址
@@ -112,18 +113,3 @@ CREATE TABLE exChange_info(
 	primary key(`Uid`)	
 );
 
-=======
-  `aId` INT NOT NULL,
-  `aPassword` VARCHAR(45) default '123456',
-  `aName` VARCHAR(45) NULL,
-  `aSex` INT NULL,
-  `aTel` VARCHAR(45) NULL,
-  `aPhoNum` VARCHAR(45) NULL,
-  `aAddr` VARCHAR(45) NULL,
-  `aLimit` INT NULL,
-  `aDate` DATE NULL,
-  PRIMARY KEY (`aId`));
-
-INSERT INTO `integrationdb`.`admin_info` VALUES(0,'123456','wanghao',0, '15270496554', '15270496554', '南京东路235号', 0, '2018-07-10');
-INSERT INTO `integrationdb`.`admin_info` VALUES(1,'123456','wang',1, '123456789', '123456789', '南京东路235号', 0, '2018-07-10');
->>>>>>> 4f3bb81bfbed077618111b5c8519ae4acd25b2ff
