@@ -57,4 +57,10 @@ public class LoginController {
 		mav.setViewName("../index");
 		return mav;
 	}
+	@RequestMapping("Main")
+	public ModelAndView Main(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("Main");
+		return mav;
+	}
 }
