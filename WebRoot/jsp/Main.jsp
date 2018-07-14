@@ -129,7 +129,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div style="border-top:1px ridge rgba(255, 255, 255, 0.15)"></div>
 			<div class="menu">
 				<ul id="menu">
-					<li><a href="index.html"> <i class="fa fa-tachometer"></i>
+					<li><a href="./Main"> <i class="fa fa-tachometer"></i>
 							<span>控制台</span>
 							<div class="clearfix"></div></a></li>
 					<li id="menu-academico"><a href="nav.jsp"> <i
