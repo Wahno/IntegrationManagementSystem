@@ -96,8 +96,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</form>
 				<div class="footer">
 					<p>
-						&copy; 2018 . All Rights Reserved | Design by <a
-							href="http://www.haocean.wang">Haocean</a>
+						Copyright &copy; 2018 . All Rights Reserved | Design by <a
+							href="http://www.haocean.wang">Haocean </a>.
 					</p>
 				</div>
 			</div>
