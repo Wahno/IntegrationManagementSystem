@@ -5,7 +5,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html xmlns="http://www.w3.org/1999/xhtml"><head id="headerid1">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="headerid1">
 	<base target="_self">
 	<title>个人中心</title>	
 	<meta http-equiv="pragma" content="no-cache">
@@ -16,14 +17,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8">
 
 </head>
-<body><iframe name="notSession" id="notSession" src="" style="display: none;"></iframe>
-<script type="text/javascript">
-jQuery(document).ready(function(){
-	window.setInterval(function(){
-		 document.getElementById("notSession").src = "/jsxsd/framework/blankPage.jsp";
-	 }, 1000 * 60 * 10);
-});
-</script>
+<body>
+
 
 
 <style type="text/css">
@@ -83,10 +78,11 @@ font{ color:#FFF;}
 .block12{position:absolute;width:149px;height:138px;background:#09619F;right:0px;top:292px;}
 .block12 img{position:absolute;top:26px;left:45px;}
 .block12tex{position:absolute;top:94px;left:46px;}
-a {color:#FFFFFF;}
+a{color:#db7093;}
 
 .block1app{background:#2271A9;position:absolute;width:80px;height:80px;left: 28px;top:192px;}
-.block1app img{position:absolute;width:80px;height:80px;left:0;top:0;} 
+.block1app img{position:absolute;width:80px;height:80px;left:0;top:0;}
+.Nsb_menu_pw{color:#FFF;font-size: 14px;font-family: "微软雅黑";float:left;} 
 
 </style>
 
@@ -95,35 +91,35 @@ a {color:#FFFFFF;}
     <div class="Nsb_menu menu_cn" id="divFirstMenuClass">
       <ul>         
          <li title="首页" class="Nsb_menu_li_now">
-         	<a class="Nsb_menu_li_h" id="homepage" href="/jsxsd/framework/main.jsp"><span></span></a>
+         	<a class="Nsb_menu_li_h" id="homepage" href=""><span></span></a>
          </li>
          
          	<li title="我的桌面">
-         		<a id="calender_user_schedule" href="/jsxsd/jxzl/jxzl_query?Ves632DSdyV=NEW_XSD_WDZM">我的桌面</a>
+         		<a id="calender_user_schedule" href="">我的导航</a>
          	</li>
          
          	<li title="学籍成绩">
-         		<a id="calender_user_schedule" href="/jsxsd/xsxj/xjxxgl.do?Ves632DSdyV=NEW_XSD_XJCJ">学籍成绩</a>
+         		<a id="calender_user_schedule" href="">快速搜索</a>
          	</li>
          
          	<li title="培养管理">
-         		<a id="calender_user_schedule" href="/jsxsd/pyfa/pyfadg_query?Ves632DSdyV=NEW_XSD_PYGL">培养管理</a>
+         		<a id="calender_user_schedule" href="">在线计算器</a>
          	</li>
          
          	<li title="考试报名">
-         		<a id="calender_user_schedule" href="/jsxsd/xsks/xsksap_query?Ves632DSdyV=NEW_XSD_KSBM">考试报名</a>
+         		<a id="calender_user_schedule" href="">文件上传</a>
          	</li>
          
          	<li title="教学评价">
-         		<a id="calender_user_schedule" href="/jsxsd/xspj/xspj_find.do?Ves632DSdyV=NEW_XSD_JXPJ">教学评价</a>
+         		<a id="calender_user_schedule" href="">表格导入</a>
          	</li>
          
          	<li title="实践教学">
-         		<a id="calender_user_schedule" href="/jsxsd/cxcyxm/querySq.do?Ves632DSdyV=NEW_XSD_SJJX">实践教学</a>
+         		<a id="calender_user_schedule" href="">实践教学</a>
          	</li>
          
          	<li title="教育科研">
-         		<a id="calender_user_schedule" href="/jsxsd/xscggl/cxcyjh_query?Ves632DSdyV=NEW_XSD_JYKY">教育科研</a>
+         		<a id="calender_user_schedule" href="">教育科研</a>
          	</li>
          
       </ul>
@@ -136,7 +132,7 @@ a {color:#FFFFFF;}
 <div class="wap">
  <div class="block1">
     <div>
-    	<img width="72" height="64" src="images/nav/erweima.png">
+    	<img width="72" height="64" src="images/nav/app.png">
     </div>
     <div class="block1tex">个人信息</div>
     <div class="block1text"> 
@@ -144,12 +140,12 @@ a {color:#FFFFFF;}
     	ID号：8000116112<br>
     </div>
     <div class="block1app">
-    	<img src="images/nav/app.png">
+    	<img src="images/nav/erweima.png">
     </div>      
   </div>
   
   
-	  <a href="/jsxsd/xsxk/xklc_list?Ves632DSdyV=NEW_XSD_PYGL">
+	  <a href="">
 	  	<div class="block2"> 
 	  		<div>
 	  			<img width="65" height="65" src="images/nav/consumer.png">
@@ -161,7 +157,7 @@ a {color:#FFFFFF;}
   
   
   
-	  <a href="/jsxsd/xspj/xspj_find.do?Ves632DSdyV=NEW_XSD_JXPJ">
+	  <a href="">
 	  	<div class="block3"> 
 	  		<div>
 	  			<img width="92" height="55" src="images/nav/staff.png">
@@ -173,7 +169,7 @@ a {color:#FFFFFF;}
   
   
   
-	  <a href="/jsxsd/pyfa/pyfa_query?Ves632DSdyV=NEW_XSD_PYGL">
+	  <a href="">
 	  	<div class="block4"> 
 	  		<div>
 	  			<img width="71" height="62" src="images/nav/pay.png">
@@ -184,7 +180,7 @@ a {color:#FFFFFF;}
   
   
   
-	  <a href="/jsxsd/ggly/ysly_query?Ves632DSdyV=NEW_XSD_WDZM">
+	  <a href="">
 	  	<div class="block5"> 
 	  		<div>
 	  			<img width="80" height="57" src="images/nav/yeji.png">
@@ -197,7 +193,7 @@ a {color:#FFFFFF;}
   
   
   
-	  <a href="/jsxsd/ggly/ysgg_query?Ves632DSdyV=NEW_XSD_WDZM">
+	  <a href="">
 	  	<div class="block6"> 
 	  		<div>
 	  			<img width="67" height="79" src="images/nav/search.png">
@@ -210,7 +206,7 @@ a {color:#FFFFFF;}
   
   
   
-	  <a href="/jsxsd/kscj/cjcx_query?Ves632DSdyV=NEW_XSD_XJCJ">
+	  <a href="">
 	  	<div class="block7"> 
 	  		<div>
 	  			<img width="66" height="59" src="images/nav/calculate.png">
@@ -221,7 +217,7 @@ a {color:#FFFFFF;}
   
   
   
-	  <a href="/jsxsd/jxzl/jxzl_query?Ves632DSdyV=NEW_XSD_WDZM">
+	  <a href="">
 	  	<div class="block8"> 
 	  		<div>
 	  			<img width="64" height="60" src="images/nav/goods.png">
@@ -232,7 +228,7 @@ a {color:#FFFFFF;}
   
   
   
-	  <a href="/jsxsd/xkgl/skjhQuery.do?Ves632DSdyV=NEW_XSD_PYGL">
+	  <a href="">
 	  	<div class="block9"> 
 	  		<div>
 	  			<img width="66" height="66" src="images/nav/credits.png">
@@ -243,7 +239,7 @@ a {color:#FFFFFF;}
   
   
   
-	  <a href="/jsxsd/kscj/cjcx_query?Ves632DSdyV=NEW_XSD_XJCJ">
+	  <a href="">
 	  	<div class="block10"> 
 	  		<div>
 	  			<img width="71" height="69" src="images/nav/backup.png">
@@ -254,7 +250,7 @@ a {color:#FFFFFF;}
   
   
   
-	  <a href="/jsxsd/grxx/xsxx?Ves632DSdyV=NEW_XSD_XJCJ">
+	  <a href="">
 	  	<div class="block11"> 
 	  		<div>
 	  			<img width="62" height="73" src="images/nav/description.png">
@@ -265,7 +261,7 @@ a {color:#FFFFFF;}
   
  
    
-	  <a href="/jsxsd/xsdjks/xsdjks_list?Ves632DSdyV=NEW_XSD_KSBM">
+	  <a href="">
 	  	<div class="block12"> 
 	  		<div>
 	  			<img width="55" height="67" src="images/nav/over.png">
