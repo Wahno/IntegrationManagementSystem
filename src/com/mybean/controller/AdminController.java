@@ -28,4 +28,11 @@ public class AdminController {
 		mav.setViewName("Admin");//返回到的JSP文件名
 		return mav;
 	}
+	@RequestMapping("AdminMessage")
+	public ModelAndView AdminMessage(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("AdminMessage");//返回到的JSP文件名
+		return mav;
+	}
 }

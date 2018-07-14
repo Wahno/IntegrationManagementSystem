@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <base href="<%=basePath%>">
-<title>控制台</title>
+<title>个人信息</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="" />
@@ -39,11 +39,59 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<jsp:include page="baseJsp/Header.jsp"></jsp:include>
 				<!-- Item begin -->
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="./Main">控制台</a> <i class="fa fa-angle-right"></i></li>
+					<li class="breadcrumb-item"><a href="./Main">控制台</a> <i class="fa fa-angle-right"></i><a href="./AdminMessage">个人信息</a></li>
 				</ol>
 				<!-- Item end -->
 				<!-- Main begin -->
-				<jsp:include page="Menu.jsp"></jsp:include>
+				<div class="grid_3 grid_4 w3_agileits_icons_page">
+					<div class="grid_3 grid_5 w3ls">
+						<h3>个人信息</h3>
+						<%
+							Admin admin = (Admin) session.getAttribute("adminmessage");
+						%>
+						<div class="alert alert-success" role="alert">
+							<strong>ID：</strong><%=admin.getaId() %>
+						</div>
+						<div class="alert alert-info" role="alert">
+							<strong>姓名：</strong><%=admin.getaName() %>
+						</div>
+						<div class="alert alert-warning" role="alert">
+						<%
+						String sex = "";
+						if(admin.getaSex()==0)
+							sex="男";
+						else
+							sex="女";
+						 %>
+							<strong>性别：</strong><%=sex %>
+						</div>
+						<div class="alert alert-danger" role="alert">
+							<strong>电话：</strong><%=admin.getaTel() %>
+						</div>
+						<div class="alert alert-success" role="alert">
+							<strong>手机：</strong><%=admin.getaPhoNum() %>
+						</div>
+						<div class="alert alert-info" role="alert">
+							<strong>地址：</strong><%=admin.getaAddr() %>
+						</div>
+						<div class="alert alert-warning" role="alert">
+						<%
+							String limit;
+							if(admin.getaLimit()==0)
+								limit="管理员";
+							else if(admin.getaLimit()==1)
+								limit="操作员";
+							else
+								limit="其他";
+						
+						 %>
+							<strong>权限：</strong><%=limit %>
+						</div>
+						<div class="alert alert-danger" role="alert">
+							<strong>注册日期：</strong><%=admin.getaDate() %>
+						</div>
+					</div>
+				</div>
 				<!-- Main end -->
 				<jsp:include page="baseJsp/Footer.jsp"></jsp:include>
 			</div>

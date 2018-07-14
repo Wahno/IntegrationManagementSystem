@@ -5,11 +5,11 @@ public class Admin {
 	private int aId;		//ID
 	private String aPassword;	//姓名
 	private String aName;	//姓名
-	private String aSex;	//性别
+	private int aSex;	//性别,0->男，1->女
 	private String aTel;	//电话
 	private String aPhoNum;	//手机
 	private String aAddr;	//地址
-	private int aLimit;	//权限
+	private int aLimit;	//权限0->管理员，1->操作员
 	private String aDate;	//注册日期
 	public int getaId() {
 		return aId;
@@ -23,10 +23,10 @@ public class Admin {
 	public void setaName(String aName) {
 		this.aName = aName;
 	}
-	public String getaSex() {
+	public int getaSex() {
 		return aSex;
 	}
-	public void setaSex(String aSex) {
+	public void setaSex(int aSex) {
 		this.aSex = aSex;
 	}
 	public String getaTel() {
