@@ -102,7 +102,7 @@ CREATE TABLE `integrationdb`.`Consume_info`(
 );
 
 -- 积分兑换表
-CREATE TABLE `integrationdb`.`exChange_info`(
+CREATE TABLE `integrationdb`.`Exchange_info`(
 	`Uid`			INT				NOT NULL,							-- 用户ID
 	`Exdate`		DATE			NULL,								-- 兑换日期
 	`Extime`		TIME			NULL,								-- 兑换时间

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">	
+    <mapper namespace="com.mybean.mapper.ExchangeMapper">
+    	
+        <insert id="add" parameterType="Exchange" >
+            insert into Exchange_info (Uid,Exdate,Extime,Gid,ExNum,Credits,Sid) values (#{Uid},#{Exdate},#{Extime},#{Gid},#{ExNum},#{Credits},#{Sid})   
+        </insert>
+         
+        <delete id="delete" parameterType="_int" >
+            delete from Exchange_info where Uid= #{Uid}  
+        </delete>
+         
+        <select id="get" parameterType="_int" resultType="Exchange">
+            select * from Exchange_info  where Uid= #{Uid}   
+        </select>
+ 
+        <update id="update" parameterType="Exchange" >
+            update Exchange_info set Exdate=#{Exdate},Extime=#{Extime},Gid=#{Gid},ExNum=#{ExNum},Credits=#{Credits},Sid=#{Sid}  where Uid=#{Uid}   
+        </update>
+        <select id="list" resultType="Exchange">
+            select * from Exchange_info     
+        </select>    
+    </mapper>
