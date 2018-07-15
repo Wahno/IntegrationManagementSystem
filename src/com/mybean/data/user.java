@@ -3,7 +3,7 @@ package com.mybean.data;
 public class user{
 	private int Uid;		//客户ID
 	private String uName;	//客户姓名
-	private String uSex;	//客户性别
+	private int	uSex;	    //客户性别,0->男，1->女
 	private String uBirth;	//客户生日
 	private String uTel;	//客户电话
 	private String uPhoNum;	//客户手机
@@ -19,13 +19,13 @@ public class user{
 		public String getuName() {
 			return uName;
 		}
-		public void setaName(String uName) {
+		public void setuName(String uName) {
 			this.uName = uName;
 		}
-		public String getuSex() {
+		public int getuSex() {
 			return uSex;
 		}
-		public void setaSex(String uSex) {
+		public void setuSex(int uSex) {
 			this.uSex = uSex;
 		}
 		
@@ -44,13 +44,13 @@ public class user{
 		public String getuPhoNum() {
 			return uPhoNum;
 		}
-		public void setaPhoNum(String uPhoNum) {
+		public void setuPhoNum(String uPhoNum) {
 			this.uPhoNum = uPhoNum;
 		}
 		public String getuAddr() {
 			return uAddr;
 		}
-		public void setaAddr(String uAddr) {
+		public void setuAddr(String uAddr) {
 			this.uAddr = uAddr;
 		}
 		public String getuRegDate() {
