@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <base href="<%=basePath%>">
 
-<title>积分管理系统登录</title>
+<title>积分管理系统登陆</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -58,33 +58,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 
 <body>
-<%
-	Admin a=(Admin)session.getAttribute("adminmessage");
-	if(a!=null){ 
-		response.sendRedirect("./Login");
-	}
-%>
 	<div class="main-wthree">
 		<div class="container">
 			<div class="sin-w3-agile">
-				<h2>积分管理系统</h2>
-				<form action="./Login" method="post">
+				<h2>找回密码</h2>
+				<form action="./ForgetPassword" method="post">
 					<div class="username">
-						<span class="username">ID:</span> 
-						<input type="text" name="id" class="name" placeholder="0" required="">
+						<span class="username">ID:</span> <input type="text"
+							name="id" class="name" placeholder="" required="">
+						<div class="clearfix"></div>
+					</div>
+					<div class="username">
+						<span class="username">手机号:</span> <input type="text"
+							name="phone" class="name" placeholder="" required="">
 						<div class="clearfix"></div>
 					</div>
 					<div class="password-agileits">
-						<span class="username">密码:</span>
-						<input type="password" name="password" class="password" placeholder="123456" required="">
+						<span class="username">新的密码:</span> <input type="password"
+							name="password" class="password" placeholder="" required="">
+						<div class="clearfix"></div>
+					</div>
+					<div class="password-agileits">
+						<span class="username">确认密码:</span> <input
+							type="password" name="passwordAgain" class="password" placeholder=""
+							required="">
 						<div class="clearfix"></div>
 					</div>
 					<div class="rem-for-agile">
-						<a href="./Forget">忘记密码？</a><br />
+						<a href="./">返回登陆页</a><br />
 					</div>
-					
 					<div class="login-w3">
-						<input type="submit" class="login" value="登录">
+						<input type="submit" class="login" value="找回密码">
 					</div>
 					<div class="clearfix"></div>
 				</form>

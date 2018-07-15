@@ -187,7 +187,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="#"><i
+					<a class="agile-icon" href="./Logout"><i
 						class="fa fa-volume-control-phone" aria-hidden="true"></i>
 						注销系统</a>
 				</div>
