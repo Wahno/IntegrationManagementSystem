@@ -17,7 +17,14 @@ import com.mybean.service.AdminService;
 public class LoginController {
 	@Autowired
 	AdminService adminservice;
+	
+	@RequestMapping("")
+	public ModelAndView Index(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("../index");
+		return mav;
+	}
 	@RequestMapping("Login")
 	public ModelAndView Login(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
@@ -33,7 +40,8 @@ public class LoginController {
 		admin=adminservice.get((Integer.parseInt(request.getParameter("id"))));
 		if(admin==null){
 			mav.addObject("message", "用户名不正确！");
-			mav.setViewName("../index");//返回到index
+			mav.addObject("nextPage", "./");//返回到index
+			mav.setViewName("MessagePage");//中继界面
 			return mav;
 		}
 		//密码判断
@@ -45,7 +53,8 @@ public class LoginController {
 		}
 		else{
 			mav.addObject("message", "密码不正确！");
-			mav.setViewName("../index");//返回到index
+			mav.addObject("nextPage", "./");//返回到index
+			mav.setViewName("MessagePage");//中继界面
 		}
 		return mav;
 	}
@@ -61,7 +70,6 @@ public class LoginController {
 	public ModelAndView Main(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		Admin admin = (Admin)session.getAttribute("adminmessage");
-		
 		//已登录直接跳转
 		if(admin!=null){ 
 			mav.addObject("admin", admin);
@@ -70,6 +78,40 @@ public class LoginController {
 		}
 		else
 			mav.setViewName("../index");
+		return mav;
+	}
+	@RequestMapping("Forget")
+	public ModelAndView Forget(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("ForgetPassword");
+		return mav;
+	}
+	@RequestMapping("ForgetPassword")
+	public ModelAndView ForgetPassword(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		Admin admin=new Admin();
+		if(request.getParameter("password").equals(request.getParameter("passwordAgain"))){
+			admin=adminservice.get(Integer.parseInt(request.getParameter("id")));
+			if(admin.getaPhoNum().equals(request.getParameter("phone"))){
+				admin.setaPassword(request.getParameter("password"));
+				adminservice.update(admin);
+				mav.addObject("message", "修改成功！");
+				mav.addObject("nextPage", "./");//返回到index
+				mav.setViewName("MessagePage");//中继界面
+				return mav;
+			}
+			else{
+				mav.addObject("message", "手机号有误！");
+				mav.addObject("nextPage", "Forget");//返回到Forget
+				mav.setViewName("MessagePage");//中继界面
+			}
+		}
+		else{
+			mav.addObject("message", "两次密码不一致！");
+			mav.addObject("nextPage", "Forget");//返回到Forget
+			mav.setViewName("MessagePage");//中继界面
+		}
+			
 		return mav;
 	}
 }

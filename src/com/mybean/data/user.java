@@ -2,68 +2,68 @@ package com.mybean.data;
 
 public class user{
 	private int Uid;		//客户ID
-	private String uName;	//客户姓名
-	private int	uSex;	    //客户性别,0->男，1->女
-	private String uBirth;	//客户生日
-	private String uTel;	//客户电话
-	private String uPhoNum;	//客户手机
-	private String uAddr;	//客户地址
-	private String uRegDate;//客户注册日期
-	private String uRemark;	//客户权限
+	private String Uname;	//客户姓名
+	private int	Usex;	    //客户性别,0->男，1->女
+	private String Ubirth;	//客户生日
+	private String Utel;	//客户电话
+	private String UphoNum;	//客户手机
+	private String Uaddr;	//客户地址
+	private String UregDate;//客户注册日期
+	private String Uremark;	//客户权限
 		public int getUid() {
 			return Uid;
 		}
 		public void setUid(int Uid) {
 			this.Uid = Uid;
 		}
-		public String getuName() {
-			return uName;
+		public String getUname() {
+			return Uname;
 		}
-		public void setuName(String uName) {
-			this.uName = uName;
+		public void setUname(String Uname) {
+			this.Uname = Uname;
 		}
-		public int getuSex() {
-			return uSex;
+		public int getUsex() {
+			return Usex;
 		}
-		public void setuSex(int uSex) {
-			this.uSex = uSex;
+		public void setUsex(int Usex) {
+			this.Usex = Usex;
 		}
 		
-		public String getuBirth() {
-			return uBirth;
+		public String getUbirth() {
+			return Ubirth;
 		}
-		public void setuBirth(String uBirth) {
-			this.uBirth = uBirth;
+		public void setUbirth(String Ubirth) {
+			this.Ubirth = Ubirth;
 		}
-		public String getuTel() {
-			return uTel;
+		public String getUtel() {
+			return Utel;
 		}
-		public void setuTel(String uTel) {
-			this.uTel = uTel;
+		public void setUtel(String Utel) {
+			this.Utel = Utel;
 		}
-		public String getuPhoNum() {
-			return uPhoNum;
+		public String getUphoNum() {
+			return UphoNum;
 		}
-		public void setuPhoNum(String uPhoNum) {
-			this.uPhoNum = uPhoNum;
+		public void setUphoNum(String UphoNum) {
+			this.UphoNum = UphoNum;
 		}
-		public String getuAddr() {
-			return uAddr;
+		public String getUaddr() {
+			return Uaddr;
 		}
-		public void setuAddr(String uAddr) {
-			this.uAddr = uAddr;
+		public void setUaddr(String Uaddr) {
+			this.Uaddr = Uaddr;
 		}
-		public String getuRegDate() {
-			return uRegDate;
+		public String getUregDate() {
+			return UregDate;
 		}
-		public void setuRegDate(String uRegDate) {
-			this.uRegDate = uRegDate;
+		public void setUregDate(String UregDate) {
+			this.UregDate = UregDate;
 		}
-		public String getuRemark() {
-			return uRemark;
+		public String getUremark() {
+			return Uremark;
 		}
-		public void setuRemark(String uRemark) {
-			this.uRemark = uRemark;
+		public void setUremark(String Uremark) {
+			this.Uremark = Uremark;
 		}
 		
 }

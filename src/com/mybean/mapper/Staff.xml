@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">	
+    <mapper namespace="com.mybean.mapper.StaffMapper">
+    	
+        <insert id="add" parameterType="Staff" >
+            insert into Staff_info (Sid,Sname,Smark,Ssex,Stel,SphoNum,Saddr,SregDate,Sremark) values (#{Sid},#{Sname},#{Smark},#{Ssex},#{Stel},#{SphoNum},#{Saddr},#{SregDate},#{Sremark})   
+        </insert>
+         
+        <delete id="delete" parameterType="_int" >
+            delete from Staff_info where Sid= #{Sid}  
+        </delete>
+         
+        <select id="get" parameterType="_int" resultType="Staff">
+            select * from Staff_info  where Sid= #{Sid}   
+        </select>
+ 
+        <update id="update" parameterType="Staff" >
+            update Staff_info set Sname=#{Sname},Smark=#{Smark},Ssex=#{Ssex},Stel=#{Stel},SphoNum=#{SphoNum},Saddr=#{Saddr},SregDate=#{SregDate},Sremark=#{Sremark}  where Sid=#{Sid}   
+        </update>
+        <select id="list" resultType="Staff">
+            select * from Staff_info     
+        </select>    
+    </mapper>
