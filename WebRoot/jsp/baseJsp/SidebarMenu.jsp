@@ -1,19 +1,10 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<script type="text/javascript" src="jquery-3.3.1.js"></script>
-<script type="text/javascript">
-	function loadSubFunction(loadSrc) {
-		$(".subFunction").load(loadSrc);
-	}
-</script>
-
 
 <!-- jsp:include SidebarMenu begin-->
-
 
 <div class="sidebar-menu">
 	<header class="logo1">
@@ -23,11 +14,7 @@
 	<div style="border-top:1px ridge rgba(255, 255, 255, 0.15)"></div>
 	<div class="menu">
 		<ul id="menu">
-			<li><a onclick="loadSubFunction('jsp/Nav.jsp')"> <i
-					class="fa fa-tachometer"></i> <span>导航桌面</span>
-					<div class="clearfix"></div></a></li>
-			<li><a onclick="loadSubFunction('jsp/Menu.jsp')"> <i
-					class="fa fa-tachometer"></i> <span>控制台</span>
+			<li><a href="./Main"> <i class="fa fa-tachometer"></i> <span>控制台</span>
 					<div class="clearfix"></div></a></li>
 			<li id="menu-academico"><a href="nav.jsp"> <i
 					class="fa fa-list-ul" aria-hidden="true"></i> <span>客户信息</span>
@@ -86,8 +73,6 @@
 	</div>
 </div>
 <div class="clearfix"></div>
-
-
 
 <!-- jsp:include SidebarMenu end-->
 
