@@ -111,7 +111,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="#"><i class="fa fa-instagram"
+					<a class="agile-icon" href="./ConsumeExchange"><i class="fa fa-instagram"
 						aria-hidden="true"></i> 
 						查询所有积分兑换</a>
 				</div>
@@ -123,11 +123,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="#"><i class="fa fa-pied-piper"
+					<a class="agile-icon" href="./ConsumeInfo"><i class="fa fa-pied-piper"
 						aria-hidden="true"></i>
-						导出所有积分兑换表</a>
+						查询所有客户信息</a>
 				</div>
 
+				<div class="icon-box col-md-3 col-sm-4">
+					<a class="agile-icon" href="./ConsumeCredits"><i class="fa fa-yoast"
+						aria-hidden="true"></i> 查询所有积分</a>
+				</div>
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i
 						class="fa fa-question-circle-o" aria-hidden="true"></i>
@@ -207,10 +211,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						aria-hidden="true"></i> fa-wpforms</a>
 				</div>
 
-				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="#"><i class="fa fa-yoast"
-						aria-hidden="true"></i> fa-yoast</a>
-				</div>
+				
 
 			</div>
 

@@ -16,18 +16,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<ul id="menu">
 			<li><a href="./Main"> <i class="fa fa-tachometer"></i> <span>控制台</span>
 					<div class="clearfix"></div></a></li>
-			<li id="menu-academico"><a href="nav.jsp"> <i
-					class="fa fa-list-ul" aria-hidden="true"></i> <span>客户信息</span>
-					<div class="clearfix"></div></a></li>
+					
+			<li id="menu-academico"><a href="./ConsumeMain"> 
+				<i class="fa fa-list-ul"></i> <span>客户信息</span>
+				<span class="fa fa-angle-right" style="float: right"></span>
+					<div class="clearfix"></div></a>
+					<ul id="menu-academico-sub">
+						<li id="menu-academico-avaliacoes"><a href="#">添加客户</a></li>
+						<li id="menu-academico-avaliacoes"><a href="#">查询客户</a></li>
+						<li id="menu-academico-avaliacoes"><a href="#">修改客户</a></li>
+						<li id="menu-academico-avaliacoes"><a href="#">移除客户</a></li>
+					</ul>
+			</li>
 			<li><a href="gallery.html"> <i class="fa fa-bar-chart"></i>
 					<span>客户消费</span>
-					<div class="clearfix"></div></a></li>
+					<span class="fa fa-angle-right" style="float: right"></span>
+					<div class="clearfix"></div></a>
+					<ul id="menu-academico-sub">
+						<li id="menu-academico-avaliacoes"><a href="#">添加消费</a></li>
+						<li id="menu-academico-avaliacoes"><a href="#">查询消费</a></li>
+						<li id="menu-academico-avaliacoes"><a href="#">导出表格</a></li>
+					</ul>
+			</li>
 			<li id="menu-academico"><a href="charts.html"> <i
 					class="fa fa-list-ul" aria-hidden="true"></i> <span>员工信息</span>
-					<div class="clearfix"></div></a></li>
+					<span class="fa fa-angle-right" style="float: right"></span>
+					<div class="clearfix"></div></a>
+					<ul id="menu-academico-sub">
+						<li id="menu-academico-avaliacoes"><a href="#">添加员工</a></li>
+						<li id="menu-academico-avaliacoes"><a href="#">查询员工</a></li>
+						<li id="menu-academico-avaliacoes"><a href="#">修改员工</a></li>
+						<li id="menu-academico-avaliacoes"><a href="#">移除员工</a></li>
+					</ul>
+			</li>
 			<li id="menu-academico"><a href="#"> <i
-					class="fa fa-bar-chart"></i> <span>员工业绩</span><span
-					class="fa fa-angle-right" style="float: right"></span>
+					class="fa fa-bar-chart"></i> <span>员工业绩</span>
+					<span class="fa fa-angle-right" style="float: right"></span>
 					<div class="clearfix"></div></a>
 				<ul id="menu-academico-sub">
 					<li id="menu-academico-avaliacoes"><a href="icons.html">Icons</a></li>
