@@ -5,7 +5,7 @@ public class Staff{
 	private String Sname;	//员工姓名
 	private String Smark;	//员工助记符
 	private int Ssex;		//员工性别,0->男，1->女
-	private String STel;	//员工电话
+	private String Stel;	//员工电话
 	private String SphoNum;	//员工手机
 	private String Saddr;	//员工地址
 	private String SregDate;//员工注册日期
@@ -36,11 +36,11 @@ public class Staff{
 	}
 	
 	
-	public String getSTel() {
-		return STel;
+	public String getStel() {
+		return Stel;
 	}
-	public void setSTel(String STel) {
-		this.STel = STel;
+	public void setStel(String Stel) {
+		this.Stel = Stel;
 	}
 	public String getSphoNum() {
 		return SphoNum;
