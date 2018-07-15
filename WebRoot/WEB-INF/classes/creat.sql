@@ -1,4 +1,4 @@
-CREATE SCHEMA `integrationdb` ;
+CREATE SCHEMA `integrationdb`;
 
 --管理员表
 CREATE TABLE `integrationdb`.`admin_info` (
@@ -57,22 +57,22 @@ CREATE TABLE `integrationdb`.`Goods_info`(
 	`Gid`			INT				NOT NULL,											-- 商品ID
 	`Gname`			VARCHAR(45)		NULL,												-- 商品名称
 	`Gnum`			INT				NULL,												-- 商品数量
-	`Gcost`      	INT				NULL,												-- 商品成本
-	`Gprice`		INT				NULL,												-- 商品售价
+	`Gcost`      	FLOAT			NULL,												-- 商品成本
+	`Gprice`		FLOAT			NULL,												-- 商品售价
 	`Gexchange`		INT				NULL,												-- 商品兑换所需积分
 	`Gremark`		VARCHAR(100)	NULL,												-- 商品备注
 	primary key(`Gid`)
 );
 
 -- 操作类型表(消费购买，返还现金，消费金额充值)
-CREATE TABLE Operation_Type(
+CREATE TABLE `integrationdb`.`Operation_Type`(
 	`OTid`			INT				NOT NULL,											-- 操作类型ID
 	`OTName`		VARCHAR(10)		CHECK(OTName='消费购买' OR OTName='返还现金' OR OTName='消费金额充值'),--操作类型名称
 	primary key(`OTid`)
 );
 
 -- 购买类型表(自己购买，别人介绍)
-CREATE TABLE Buy_Type(
+CREATE TABLE `integrationdb`.`Buy_Type`(
 	`BTid`			INT				NOT NULL,											-- 购买类型ID
 	`Btname`		VARCHAR(20)		NULL,												-- 类型名称
 	`BTCredit`		INT				NULL,												-- 对应1元的积分
@@ -80,14 +80,14 @@ CREATE TABLE Buy_Type(
 );
 
 -- 总积分表
-CREATE TABLE All_Credits(
+CREATE TABLE `integrationdb`.`All_Credits`(
 	`Uid`			INT				NOT NULL,											-- 用户ID
 	`Acredits`		INT				NULL,												-- 用户当前总积分
 	primary key(`Uid`)
 );
 
 -- 消费明细表
-CREATE TABLE Consume_info(
+CREATE TABLE `integrationdb`.`Consume_info`(
 	`Uid`			INT				NOT NULL,							-- 用户ID
 	`Cdate`			DATE			NULL,								-- 消费日期
 	`Ctime`			TIME			NULL,								-- 消费时间
@@ -102,7 +102,7 @@ CREATE TABLE Consume_info(
 );
 
 -- 积分兑换表
-CREATE TABLE exChange_info(
+CREATE TABLE `integrationdb`.`exChange_info`(
 	`Uid`			INT				NOT NULL,							-- 用户ID
 	`Exdate`		DATE			NULL,								-- 兑换日期
 	`Extime`		TIME			NULL,								-- 兑换时间
