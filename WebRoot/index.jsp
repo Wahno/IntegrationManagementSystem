@@ -82,12 +82,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="rem-for-agile">
 						<a href="./Forget">忘记密码？</a><br />
 					</div>
-					<br/>
-					
-					<%if(request.getParameter("message")!=null){
-					 %>
-					<p>#{message }</p>
-					<%} %>
 					
 					<div class="login-w3">
 						<input type="submit" class="login" value="登录">

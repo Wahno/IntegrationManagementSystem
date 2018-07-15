@@ -84,7 +84,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							required="">
 						<div class="clearfix"></div>
 					</div>
-
+					<div class="rem-for-agile">
+						<a href="./">返回登陆页</a><br />
+					</div>
 					<div class="login-w3">
 						<input type="submit" class="login" value="找回密码">
 					</div>
