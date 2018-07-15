@@ -1,7 +1,7 @@
 package com.mybean.data;
 
 public class Goods{
-	private int Gid;			//商品ID
+	private int 	Gid;		//商品ID
 	private String Gname;		//商品名称
 	private int	  Gnum;			//商品数量
 	private float  Gcost;		//商品成本
