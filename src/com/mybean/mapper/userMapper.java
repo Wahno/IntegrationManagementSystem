@@ -2,12 +2,12 @@ package com.mybean.mapper;
 
 import java.util.List;
 
-import com.mybean.data.user;
+import com.mybean.data.User;
 
-public  interface userMapper {
-	public void add(user user);			//增
+public  interface UserMapper {
+	public void add(User user);			//增
 	public void delete(int Uid);		//删
-	public void update(user user);		//改
-	public user get(int Uid);			//查
-	public List<user> list();			//获取所有
+	public void update(User user);		//改
+	public User get(int Uid);			//查
+	public List<User> list();			//获取所有
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">	
+    <mapper namespace="com.mybean.mapper.OperationMapper">
+    	
+        <insert id="add" parameterType="Operation" >
+            insert into Operation_Type (OTid,OTName) values (#{OTid},#{OTName})   
+        </insert>
+         
+        <delete id="delete" parameterType="_int" >
+            delete from Operation_Type where OTid= #{OTid}  
+        </delete>
+         
+        <select id="get" parameterType="_int" resultType="Operation">
+            select * from Operation_Type  where OTid= #{OTid}   
+        </select>
+ 
+        <update id="update" parameterType="Operation" >
+            update Operation_Type set OTName=#{OTName}  where OTid=#{OTid}   
+        </update>
+        <select id="list" resultType="Operation">
+            select * from Operation_Type     
+        </select>    
+    </mapper>

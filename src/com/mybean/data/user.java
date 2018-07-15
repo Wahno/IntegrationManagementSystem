@@ -1,6 +1,6 @@
 package com.mybean.data;
 
-public class user{
+public class User{
 	private int Uid;		//客户ID
 	private String Uname;	//客户姓名
 	private int	Usex;	    //客户性别,0->男，1->女
