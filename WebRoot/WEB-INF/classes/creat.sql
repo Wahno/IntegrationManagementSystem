@@ -57,8 +57,8 @@ CREATE TABLE `integrationdb`.`Goods_info`(
 	`Gid`			INT				NOT NULL,											-- 商品ID
 	`Gname`			VARCHAR(45)		NULL,												-- 商品名称
 	`Gnum`			INT				NULL,												-- 商品数量
-	`Gcost`      	INT				NULL,												-- 商品成本
-	`Gprice`		INT				NULL,												-- 商品售价
+	`Gcost`      	FLOAT			NULL,												-- 商品成本
+	`Gprice`		FLOAT			NULL,												-- 商品售价
 	`Gexchange`		INT				NULL,												-- 商品兑换所需积分
 	`Gremark`		VARCHAR(100)	NULL,												-- 商品备注
 	primary key(`Gid`)
