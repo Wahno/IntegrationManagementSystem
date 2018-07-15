@@ -3,6 +3,9 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="/Main">控制台</a> <i class="fa fa-angle-right"></i></li>
+</ol>
 <div class="grid_3 grid_4 w3_agileits_icons_page">
 	<div class="icons">
 		<h2 class="agileits-icons-title">控制台</h2>
@@ -11,149 +14,168 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i
 						class="fa fa-asl-interpreting" aria-hidden="true"></i>
-						fa-asl-interpreting <span class="text-muted">(alias)</span></a>
+						查询客户信息 <span class="text-muted">(alias)</span></a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i
 						class="fa fa-assistive-listening-systems" aria-hidden="true"></i>
-						fa-assistive-listening-systems</a>
+						添加客户信息</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i
 						class="fa fa-audio-description" aria-hidden="true"></i>
-						fa-audio-description</a>
+						删除客户信息</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i class="fa fa-blind"
-						aria-hidden="true"></i> fa-blind</a>
+						aria-hidden="true"></i> 
+						修改客户信息</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i class="fa fa-braille"
-						aria-hidden="true"></i> fa-braille</a>
+						aria-hidden="true"></i>
+						查询消费记录</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i class="fa fa-deaf"
-						aria-hidden="true"></i> fa-deaf</a>
+						aria-hidden="true"></i>
+						 添加消费记录</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i class="fa fa-deafness"
-						aria-hidden="true"></i> deafness <span class="text-muted">(alias)</span></a>
+						aria-hidden="true"></i>  <span class="text-muted">(alias)</span>
+						积分商品兑换</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i class="fa fa-envira"
-						aria-hidden="true"></i> fa-envira</a>
+						aria-hidden="true"></i>
+						导出表格信息</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i class="fa fa-fa"
-						aria-hidden="true"></i> fa-fa <span class="text-muted">(alias)</span></a>
+						aria-hidden="true"></i> <span class="text-muted"></span>
+						查询员工信息</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i class="fa fa-first-order"
-						aria-hidden="true"></i> fa-first-order</a>
+						aria-hidden="true"></i> 
+						注册员工信息</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i class="fa fa-font-awesome"
-						aria-hidden="true"></i> fa-font-awesome</a>
+						aria-hidden="true"></i> 
+						查询职工业绩</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i class="fa fa-gitlab"
-						aria-hidden="true"></i> fa-gitlab</a>
+						aria-hidden="true"></i> 
+						积分设置</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i class="fa fa-glide"
-						aria-hidden="true"></i> fa-glide</a>
+						aria-hidden="true"></i> 
+						查询商品信息</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i class="fa fa-glide-g"
-						aria-hidden="true"></i> fa-glide-g</a>
+						aria-hidden="true"></i> 
+						添加商品信息</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i
 						class="fa fa-google-plus-circle" aria-hidden="true"></i>
-						fa-google-plus-circle <span class="text-muted">(alias)</span></a>
+						移除商品信息 <span class="text-muted">(alias)</span></a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i
 						class="fa fa-google-plus-official" aria-hidden="true"></i>
-						fa-google-plus-official</a>
+						修改商品信息</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i class="fa fa-hard-of-hearing"
-						aria-hidden="true"></i> fa-hard-of-hearing <span
+						aria-hidden="true"></i> 查询所有消费记录 <span
 						class="text-muted">(alias)</span></a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i class="fa fa-instagram"
-						aria-hidden="true"></i> fa-instagram</a>
+						aria-hidden="true"></i> 
+						查询所有积分兑换</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i class="fa fa-low-vision"
-						aria-hidden="true"></i> fa-low-vision</a>
+						aria-hidden="true"></i> 
+						查询详细积分兑换</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i class="fa fa-pied-piper"
-						aria-hidden="true"></i> fa-pied-piper</a>
+						aria-hidden="true"></i>
+						导出所有积分兑换表</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i
 						class="fa fa-question-circle-o" aria-hidden="true"></i>
-						fa-question-circle-o</a>
+						备份数据信息</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i class="fa fa-sign-language"
-						aria-hidden="true"></i> fa-sign-language</a>
+						aria-hidden="true"></i> 
+						恢复数据信息</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i class="fa fa-signing"
-						aria-hidden="true"></i> fa-signing <span class="text-muted">(alias)</span></a>
+						aria-hidden="true"></i> 
+						数据整合统计 <span class="text-muted">(alias)</span></a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i class="fa fa-snapchat"
-						aria-hidden="true"></i> fa-snapchat</a>
+						aria-hidden="true"></i> 
+						系统设置</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i class="fa fa-snapchat-ghost"
-						aria-hidden="true"></i> fa-snapchat-ghost</a>
+						aria-hidden="true"></i> 
+						系统说明t</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i class="fa fa-snapchat-square"
-						aria-hidden="true"></i> fa-snapchat-square</a>
+						aria-hidden="true"></i> 
+						系统帮助</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i class="fa fa-themeisle"
-						aria-hidden="true"></i> fa-themeisle</a>
+						aria-hidden="true"></i> 强强科集团简介</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i
 						class="fa fa-universal-access" aria-hidden="true"></i>
-						fa-universal-access</a>
+						注册新账户</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
@@ -163,13 +185,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i class="fa fa-viadeo-square"
-						aria-hidden="true"></i> fa-viadeo-square</a>
+						aria-hidden="true"></i> 
+						个人信息查询</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
 					<a class="agile-icon" href="#"><i
 						class="fa fa-volume-control-phone" aria-hidden="true"></i>
-						fa-volume-control-phone</a>
+						注销系统</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">

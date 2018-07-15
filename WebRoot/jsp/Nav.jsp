@@ -85,7 +85,9 @@ a{color:#db7093;}
 .Nsb_menu_pw{color:#FFF;font-size: 14px;font-family: "微软雅黑";float:left;} 
 
 </style>
-
+<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="./Main">导航桌面</a> <i class="fa fa-angle-right"></i></li>
+				</ol>
 <div class="Nsb_menu_pw">
   <div class="Nsb_pw">
     <div class="Nsb_menu menu_cn" id="divFirstMenuClass">

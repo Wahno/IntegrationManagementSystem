@@ -1,4 +1,5 @@
-<%@ page language="java" import="java.util.*" import="com.mybean.data.*" pageEncoding="UTF-8" deferredSyntaxAllowedAsLiteral="true"%>
+<%@ page language="java" import="java.util.*" import="com.mybean.data.*"
+	pageEncoding="UTF-8" deferredSyntaxAllowedAsLiteral="true"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -38,12 +39,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="mother-grid-inner">
 				<jsp:include page="baseJsp/Header.jsp"></jsp:include>
 				<!-- Item begin -->
-				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="./Main">控制台</a> <i class="fa fa-angle-right"></i></li>
-				</ol>
+
 				<!-- Item end -->
 				<!-- Main begin -->
-				<jsp:include page="Menu.jsp"></jsp:include>
+				<div class="subFunction">
+					<jsp:include page="Nav.jsp"></jsp:include>
+					<!-- 此处显示的是界面 -->
+				</div>
+
 				<!-- Main end -->
 				<jsp:include page="baseJsp/Footer.jsp"></jsp:include>
 			</div>
