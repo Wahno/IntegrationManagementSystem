@@ -5,7 +5,7 @@
     <mapper namespace="com.mybean.mapper.BuyMapper">
     	
         <insert id="add" parameterType="Buy" >
-            insert into Buy_Type (BTid,Btname,BTCredit) values (#{BTid},#{Btname},#{BTCredit})   
+            insert into Buy_Type (BTid,BTname,BTCredit) values (#{BTid},#{BTname},#{BTCredit})   
         </insert>
          
         <delete id="delete" parameterType="_int" >
@@ -17,7 +17,7 @@
         </select>
  
         <update id="update" parameterType="Buy" >
-            update Buy_Type set Btname=#{Btname},BTCredit=#{BTCredit}  where BTid=#{BTid}   
+            update Buy_Type set BTname=#{BTname},BTCredit=#{BTCredit}  where BTid=#{BTid}   
         </update>
         <select id="list" resultType="Buy">
             select * from Buy_Type     

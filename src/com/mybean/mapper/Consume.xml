@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">	
+    <mapper namespace="com.mybean.mapper.ConsumeMapper">
+    	
+        <insert id="add" parameterType="Consume" >
+            insert into Consume_info (Uid,Cdate,Ctime,Gid,Cnum,OTid,BTid,Credits,Cremark,Sid) values (#{Uid},#{Cdate},#{Ctime},#{Gid},#{Cnum},#{OTid},#{BTid},#{Credits},#{Cremark},#(Sid))   
+        </insert>
+         
+        <delete id="delete" parameterType="_int" >
+            delete from Consume_info where Uid= #{Uid}  
+        </delete>
+         
+        <select id="get" parameterType="_int" resultType="Consume">
+            select * from Consume_info  where Uid= #{Uid}   
+        </select>
+ 
+        <update id="update" parameterType="Consume" >
+            update Consume_info set Cdate=#{Cdate},Ctime=#{Ctime},Gid=#{Gid},Cnum=#{Cnum},OTid=#{OTid},BTid=#{BTid},Credits=#{Credits},Cremark=#{Cremark},Sid=#{Sid}  where Uid=#{Uid}   
+        </update>
+        <select id="list" resultType="Consume">
+            select * from Consume_info     
+        </select>    
+    </mapper>

@@ -5,21 +5,21 @@
     <mapper namespace="com.mybean.mapper.AllMapper">
     	
         <insert id="add" parameterType="All" >
-            insert into Buy_Type (Uid,Acredits) values (#{Uid},#{Acredits})   
+            insert into All_Credits (Uid,Acredits) values (#{Uid},#{Acredits})   
         </insert>
          
         <delete id="delete" parameterType="_int" >
-            delete from Buy_Type where Uid= #{Uid}  
+            delete from All_Credits where Uid= #{Uid}  
         </delete>
          
         <select id="get" parameterType="_int" resultType="All">
-            select * from Buy_Type  where Uid= #{Uid}   
+            select * from All_Credits  where Uid= #{Uid}   
         </select>
  
         <update id="update" parameterType="All" >
-            update Buy_Type set Uid=#{Uid},Acredits=#{Acredits}  where Uid=#{Uid}   
+            update All_Credits set Uid=#{Uid},Acredits=#{Acredits}  where Uid=#{Uid}   
         </update>
         <select id="list" resultType="All">
-            select * from Buy_Type     
+            select * from All_Credits     
         </select>    
     </mapper>

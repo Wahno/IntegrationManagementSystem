@@ -74,7 +74,7 @@ CREATE TABLE `integrationdb`.`Operation_Type`(
 -- 购买类型表(自己购买，别人介绍)
 CREATE TABLE `integrationdb`.`Buy_Type`(
 	`BTid`			INT				NOT NULL,											-- 购买类型ID
-	`Btname`		VARCHAR(20)		NULL,												-- 类型名称
+	`BTname`		VARCHAR(20)		NULL,												-- 类型名称
 	`BTCredit`		INT				NULL,												-- 对应1元的积分
 	primary key(`BTid`)
 );
