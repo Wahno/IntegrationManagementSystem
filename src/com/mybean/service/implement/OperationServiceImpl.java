@@ -11,35 +11,35 @@ import com.mybean.service.OperationService;
 @Service
 public class OperationServiceImpl implements OperationService{
 	@Autowired
-	OperationMapper operationMapper;
+	OperationMapper operationmapper;
 	@Override
 	public void add(Operation operation) {
 		// TODO 自动生成的方法存根
-		operationMapper.add(operation);
+		operationmapper.add(operation);
 	}
 
 	@Override
 	public void delete(int OTid) {
 		// TODO 自动生成的方法存根
-		operationMapper.delete(OTid);
+		operationmapper.delete(OTid);
 	}
 
 	@Override
 	public void update(Operation operation) {
 		// TODO 自动生成的方法存根
-		operationMapper.update(operation);
+		operationmapper.update(operation);
 	}
 
 	@Override
 	public Operation get(int OTid) {
 		// TODO 自动生成的方法存根
-		return operationMapper.get(OTid);
+		return operationmapper.get(OTid);
 	}
 
 	@Override
 	public List<Operation> list() {
 		// TODO 自动生成的方法存根
-		return operationMapper.list();
+		return operationmapper.list();
 	}
 
 }
