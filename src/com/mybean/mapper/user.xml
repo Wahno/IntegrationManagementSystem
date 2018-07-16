@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">	
-    <mapper namespace="com.mybean.mapper.userMapper">
+    <mapper namespace="com.mybean.mapper.UserMapper">
     	
         <insert id="add" parameterType="User" >
             insert into User_info (Uid,Uname,Usex,Ubirth,Utel,UphoNum,Uaddr,UregDate,Uremark) values (#{Uid},#{Uname},#{Usex},#{Ubirth},#{Utel},#{UphoNum},#{Uaddr},#{UregDate},#{Uremark})   
