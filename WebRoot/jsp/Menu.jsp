@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<section id="new">
 			<div class="row fontawesome-icon-list">
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="#"><i
+					<a class="agile-icon" href="./toUserSelect"><i
 						class="fa fa-search" aria-hidden="true"></i>
 						查询客户信息 </a>
 				</div>
@@ -65,13 +65,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="AdminMessage"><i class="fa fa-search"
+					<a class="agile-icon" href="#"><i class="fa fa-search"
 						aria-hidden="true"></i> 
 						查询个人信息</a>
 				</div>
 				
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="#"><i
+					<a class="agile-icon" href="./toUserAdd"><i
 						class="fa fa-plus" aria-hidden="true"></i>
 						添加客户信息</a>
 				</div>
@@ -163,13 +163,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="#"><i class="fa fa-file-text-o"
+					<a class="agile-icon" href="./toSystemDescription"><i class="fa fa-file-text-o"
 						aria-hidden="true"></i> 
 						系统说明</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="#"><i class="fa fa-question"
+					<a class="agile-icon" href="./toSystemHelp"><i class="fa fa-question"
 						aria-hidden="true"></i> 
 						系统帮助</a>
 				</div>

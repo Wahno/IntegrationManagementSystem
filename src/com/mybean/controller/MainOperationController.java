@@ -6,16 +6,19 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mybean.data.User;
 import com.mybean.service.AdminService;
+import com.mybean.service.UserService;
 
 @Controller
-@RequestMapping("")
 public class MainOperationController {
 	@Autowired
 	AdminService adminservice;
+	UserService userservice;
 	
 	@RequestMapping("ConsumeMain")  //客户总界面
 	public ModelAndView ConsumeMain(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
@@ -55,6 +58,63 @@ public class MainOperationController {
 		 * 此处调用积分查询语句
 		 * */
 		mav.setViewName("ConsumeExchange");
+		return mav;
+	}
+	
+	@RequestMapping("toUserAdd")  //跳转到添加客户信息界面
+	public ModelAndView toUserAdd(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("UserAdd");
+		return mav;
+	}
+	
+	@RequestMapping("UserAddToSql")  //添加客户信息到数据库   后台处理添加成功返回添加界面
+	public ModelAndView UserAddToSql(User user) throws Exception {
+
+		System.out.println(user);
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("UserAdd");
+		return mav;
+		
+	}
+	@RequestMapping("toUserSelect")  //跳转到查询客户信息界面
+	public ModelAndView toUserSelect(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("UserSelect");
+		return mav;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping("toSystemDescription")  //跳转到系统界面
+	public ModelAndView toSystemDescriptiom(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("SystemDescription");
+		return mav;
+	}
+	@RequestMapping("toSystemHelp")  //跳转到系统界面
+	public ModelAndView toSystemHelp(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("SystemHelp");
 		return mav;
 	}
 	

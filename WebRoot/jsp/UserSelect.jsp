@@ -39,31 +39,49 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<jsp:include page="baseJsp/Header.jsp"></jsp:include>
 				<!-- Item begin -->
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item">
-					<a href="./Main">控制台</a> <i class="fa fa-angle-right">
-					<a href="./AdminMessage">个人信息</a></i>
-								
-				
+					<li class="breadcrumb-item"><a href="index.html">客户信息</a><i
+						class="fa fa-angle-right"></i>查询客户
+						<!--search-box-->
+								<a class="w3-search-box" style="background:#ffCF41;">
+									<form action="#" method="post" >
+										<input type="text" placeholder="输入客户id搜索." required="">	
+										<input type="submit" value="">					
+									</form>
+								</a>
+						</li>
+				</div><!--//end-search-box-->
 				</ol>
-			
+				
 				<!-- Item end -->
 				<!-- Main begin -->
 				<div class="grid_3 grid_4 w3_agileits_icons_page">
 					<div class="grid_3 grid_5 w3ls">
-						<h3>个人信息</h3>
+						<h3>客户信息</h3>
 						<%
-							Admin admin = (Admin) session.getAttribute("adminmessage");
+							User user = (User) session.getAttribute("usermessage");
+							if(user==null)
+							{
+							user.setUaddr(null);
+							user.setUbirth(null);
+							user.setUid(0);
+							user.setUname(null);
+							user.setUphoNum(null);
+							user.setUregDate(null);
+							user.setUremark(null);
+							user.setUsex(1);
+							user.setUtel(null);
+							}
 						%>
 						<div class="alert alert-success" role="alert">
-							<strong>ID：</strong><%=admin.getaId() %>
+							<strong>你的卡号：</strong><%=user.getUid() %>
 						</div>
 						<div class="alert alert-info" role="alert">
-							<strong>姓名：</strong><%=admin.getaName() %>
+							<strong>姓名：</strong><%=user.getUname() %>
 						</div>
 						<div class="alert alert-warning" role="alert">
 						<%
 						String sex = "";
-						if(admin.getaSex()==0)
+						if(user.getUsex()==0)
 							sex="男";
 						else
 							sex="女";
@@ -71,31 +89,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<strong>性别：</strong><%=sex %>
 						</div>
 						<div class="alert alert-danger" role="alert">
-							<strong>电话：</strong><%=admin.getaTel() %>
+							<strong>电话：</strong><%=user.getUtel()%>
 						</div>
 						<div class="alert alert-success" role="alert">
-							<strong>手机：</strong><%=admin.getaPhoNum() %>
+							<strong>手机：</strong><%=user.getUphoNum() %>
 						</div>
 						<div class="alert alert-info" role="alert">
-							<strong>地址：</strong><%=admin.getaAddr() %>
+							<strong>生日：</strong><%=user.getUbirth() %>
+						</div>
+						<div class="alert alert-info" role="alert">
+							<strong>注册日期：</strong><%=user.getUregDate() %>
+						</div>
+						<div class="alert alert-info" role="alert">
+							<strong>地址：</strong><%=user.getUaddr() %>
+						</div>
+						<div class="alert alert-info" role="alert">
+							<strong>备注：</strong><%=user.getUremark() %>
 						</div>
 						<div class="alert alert-warning" role="alert">
-						<%
-							String limit;
-							if(admin.getaLimit()==0)
-								limit="管理员";
-							else if(admin.getaLimit()==1)
-								limit="操作员";
-							else
-								limit="其他";
 						
-						 %>
-							<strong>权限：</strong><%=limit %>
 						</div>
-						<div class="alert alert-danger" role="alert">
-							<strong>注册日期：</strong><%=admin.getaDate() %>
-						</div>
-					</div>
 				</div>
 				<!-- Main end -->
 				<jsp:include page="baseJsp/Footer.jsp"></jsp:include>

@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span class="fa fa-angle-right" style="float: right"></span>
 				<div class="clearfix"></div></a>
 				<ul id="menu-academico-sub">
-					<li id="menu-academico-avaliacoes"><a href="#">查询客户信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="./toUserSelect">查询客户信息</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">查询消费记录</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">查询员工信息</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">查询员工业绩</a></li>
@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li id="menu-academico-avaliacoes"><a href="#">查询所有积分兑换</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">查询所有客户信息</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">查询所有积分</a></li>
-					<li id="menu-academico-avaliacoes"><a href="AdminMessage">查询个人信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="#">查询个人信息</a></li>
 				</ul>
 			</li>
 					
@@ -42,8 +42,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span class="fa fa-angle-right" style="float: right"></span>
 				<div class="clearfix"></div></a>
 				<ul id="menu-academico-sub">
-					<li id="menu-academico-avaliacoes"><a href="#">添加客户</a></li>
-					<li id="menu-academico-avaliacoes"><a href="#">查询客户</a></li>
+					<li id="menu-academico-avaliacoes"><a href="./toUserAdd">添加客户</a></li>
+					<li id="menu-academico-avaliacoes"><a href="./toUserSelect">查询客户</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">修改客户</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">移除客户</a></li>
 				</ul>
@@ -119,8 +119,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="clearfix"></div></a>
 				<ul>
 					<li><a href="#">系统设置</a></li>
-					<li><a href="#">系统说明</a></li>
-					<li><a href="#">系统帮助</a></li>
+					<li><a href="./toSystemDescription">系统说明</a></li>
+					<li><a href="./toSystemHelp">系统帮助</a></li>
 					<li><a href="Logout">注销退出</a></li>
 				</ul>
 			</li>
