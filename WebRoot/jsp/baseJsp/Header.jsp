@@ -13,9 +13,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<%
 		Admin admin = (Admin)session.getAttribute("adminmessage");
-		if(admin==null){
-			response.setHeader("refresh", "1;../index.jsp");
-		}
 	%>
 	<div class="profile_details w3l">
 		<ul>
