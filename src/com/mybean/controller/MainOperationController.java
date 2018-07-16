@@ -13,7 +13,7 @@ import com.mybean.service.AdminService;
 
 @Controller
 @RequestMapping("")
-public class OperationController {
+public class MainOperationController {
 	@Autowired
 	AdminService adminservice;
 	
