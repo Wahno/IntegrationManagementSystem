@@ -26,7 +26,7 @@ CREATE TABLE `integrationdb`.`User_info`(
 	`Ubirth`	DATE			NULL,													-- 客户生日
 	`Utel`		VARCHAR(45) 	NULL,													-- 客户电话
 	`UphoNum`	VARCHAR(45) 	NULL,													-- 客户手机
-	`Uaddr`		VARCHAR(50),	NULL,													-- 客户地址
+	`Uaddr`		VARCHAR(50)		NULL,													-- 客户地址
 	`UregDate`	DATE			NULL,													-- 客户注册日期
 	`Uremark`	VARCHAR(100)	NULL,													-- 客户备注
 	primary key(`Uid`)
