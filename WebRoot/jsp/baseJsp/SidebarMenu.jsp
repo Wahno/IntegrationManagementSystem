@@ -14,85 +14,116 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div style="border-top:1px ridge rgba(255, 255, 255, 0.15)"></div>
 	<div class="menu">
 		<ul id="menu">
-			<li><a href="./Main"> <i class="fa fa-tachometer"></i> <span>控制台</span>
-					<div class="clearfix"></div></a></li>
+			<li><a href="./Main"> <i class="fa fa-tachometer"></i>
+				<span>控制台</span>
+				<div class="clearfix"></div></a>
+			</li>
 					
-			<li id="menu-academico"><a href="./ConsumeMain"> 
-				<i class="fa fa-list-ul"></i> <span>客户信息</span>
+			<li id="menu-academico"><a href="#"> <i class="fa fa-search"></i> 
+				<span>查询操作</span>
 				<span class="fa fa-angle-right" style="float: right"></span>
-					<div class="clearfix"></div></a>
-					<ul id="menu-academico-sub">
-						<li id="menu-academico-avaliacoes"><a href="#">添加客户</a></li>
-						<li id="menu-academico-avaliacoes"><a href="#">查询客户</a></li>
-						<li id="menu-academico-avaliacoes"><a href="#">修改客户</a></li>
-						<li id="menu-academico-avaliacoes"><a href="#">移除客户</a></li>
-					</ul>
-			</li>
-			<li><a href="gallery.html"> <i class="fa fa-bar-chart"></i>
-					<span>客户消费</span>
-					<span class="fa fa-angle-right" style="float: right"></span>
-					<div class="clearfix"></div></a>
-					<ul id="menu-academico-sub">
-						<li id="menu-academico-avaliacoes"><a href="#">添加消费</a></li>
-						<li id="menu-academico-avaliacoes"><a href="#">查询消费</a></li>
-						<li id="menu-academico-avaliacoes"><a href="#">导出表格</a></li>
-					</ul>
-			</li>
-			<li id="menu-academico"><a href="charts.html"> <i
-					class="fa fa-list-ul" aria-hidden="true"></i> <span>员工信息</span>
-					<span class="fa fa-angle-right" style="float: right"></span>
-					<div class="clearfix"></div></a>
-					<ul id="menu-academico-sub">
-						<li id="menu-academico-avaliacoes"><a href="#">添加员工</a></li>
-						<li id="menu-academico-avaliacoes"><a href="#">查询员工</a></li>
-						<li id="menu-academico-avaliacoes"><a href="#">修改员工</a></li>
-						<li id="menu-academico-avaliacoes"><a href="#">移除员工</a></li>
-					</ul>
-			</li>
-			<li id="menu-academico"><a href="#"> <i
-					class="fa fa-bar-chart"></i> <span>员工业绩</span>
-					<span class="fa fa-angle-right" style="float: right"></span>
-					<div class="clearfix"></div></a>
+				<div class="clearfix"></div></a>
 				<ul id="menu-academico-sub">
-					<li id="menu-academico-avaliacoes"><a href="icons.html">Icons</a></li>
-					<li id="menu-academico-avaliacoes"><a href="typography.html">Typography</a></li>
-					<li id="menu-academico-avaliacoes"><a href="faq.html">Faq</a></li>
-				</ul></li>
-			<li id="menu-academico"><a href="errorpage.html"> <i
-					class="fa fa-table"></i> <span>查询操作</span>
-					<div class="clearfix"></div></a></li>
-			<li><a href="tabels.html"> <i class="fa fa-table"></i> <span>数据统计</span>
-					<div class="clearfix"></div></a></li>
-			<li id="menu-academico"><a href="#"> <i class="fa fa-cogs"
-					aria-hidden="true"></i> <span>管理商品</span> <span
-					class="fa fa-angle-right" style="float: right"></span>
-					<div class="clearfix"></div></a>
+					<li id="menu-academico-avaliacoes"><a href="#">查询客户信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="#">查询消费记录</a></li>
+					<li id="menu-academico-avaliacoes"><a href="#">查询员工信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="#">查询员工业绩</a></li>
+					<li id="menu-academico-avaliacoes"><a href="#">查询商品信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="#">查询所有消费记录</a></li>
+					<li id="menu-academico-avaliacoes"><a href="#">查询所有积分兑换</a></li>
+					<li id="menu-academico-avaliacoes"><a href="#">查询所有客户信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="#">查询所有积分</a></li>
+					<li id="menu-academico-avaliacoes"><a href="#">查询个人信息</a></li>
+				</ul>
+			</li>
+					
+			<li id="menu-academico"><a href="./ConsumeMain"> <i class="fa fa-list-ul"></i> 
+				<span>客户信息</span>
+				<span class="fa fa-angle-right" style="float: right"></span>
+				<div class="clearfix"></div></a>
 				<ul id="menu-academico-sub">
-					<li id="menu-academico-avaliacoes"><a href="button.html">Buttons</a></li>
-					<li id="menu-academico-avaliacoes"><a href="grid.html">Grids</a></li>
-				</ul></li>
-			<li><a href="maps.html"> <i class="fa fa-cogs"
-					aria-hidden="true"></i> <span>积分设置</span>
-					<div class="clearfix"></div></a></li>
-			<li id="menu-academico"><a href="#"> <i
-					class="fa fa-file-text-o"></i> <span>数据管理</span><span
-					class="fa fa-angle-right" style="float: right"></span>
-					<div class="clearfix"></div></a>
+					<li id="menu-academico-avaliacoes"><a href="#">添加客户</a></li>
+					<li id="menu-academico-avaliacoes"><a href="#">查询客户</a></li>
+					<li id="menu-academico-avaliacoes"><a href="#">修改客户</a></li>
+					<li id="menu-academico-avaliacoes"><a href="#">移除客户</a></li>
+				</ul>
+			</li>
+			
+			<li><a href="#"> <i class="fa fa-bar-chart"></i>
+				<span>客户消费</span>
+				<span class="fa fa-angle-right" style="float: right"></span>
+				<div class="clearfix"></div></a>
 				<ul id="menu-academico-sub">
-					<li id="menu-academico-boletim"><a href="calendar.html">Calendar</a></li>
-					<li id="menu-academico-avaliacoes"><a href="signin.html">Sign
-							In</a></li>
-					<li id="menu-academico-avaliacoes"><a href="signup.html">Sign
-							Up</a></li>
-				</ul></li>
-			<li><a href="#"> <i class="fa fa-check-square-o nav_icon"></i>
-					<span>系统说明</span><span class="fa fa-angle-right"
-					style="float: right"></span>
-					<div class="clearfix"></div></a>
+					<li id="menu-academico-avaliacoes"><a href="#">添加消费</a></li>
+					<li id="menu-academico-avaliacoes"><a href="#">查询消费</a></li>
+					<li id="menu-academico-avaliacoes"><a href="#">导出表格</a></li>
+				</ul>
+			</li>
+			
+			<li id="menu-academico"><a href="#"> <i class="fa fa-list-ul" aria-hidden="true"></i>
+				<span>员工信息</span>
+				<span class="fa fa-angle-right" style="float: right"></span>
+				<div class="clearfix"></div></a>
+				<ul id="menu-academico-sub">
+					<li id="menu-academico-avaliacoes"><a href="#">添加员工信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="#">查询员工信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="#">修改员工信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="#">移除员工信息</a></li>
+				</ul>
+			</li>
+			
+			<li id="menu-academico"><a href="#"> <i class="fa fa-list-ul" aria-hidden="true"></i> 
+				<span>商品信息</span> <span
+				class="fa fa-angle-right" style="float: right"></span>
+				<div class="clearfix"></div></a>
+				<ul id="menu-academico-sub">
+					<li id="menu-academico-avaliacoes"><a href="#">添加商品信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="#">查询商品信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="#">修改商品信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="#">移除商品信息</a></li>
+				</ul>
+			</li>
+			
+			<li id="menu-academico"><a href="#"> <i class="fa fa-bar-chart"></i> 
+				<span>员工业绩</span>
+				<div class="clearfix"></div></a>
+			</li>
+			
+			<li><a href="#"> <i class="fa fa-leaf"></i> 
+				<span>积分兑换</span>
+				<div class="clearfix"></div></a>
+			</li>
+			
+			
+			
+			<li><a href="#"> <i class="fa fa-cogs" aria-hidden="true"></i> 
+				<span>积分设置</span>
+				<div class="clearfix"></div></a>
+			</li>
+			
+			<li id="menu-academico"><a href="#"> <i class="fa fa-file-text-o"></i> 
+				<span>数据管理</span>
+				<span class="fa fa-angle-right" style="float: right"></span>
+				<div class="clearfix"></div></a>
+				<ul id="menu-academico-sub">
+					<li id="menu-academico-boletim"><a href="#">备份数据</a></li>
+					<li id="menu-academico-avaliacoes"><a href="#">恢复数据</a></li>
+					<li id="menu-academico-avaliacoes"><a href="#">统计数据</a></li>
+					<li id="menu-academico-avaliacoes"><a href="#">导出数据</a></li>
+				</ul>
+			</li>
+			
+			<li><a href="#"> <i class="fa fa-gear"></i>
+				<span>关于系统</span><span class="fa fa-angle-right"
+				style="float: right"></span>
+				<div class="clearfix"></div></a>
 				<ul>
-					<li><a href="input.html"> Input</a></li>
-					<li><a href="validation.html">Validation</a></li>
-				</ul></li>
+					<li><a href="#">系统设置</a></li>
+					<li><a href="#">系统说明</a></li>
+					<li><a href="#">系统帮助</a></li>
+					<li><a href="Logout">注销退出</a></li>
+				</ul>
+			</li>
 		</ul>
 	</div>
 </div>
