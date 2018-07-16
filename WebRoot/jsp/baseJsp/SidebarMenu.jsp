@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li id="menu-academico-avaliacoes"><a href="#">查询所有积分兑换</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">查询所有客户信息</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">查询所有积分</a></li>
-					<li id="menu-academico-avaliacoes"><a href="#">查询个人信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="AdminMessage">查询个人信息</a></li>
 				</ul>
 			</li>
 					
