@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="#"><i class="fa fa-search"
+					<a class="agile-icon" href="toStaffSelect"><i class="fa fa-search"
 						aria-hidden="true"></i>
 						查询员工信息</a>
 				</div>
@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="./ConsumeCredits"><i class="fa fa-search"
+					<a class="agile-icon" href="ConsumeCredits"><i class="fa fa-search"
 						aria-hidden="true"></i> 
 						查询所有积分</a>
 				</div>
@@ -71,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="./toUserAdd"><i
+					<a class="agile-icon" href="toUserAdd"><i
 						class="fa fa-plus" aria-hidden="true"></i>
 						添加客户信息</a>
 				</div>
@@ -89,7 +89,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="#"><i
+					<a class="agile-icon" href="toUserDelete"><i
 						class="fa fa-minus" aria-hidden="true"></i>
 						删除客户信息</a>
 				</div>
@@ -119,7 +119,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="#"><i class="fa fa-group"
+					<a class="agile-icon" href="toStaffAdd"><i class="fa fa-group"
 						aria-hidden="true"></i> 
 						注册新员工</a>
 				</div>

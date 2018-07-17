@@ -24,14 +24,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span class="fa fa-angle-right" style="float: right"></span>
 				<div class="clearfix"></div></a>
 				<ul id="menu-academico-sub">
-					<li id="menu-academico-avaliacoes"><a href="./toUserSelect">查询客户信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="toUserSelect">查询客户信息</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">查询消费记录</a></li>
-					<li id="menu-academico-avaliacoes"><a href="#">查询员工信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="toStaffSelect">查询员工信息</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">查询员工业绩</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">查询商品信息</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">查询所有消费记录</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">查询所有积分兑换</a></li>
-					<li id="menu-academico-avaliacoes"><a href="./ConsumeInfo">查询所有客户信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="ConsumeInfo">查询所有客户信息</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">查询所有积分</a></li>
 					<li id="menu-academico-avaliacoes"><a href="AdminMessage">查询个人信息</a></li>
 				</ul>
@@ -42,10 +42,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span class="fa fa-angle-right" style="float: right"></span>
 				<div class="clearfix"></div></a>
 				<ul id="menu-academico-sub">
-					<li id="menu-academico-avaliacoes"><a href="./toUserAdd">添加客户</a></li>
-					<li id="menu-academico-avaliacoes"><a href="./toUserSelect">查询客户</a></li>
+					<li id="menu-academico-avaliacoes"><a href="toUserAdd">添加客户</a></li>
+					<li id="menu-academico-avaliacoes"><a href="toUserSelect">查询客户</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">修改客户</a></li>
-					<li id="menu-academico-avaliacoes"><a href="#">移除客户</a></li>
+					<li id="menu-academico-avaliacoes"><a href="toUserDelete">移除客户</a></li>
 				</ul>
 			</li>
 			
@@ -65,8 +65,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span class="fa fa-angle-right" style="float: right"></span>
 				<div class="clearfix"></div></a>
 				<ul id="menu-academico-sub">
-					<li id="menu-academico-avaliacoes"><a href="#">添加员工信息</a></li>
-					<li id="menu-academico-avaliacoes"><a href="#">查询员工信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="toStaffAdd">添加员工信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="toStaffSelect">查询员工信息</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">修改员工信息</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">移除员工信息</a></li>
 				</ul>
