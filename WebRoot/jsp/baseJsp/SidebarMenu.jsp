@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li id="menu-academico-avaliacoes"><a href="#">查询商品信息</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">查询所有消费记录</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">查询所有积分兑换</a></li>
-					<li id="menu-academico-avaliacoes"><a href="#">查询所有客户信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="./ConsumeInfo">查询所有客户信息</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">查询所有积分</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">查询个人信息</a></li>
 				</ul>
@@ -109,7 +109,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li id="menu-academico-boletim"><a href="#">备份数据</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">恢复数据</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">统计数据</a></li>
-					<li id="menu-academico-avaliacoes"><a href="#">导出数据</a></li>
+					<li id="menu-academico-avaliacoes"><a href="./toExportExcel">导出数据</a></li>
 				</ul>
 			</li>
 			

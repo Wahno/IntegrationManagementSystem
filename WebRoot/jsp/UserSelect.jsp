@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" import="com.mybean.data.*" pageEncoding="UTF-8" deferredSyntaxAllowedAsLiteral="true"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -41,70 +42,58 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="index.html">客户信息</a><i
 						class="fa fa-angle-right"></i>查询客户
+				</ol>
+				<ol class="breadcrumb">
+					
 						<!--search-box-->
-								<a class="w3-search-box" style="background:#ffCF41;">
-									<form action="#" method="post" >
-										<input type="text" placeholder="输入客户id搜索." required="">	
+								<div class="w3-search-box" style="background:#ffCF41;">
+									<form action="./toUserSelect" method="post" >
+										<input name="searchUser" type="text" placeholder="输入客户id搜索." required="">	
 										<input type="submit" value="">					
 									</form>
-								</a>
-						</li>
-				</div><!--//end-search-box-->
-				</ol>
+								</div>
+						
 				
+				</ol>
 				<!-- Item end -->
 				<!-- Main begin -->
 				<div class="grid_3 grid_4 w3_agileits_icons_page">
 					<div class="grid_3 grid_5 w3ls">
 						<h3>客户信息</h3>
 						<%
-							User user = (User) session.getAttribute("usermessage");
-							if(user==null)
-							{
-							user.setUaddr(null);
-							user.setUbirth(null);
-							user.setUid(0);
-							user.setUname(null);
-							user.setUphoNum(null);
-							user.setUregDate(null);
-							user.setUremark(null);
-							user.setUsex(1);
-							user.setUtel(null);
-							}
+							//User user = (User) session.getAttribute("usermessage");
+							
+							
 						%>
 						<div class="alert alert-success" role="alert">
-							<strong>你的卡号：</strong><%=user.getUid() %>
+							<strong>你的卡号：</strong>${usermessage.Uid}
 						</div>
 						<div class="alert alert-info" role="alert">
-							<strong>姓名：</strong><%=user.getUname() %>
+							<strong>姓名：</strong>${usermessage.Uname }
 						</div>
 						<div class="alert alert-warning" role="alert">
-						<%
-						String sex = "";
-						if(user.getUsex()==0)
-							sex="男";
-						else
-							sex="女";
-						 %>
-							<strong>性别：</strong><%=sex %>
+						<%String sex=""; %>
+						<c:if test="${usermessage.Usex==0}"><%sex="男"; %></c:if>
+						<c:if test="${usermessage.Usex==1}"><%sex="女"; %> </c:if>
+						<strong> 性别：</strong>${usermessage.Usex }
 						</div>
 						<div class="alert alert-danger" role="alert">
-							<strong>电话：</strong><%=user.getUtel()%>
+							<strong>电话：</strong>${usermessage.Utel}
 						</div>
 						<div class="alert alert-success" role="alert">
-							<strong>手机：</strong><%=user.getUphoNum() %>
+							<strong>手机：</strong>${usermessage.UphoNum}
 						</div>
 						<div class="alert alert-info" role="alert">
-							<strong>生日：</strong><%=user.getUbirth() %>
+							<strong>生日：</strong>${usermessage.Ubirth }
 						</div>
 						<div class="alert alert-info" role="alert">
-							<strong>注册日期：</strong><%=user.getUregDate() %>
+							<strong>注册日期：</strong>${usermessage.UregDate }
 						</div>
 						<div class="alert alert-info" role="alert">
-							<strong>地址：</strong><%=user.getUaddr() %>
+							<strong>地址：</strong>${usermessage.Uaddr }
 						</div>
 						<div class="alert alert-info" role="alert">
-							<strong>备注：</strong><%=user.getUremark() %>
+							<strong>备注：</strong>${usermessage.Uremark }
 						</div>
 						<div class="alert alert-warning" role="alert">
 						

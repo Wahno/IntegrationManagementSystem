@@ -83,7 +83,25 @@ public class MainOperationController {
 	public ModelAndView toUserSelect(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("UserSelect");
+		
+		
+		if(request.getParameter("searchUser")==null)//其他界面跳转到查询页面
+		{
+			mav.setViewName("UserSelect");
+		}
+		else  //查询页面输入id提交后，把结果带回查询页面
+		{
+			int Uid =Integer.parseInt(request.getParameter("searchUser")); 
+			/**
+			 * 
+			 * 此处调用查询语句
+			 * */
+			System.out.println(request.getParameter("searchUser"));
+			System.out.println(Uid);
+			User user=userservice.get(Uid);
+			mav.addObject("usermessage", user);
+			mav.setViewName("UserSelect");
+		}
 		return mav;
 	}
 	
@@ -100,7 +118,13 @@ public class MainOperationController {
 	
 	
 	
-	
+	@RequestMapping("toExportExcel")  //跳转到查询客户信息界面
+	public ModelAndView toExportExcel(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("ExportExcel");
+		return mav;
+	}
 	
 	
 	@RequestMapping("toSystemDescription")  //跳转到系统界面

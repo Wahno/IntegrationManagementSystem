@@ -13,7 +13,7 @@
         </delete>
          
         <select id="get" parameterType="_int" resultType="User">
-            select * from User_info  where Uid= #{Uid}   
+            select * from user_info  where Uid= #{Uid}   
         </select>
  
         <update id="update" parameterType="User" >
