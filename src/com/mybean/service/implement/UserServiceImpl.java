@@ -9,7 +9,7 @@ import com.mybean.data.User;
 import com.mybean.mapper.UserMapper;
 import com.mybean.service.UserService;
 @Service
-public class UserServicelmpl implements UserService {
+public class UserServiceImpl implements UserService {
 	@Autowired
 	UserMapper usermapper;
 	@Override
@@ -19,9 +19,9 @@ public class UserServicelmpl implements UserService {
 	}
 
 	@Override
-	public void delete(int Uid) {
+	public void delete(int uId) {
 		// TODO 自动生成的方法存根
-		usermapper.delete(Uid);
+		usermapper.delete(uId);
 	}
 
 	@Override
@@ -31,9 +31,9 @@ public class UserServicelmpl implements UserService {
 	}
 
 	@Override
-	public User get(int Uid) {
+	public User get(int uId) {
 		// TODO 自动生成的方法存根
-		return usermapper.get(Uid);
+		return usermapper.get(uId);
 	}
 
 	@Override

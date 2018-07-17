@@ -1,57 +1,57 @@
 package com.mybean.data;
 
 public class Goods{
-	private int 	Gid;		//商品ID
-	private String Gname;		//商品名称
-	private int	  Gnum;			//商品数量
-	private float  Gcost;		//商品成本
-	private float  Gprice;		//商品售价
-	private int Gexchange;		//商品兑换所需积分
-	private String Gremark;		//商品备注
+	private int 	gId;		//商品ID
+	private String gName;		//商品名称
+	private int	  gNum;			//商品数量
+	private float  gCost;		//商品成本
+	private float  gPrice;		//商品售价
+	private int gExchange;		//商品兑换所需积分
+	private String gRemark;		//商品备注
 
-	public int getGid() {
-		return Gid;
+	public int getgId() {
+		return gId;
 	}
-	public void setGid(int Gid) {
-		this.Gid = Gid;
+	public void setgId(int gId) {
+		this.gId = gId;
 	}
-	public String getGname() {
-		return Gname;
+	public String getgName() {
+		return gName;
 	}
-	public void setGname(String Gname) {
-		this.Gname = Gname;
+	public void setgName(String gName) {
+		this.gName = gName;
 	}
-	public int getGnum() {
-		return Gnum;
+	public int getgNum() {
+		return gNum;
 	}
-	public void setGnum(int Gnum) {
-		this.Gnum = Gnum;
+	public void setgNum(int gNum) {
+		this.gNum = gNum;
 	}
-	public float getGcost() {
-		return Gcost;
+	public float getgCost() {
+		return gCost;
 	}
-	public void setGcost(float Gcost) {
-		this.Gcost = Gcost;
+	public void setgCost(float gCost) {
+		this.gCost = gCost;
 	}
 	
 	
-	public float getGprice() {
-		return Gprice;
+	public float getgPrice() {
+		return gPrice;
 	}
-	public void setGprice(float Gprice) {
-		this.Gprice = Gprice;
+	public void setgPrice(float gPrice) {
+		this.gPrice = gPrice;
 	}
-	public int getGexchange() {
-		return Gexchange;
+	public int getgExchange() {
+		return gExchange;
 	}
-	public void setGexchange(int Gexchange) {
-		this.Gexchange = Gexchange;
+	public void setgExchange(int gExchange) {
+		this.gExchange = gExchange;
 	}
-	public String getGremark() {
-		return Gremark;
+	public String getgRemark() {
+		return gRemark;
 	}
-	public void setGremark(String Gremark) {
-		this.Gremark = Gremark;
+	public void setgRemark(String gRemark) {
+		this.gRemark = gRemark;
 	}
 	
 }

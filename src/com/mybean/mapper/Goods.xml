@@ -5,21 +5,21 @@
     <mapper namespace="com.mybean.mapper.GoodsMapper">
     	
         <insert id="add" parameterType="Goods" >
-            insert into Goods_info (Gid,Gname,Gnum,Gcost,Gprice,Gexchange,Gremark) values (#{Gid},#{Gname},#{Gnum},#{Gcost},#{Gprice},#{Gexchange},#{Gremark})   
+            insert into goods_info (gId,gName,gNum,gCost,gPrice,gExchange,gRemark) values (#{gId},#{gName},#{gNum},#{gCost},#{gPrice},#{gExchange},#{gRemark})   
         </insert>
          
         <delete id="delete" parameterType="_int" >
-            delete from Goods_info where Gid= #{Gid}  
+            delete from goods_info where gId= #{gId}  
         </delete>
          
         <select id="get" parameterType="_int" resultType="Goods">
-            select * from Goods_info  where Gid= #{Gid}   
+            select * from goods_info  where gId= #{gId}   
         </select>
  
         <update id="update" parameterType="Goods" >
-            update Goods_info set Gname=#{Gname},Gnum=#{Gnum},Gcost=#{Gcost},Gprice=#{Gprice},Gexchange=#{Gexchange},Gremark=#{Gremark}  where Gid=#{Gid}   
+            update goods_info set gName=#{gName},gNum=#{gNum},gCost=#{gCost},gPrice=#{gPrice},gExchange=#{gExchange},gRemark=#{gRemark}  where gId=#{gId}   
         </update>
         <select id="list" resultType="Goods">
-            select * from Goods_info     
+            select * from goods_info     
         </select>    
     </mapper>

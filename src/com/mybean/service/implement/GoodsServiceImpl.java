@@ -20,9 +20,9 @@ public class GoodsServiceImpl implements GoodsService{
 	}
 
 	@Override
-	public void delete(int Gid) {
+	public void delete(int gId) {
 		// TODO 自动生成的方法存根
-		goodsmapper.delete(Gid);
+		goodsmapper.delete(gId);
 	}
 
 	@Override
@@ -32,9 +32,9 @@ public class GoodsServiceImpl implements GoodsService{
 	}
 
 	@Override
-	public Goods get(int Gid) {
+	public Goods get(int gId) {
 		// TODO 自动生成的方法存根
-		return goodsmapper.get(Gid);
+		return goodsmapper.get(gId);
 	}
 
 	@Override

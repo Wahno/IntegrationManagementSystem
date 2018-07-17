@@ -20,9 +20,9 @@ public class StaffServiceImpl implements StaffService{
 	}
 
 	@Override
-	public void delete(int Sid) {
+	public void delete(int sId) {
 		// TODO 自动生成的方法存根
-		staffmapper.delete(Sid);
+		staffmapper.delete(sId);
 	}
 
 	@Override
@@ -32,9 +32,9 @@ public class StaffServiceImpl implements StaffService{
 	}
 
 	@Override
-	public Staff get(int Sid) {
+	public Staff get(int sId) {
 		// TODO 自动生成的方法存根
-		return staffmapper.get(Sid);
+		return staffmapper.get(sId);
 	}
 
 	@Override

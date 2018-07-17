@@ -1,70 +1,70 @@
 package com.mybean.data;
 
 public class Staff{
-	private int Sid;		//员工ID
-	private String Sname;	//员工姓名
-	private String Smark;	//员工助记符
-	private int Ssex;		//员工性别,0->男，1->女
-	private String Stel;	//员工电话
-	private String SphoNum;	//员工手机
-	private String Saddr;	//员工地址
-	private String SregDate;//员工注册日期
-	private String Sremark;	//员工备注
-	public int getSid() {
-		return Sid;
+	private int sId;		//员工ID
+	private String sName;	//员工姓名
+	private String sMark;	//员工助记符
+	private int sSex;		//员工性别,0->男，1->女
+	private String sTel;	//员工电话
+	private String sPhoNum;	//员工手机
+	private String sAddr;	//员工地址
+	private String sRegDate;//员工注册日期
+	private String sRemark;	//员工备注
+	public int getsId() {
+		return sId;
 	}
-	public void setSid(int Sid) {
-		this.Sid = Sid;
+	public void setsId(int sId) {
+		this.sId = sId;
 	}
-	public String getSname() {
-		return Sname;
+	public String getsName() {
+		return sName;
 	}
-	public void setSname(String Sname) {
-		this.Sname = Sname;
+	public void setsName(String sName) {
+		this.sName = sName;
 	}
-	public String getSmark() {
-		return Smark;
+	public String getsMark() {
+		return sMark;
 	}
-	public void setSmark(String Smark) {
-		this.Smark = Smark;
+	public void setsMark(String sMark) {
+		this.sMark = sMark;
 	}
-	public int getSsex() {
-		return Ssex;
+	public int getsSex() {
+		return sSex;
 	}
-	public void setSsex(int Ssex) {
-		this.Ssex = Ssex;
+	public void setsSex(int sSex) {
+		this.sSex = sSex;
 	}
 	
 	
-	public String getStel() {
-		return Stel;
+	public String getsTel() {
+		return sTel;
 	}
-	public void setStel(String Stel) {
-		this.Stel = Stel;
+	public void setsTel(String sTel) {
+		this.sTel = sTel;
 	}
-	public String getSphoNum() {
-		return SphoNum;
+	public String getsPhoNum() {
+		return sPhoNum;
 	}
-	public void setSphoNum(String SphoNum) {
-		this.SphoNum = SphoNum;
+	public void setsPhoNum(String sPhoNum) {
+		this.sPhoNum = sPhoNum;
 	}
-	public String getSaddr() {
-		return Saddr;
+	public String getsAddr() {
+		return sAddr;
 	}
-	public void setSaddr(String Saddr) {
-		this.Saddr = Saddr;
+	public void setsAddr(String sAddr) {
+		this.sAddr = sAddr;
 	}
-	public String getSregDate() {
-		return SregDate;
+	public String getsRegDate() {
+		return sRegDate;
 	}
-	public void setSregDate(String SregDate) {
-		this.SregDate = SregDate;
+	public void setsRegDate(String sRegDate) {
+		this.sRegDate = sRegDate;
 	}
-	public String getSremark() {
-		return Sremark;
+	public String getsRemark() {
+		return sRemark;
 	}
-	public void setSremark(String Sremark) {
-		this.Sremark = Sremark;
+	public void setsRemark(String sRemark) {
+		this.sRemark = sRemark;
 	}
 	
 }
