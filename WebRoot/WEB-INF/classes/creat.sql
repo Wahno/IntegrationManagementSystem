@@ -93,27 +93,27 @@ CREATE TABLE `integrationdb`.`all_Credits`(
 -- 消费明细表
 CREATE TABLE `integrationdb`.`consume_info`(
 	`uId`			INT				NOT NULL,							-- 用户ID
-	`cdate`			DATE			NULL,								-- 消费日期
-	`ctime`			TIME			NULL,								-- 消费时间
-	`gid`			INT				NOT NULL,							-- 商品ID
+	`cDate`			DATE			NULL,								-- 消费日期
+	`cTime`			TIME			NULL,								-- 消费时间
+	`gId`			INT				NOT NULL,							-- 商品ID
 	`cNum`			INT				NULL,								-- 消费数量，用于统计成本和盈利
 	`oTid`			INT				NOT NULL,							-- 操作类型ID
 	`bTid`			INT				NOT NULL,							-- 购买类型ID
 	`cRedits`		INT				NULL,								-- 获得积分
 	`cRemark`		VARCHAR(100)	NULL,								-- 消费备注
-	`sid`			INT				NOT NULL,							-- 员工ID
+	`sId`			INT				NOT NULL,							-- 员工ID
 	primary key(`uid`)
 );
 
 -- 积分兑换表
 CREATE TABLE `integrationdb`.`exchange_info`(
-	`uid`			INT				NOT NULL,							-- 用户ID
+	`uId`			INT				NOT NULL,							-- 用户ID
 	`exDate`		DATE			NULL,								-- 兑换日期
 	`exTime`		TIME			NULL,								-- 兑换时间
-	`gid`			INT				NOT NULL,							-- 商品ID
+	`gId`			INT				NOT NULL,							-- 商品ID
 	`exNum`			INT				NULL,								-- 兑换数量
 	`cRedits`		INT				NULL,								-- 当前获得积分	
-	`sid`			INT				NOT NULL,							-- 员工ID	
+	`sId`			INT				NOT NULL,							-- 员工ID	
 	primary key(`uid`)	
 );
 

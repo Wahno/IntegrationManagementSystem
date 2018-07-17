@@ -12,7 +12,7 @@
         <td>售价</td>
         <td>兑换所需积分</td>
         <td>备注</td>
-    </tr>
+   </tr>
     <c:forEach items="${Goods}" var="g">
         <tr>
             <td>${g.gId}</td>
