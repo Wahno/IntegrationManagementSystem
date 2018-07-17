@@ -19,6 +19,7 @@ import com.mybean.service.UserService;
 public class MainOperationController {
 	@Autowired
 	AdminService adminservice;
+	@Autowired
 	UserService userservice;
 	
 	@RequestMapping("ConsumeMain")  //客户总界面

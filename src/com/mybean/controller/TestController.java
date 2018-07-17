@@ -15,15 +15,18 @@ import com.mybean.service.AdminService;
 
 @Controller
 @RequestMapping("")
-public class AdminController {
+public class TestController {
 	@Autowired
 	AdminService adminservice;
 
-	@RequestMapping("AdminMessage")
-	public ModelAndView AdminMessage(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	@RequestMapping("Admin")
+	public ModelAndView Admin(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("AdminMessage");//返回到的JSP文件名
+		List<Admin> admin= adminservice.list();
+		mav.addObject("admin", admin);
+		mav.setViewName("TestJsp/Admin");//返回到的JSP文件名
 		return mav;
 	}
+
 }
