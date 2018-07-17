@@ -40,15 +40,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<jsp:include page="baseJsp/Header.jsp"></jsp:include>
 				<!-- Item begin -->
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">客户信息</a><i
-						class="fa fa-angle-right"></i>查询客户
+					<li class="breadcrumb-item"><a href="index.html">员工信息</a><i
+						class="fa fa-angle-right"></i>查询员工
 				</ol>
 				<div class="breadcrumb" style=" height:70px;"> <!-- 这是搜索框后面的白色背景 -->
 					<div class="w3layouts-left" style="background-color:#cc41ff;height:60px;margin-top:0px;"> 
 						<!--search-box-->
 							<div class="w3-search-box" ">
-								<form action="toUserSelect" method="post">
-									<input name ="searchUser " type="text" placeholder="输入客户ID搜索" required="">	
+								<form action="toStaffSelect" method="post">
+									<input name ="searchStaff " type="text" placeholder="输入员工ID搜索" required="">	
 									<input type="submit" value="">					
 								</form>
 							</div><!--//end-search-box-->
@@ -60,45 +60,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!-- Main begin -->
 				<div class="grid_3 grid_4 w3_agileits_icons_page">
 					<div class="grid_3 grid_5 w3ls">
-						<h3>客户信息</h3>
-						<%
-							//User user = (User) session.getAttribute("usermessage");
-							
-							
-						%>
+						<h3>员工</h3>
 						<div class="alert alert-success" role="alert">
-							<strong>你的卡号：</strong>${usermessage.Uid}
+							<strong>员工号：</strong>${staffmessage.Sid}
 						</div>
 						<div class="alert alert-info" role="alert">
-							<strong>姓名：</strong>${usermessage.Uname }
+							<strong>姓名：</strong>${staffmessage.Sname }
+						</div>
+						<div class="alert alert-warning" role="alert">
+							<strong>助记符：</strong>${staffmessage.Sname }
 						</div>
 						<div class="alert alert-warning" role="alert">
 						<%String sex=""; %>
 						<c:if test="${usermessage.Usex==0}"><%sex="男"; %></c:if>
 						<c:if test="${usermessage.Usex==1}"><%sex="女"; %> </c:if>
-						<strong> 性别：</strong>${usermessage.Usex }
+						<strong> 性别：</strong>${staffmessage.Ssex }
 						</div>
-						<div class="alert alert-danger" role="alert">
-							<strong>电话：</strong>${usermessage.Utel}
-						</div>
+					
 						<div class="alert alert-success" role="alert">
-							<strong>手机：</strong>${usermessage.UphoNum}
+							<strong>手机：</strong>${staffmessage.SphoNum}
+						</div>
+					
+						<div class="alert alert-info" role="alert">
+							<strong>地址：</strong>${staffmessage.Saddr }
 						</div>
 						<div class="alert alert-info" role="alert">
-							<strong>生日：</strong>${usermessage.Ubirth }
+							<strong>备注：</strong>${staffmessage.Sremark }
 						</div>
-						<div class="alert alert-info" role="alert">
-							<strong>注册日期：</strong>${usermessage.UregDate }
-						</div>
-						<div class="alert alert-info" role="alert">
-							<strong>地址：</strong>${usermessage.Uaddr }
-						</div>
-						<div class="alert alert-info" role="alert">
-							<strong>备注：</strong>${usermessage.Uremark }
-						</div>
-						<div class="alert alert-warning" role="alert">
 						
-						</div>
 				</div>
 				<!-- Main end -->
 				<jsp:include page="baseJsp/Footer.jsp"></jsp:include>
