@@ -40,12 +40,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!-- Item begin -->
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item">
-					<a href="./Main">控制台</a> <i class="fa fa-angle-right">
-					<a href="./AdminMessage">个人信息</a></i>
-								
-				
+						<a href="./Main">控制台</a> 
+						<i class="fa fa-angle-right"></i>
+						<a href="./AdminMessage">个人信息</a>
+					</li>
 				</ol>
-			
 				<!-- Item end -->
 				<!-- Main begin -->
 				<div class="grid_3 grid_4 w3_agileits_icons_page">

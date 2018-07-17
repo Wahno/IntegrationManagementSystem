@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="#"><i class="fa fa-search"
+					<a class="agile-icon" href="AdminMessage"><i class="fa fa-search"
 						aria-hidden="true"></i> 
 						查询个人信息</a>
 				</div>
