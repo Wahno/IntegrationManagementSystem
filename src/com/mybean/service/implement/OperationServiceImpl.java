@@ -19,9 +19,9 @@ public class OperationServiceImpl implements OperationService{
 	}
 
 	@Override
-	public void delete(int OTid) {
+	public void delete(int oTid) {
 		// TODO 自动生成的方法存根
-		operationmapper.delete(OTid);
+		operationmapper.delete(oTid);
 	}
 
 	@Override
@@ -31,9 +31,9 @@ public class OperationServiceImpl implements OperationService{
 	}
 
 	@Override
-	public Operation get(int OTid) {
+	public Operation get(int oTid) {
 		// TODO 自动生成的方法存根
-		return operationmapper.get(OTid);
+		return operationmapper.get(oTid);
 	}
 
 	@Override
