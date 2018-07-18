@@ -64,6 +64,7 @@ public class MainOperationController {
 		mav.setViewName("ConsumeExchange");
 		return mav;
 	}
+	
 	/**
 	 * 以下为客户信息处理服务
 	 * */
@@ -146,8 +147,7 @@ public class MainOperationController {
 		}
 		userservice.add(user);
 		returnMessage="客户添加成功！";
-		mav.setViewName("UserAdd");
-				
+		mav.setViewName("UserAdd");			
 		return mav;
 		
 	}
@@ -158,7 +158,7 @@ public class MainOperationController {
 		String returnMessage="";
 		if(request.getParameter("searchUser")==null)//其他界面跳转到查询页面
 		{
-			mav.setViewName("UserDelete");
+			mav.setViewName("UserSelect");
 		}
 		else  //查询页面输入id提交后，把结果带回查询页面
 		{
