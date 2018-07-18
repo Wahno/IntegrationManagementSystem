@@ -1,5 +1,11 @@
 package com.mybean.controller;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
@@ -431,8 +437,11 @@ public class MainOperationController {
 
 		ModelAndView mav = new ModelAndView();
 		Credit credit = new Credit();
+		String filePath = new ClassPathResource("credit.properties").getPath();// 文件的路径
+		System.out.println("propertiesPath:" + filePath);
 		Properties pps = new Properties();
-		pps.load(new ClassPathResource("credit.properties").getInputStream());
+		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath)));
+		pps.load(br);
 		credit.setCustomer(pps.getProperty("customer"));
 		credit.setSponsor(pps.getProperty("sponsor"));
 		credit.setSponsorAndCostomer(pps.getProperty("sponsorAndCostomer"));
@@ -444,11 +453,17 @@ public class MainOperationController {
 	public ModelAndView SetCreditsToFile(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
+		String filePath = new ClassPathResource("credit.properties").getPath();// 文件的路径
+		System.out.println("propertiesPath:" + filePath);
 		Properties pps = new Properties();
-		pps.load(new ClassPathResource("credit.properties").getInputStream());
+		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath)));
+		pps.load(br);
+		pps.clear();
 		pps.setProperty("customer", request.getParameter("customer"));
 		pps.setProperty("sponsor", request.getParameter("sponsor"));
 		pps.setProperty("sponsorAndCostomer", request.getParameter("sponsorAndCostomer"));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new ClassPathResource("credit.properties").getPath())));
+		pps.store(bw,"");
 		mav.addObject("message", "设置成功！");
 		mav.addObject("nextPage", "SetCredits");//返回到SetCredits
 		mav.setViewName("MessagePage");
