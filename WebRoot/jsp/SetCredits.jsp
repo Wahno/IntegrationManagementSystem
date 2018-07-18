@@ -39,11 +39,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<jsp:include page="baseJsp/Header.jsp"></jsp:include>
 				<!-- Item begin -->
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="./Main">控制台</a> <i class="fa fa-angle-right"></i></li>
+					<li class="breadcrumb-item"><a href="./Main">控制台</a> <i class="fa fa-angle-right"></i><a href="./SetCredits">积分设置</a></li>
 				</ol>
 				<!-- Item end -->
 				<!-- Main begin -->
-				<jsp:include page="Menu.jsp"></jsp:include>
+				<div class="grid-form">
+					<div class="grid-form1">
+						<h2 id="forms-example" class="">积分设置</h2>
+						<form class="form-inline" action="./SetCreditsToFile" method="post">
+							<div class="form-group">
+								<label for="exampleInputEmail1">客户自己来消费：消费</label> 
+								<input type="text" class="form-control" name="customer" value="${Credit.customer }">
+								<label for="exampleInputEmail1">元积1分</label>
+							</div>
+							<br />
+							<div class="form-group">
+								<label for="exampleInputEmail1">别人介绍消费：其中介绍人消费</label> 
+								<input type="text" class="form-control" name="sponsor" value="${Credit.sponsor }">
+									<label for="exampleInputEmail1">元积1分</label>
+							</div>
+							<br />
+							<div class="form-group">
+								<label for="exampleInputEmail1">别人介绍消费：其中客户消费</label> 
+								<input type="text" class="form-control" name="sponsorAndCostomer" value="${Credit.sponsorAndCostomer }">
+								<label for="exampleInputEmail1">元积1分</label>
+							</div>
+							<br />
+							<button type="submit" class="btn-primary btn">提交</button>
+						</form>
+					</div>
+				</div>
 				<!-- Main end -->
 				<jsp:include page="baseJsp/Footer.jsp"></jsp:include>
 			</div>
