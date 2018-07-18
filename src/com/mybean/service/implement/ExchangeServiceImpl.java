@@ -19,9 +19,9 @@ public class ExchangeServiceImpl implements ExchangeService{
 	}
 
 	@Override
-	public void delete(int Uid) {
+	public void delete(int uId) {
 		// TODO 自动生成的方法存根
-		exchangemapper.delete(Uid);
+		exchangemapper.delete(uId);
 	}
 
 	@Override
@@ -31,9 +31,9 @@ public class ExchangeServiceImpl implements ExchangeService{
 	}
 
 	@Override
-	public Exchange get(int Uid) {
+	public Exchange get(int uId) {
 		// TODO 自动生成的方法存根
-		return exchangemapper.get(Uid);
+		return exchangemapper.get(uId);
 	}
 
 	@Override

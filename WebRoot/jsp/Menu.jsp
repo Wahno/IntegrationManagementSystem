@@ -125,7 +125,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 	
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="#"><i class="fa fa-gears"
+					<a class="agile-icon" href="SetCredits"><i class="fa fa-gears"
 						aria-hidden="true"></i> 
 						积分设置</a>
 				</div>

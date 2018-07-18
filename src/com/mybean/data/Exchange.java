@@ -1,54 +1,54 @@
 package com.mybean.data;
 
 public class Exchange {
-	private int Uid;			//用户ID
-	private String Exdate;		//兑换日期
-	private String Extime;		//兑换时间
-	private int Gid;			//商品ID
-	private int ExNum;			//兑换数量
-	private int Credits;		//当前获得积分	
-	private int Sid;			//员工ID
-	public int getUid() {
-		return Uid;
+	private int uId;			//用户ID
+	private String exDate;		//兑换日期
+	private String exTime;		//兑换时间
+	private int gId;			//商品ID
+	private int exNum;			//兑换数量
+	private int cRedits;		//当前获得积分	
+	private int sId;			//员工ID
+	public int getuId() {
+		return uId;
 	}
-	public void setUid(int Uid) {
-		this.Uid = Uid;
+	public void setuId(int uId) {
+		this.uId = uId;
 	}
-	public String getExdate() {
-		return Exdate;
+	public String getexDate() {
+		return exDate;
 	}
-	public void setExdate(String Exdate) {
-		this.Exdate = Exdate;
+	public void setexDate(String exDate) {
+		this.exDate = exDate;
 	}
-	public String getExtime() {
-		return Extime;
+	public String getexTime() {
+		return exTime;
 	}
-	public void setExtime(String Extime) {
-		this.Extime = Extime;
+	public void setexTime(String exTime) {
+		this.exTime = exTime;
 	}
-	public int getGid() {
-		return Gid;
+	public int getgId() {
+		return gId;
 	}
-	public void setGid(int Gid) {
-		this.Gid = Gid;
+	public void setgId(int gId) {
+		this.gId = gId;
 	}
-	public int getExNum() {
-		return ExNum;
+	public int getexNum() {
+		return exNum;
 	}
-	public void setExNum(int ExNum) {
-		this.ExNum = ExNum;
+	public void setexNum(int exNum) {
+		this.exNum = exNum;
 	}
-	public int getCredits() {
-		return Credits;
+	public int getcRedits() {
+		return cRedits;
 	}
-	public void setCredits(int Credits) {
-		this.Credits = Credits;
+	public void setcRedits(int cRedits) {
+		this.cRedits = cRedits;
 	}
-	public int getSid() {
-		return Sid;
+	public int getsId() {
+		return sId;
 	}
-	public void setSid(int Sid) {
-		this.Sid = Sid;
+	public void setsId(int sId) {
+		this.sId = sId;
 	}
 
 

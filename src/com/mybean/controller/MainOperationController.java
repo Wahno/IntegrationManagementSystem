@@ -1,14 +1,24 @@
 package com.mybean.controller;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.Properties;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mybean.data.Credit;
 import com.mybean.data.Staff;
 import com.mybean.data.User;
 import com.mybean.service.AdminService;
@@ -590,7 +600,43 @@ public class MainOperationController {
 	
 	
 	
-	
+	@RequestMapping("SetCredits")  
+	public ModelAndView SetCredits(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		Credit credit = new Credit();
+		String filePath = new ClassPathResource("credit.properties").getPath();// 文件的路径
+		System.out.println("propertiesPath:" + filePath);
+		Properties pps = new Properties();
+		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath)));
+		pps.load(br);
+		credit.setCustomer(pps.getProperty("customer"));
+		credit.setSponsor(pps.getProperty("sponsor"));
+		credit.setSponsorAndCostomer(pps.getProperty("sponsorAndCostomer"));
+		mav.addObject("Credit", credit);
+		mav.setViewName("SetCredits");
+		return mav;
+	}
+	@RequestMapping("SetCreditsToFile")
+	public ModelAndView SetCreditsToFile(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		String filePath = new ClassPathResource("credit.properties").getPath();// 文件的路径
+		System.out.println("propertiesPath:" + filePath);
+		Properties pps = new Properties();
+		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath)));
+		pps.load(br);
+		pps.clear();
+		pps.setProperty("customer", request.getParameter("customer"));
+		pps.setProperty("sponsor", request.getParameter("sponsor"));
+		pps.setProperty("sponsorAndCostomer", request.getParameter("sponsorAndCostomer"));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new ClassPathResource("credit.properties").getPath())));
+		pps.store(bw,"");
+		mav.addObject("message", "设置成功！");
+		mav.addObject("nextPage", "SetCredits");//返回到SetCredits
+		mav.setViewName("MessagePage");
+		return mav;
+	}
 	
 	
 	

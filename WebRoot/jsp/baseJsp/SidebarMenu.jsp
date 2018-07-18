@@ -96,7 +96,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			
 			
-			<li><a href="#"> <i class="fa fa-cogs" aria-hidden="true"></i> 
+			<li><a href="SetCredits"> <i class="fa fa-cogs" aria-hidden="true"></i> 
 				<span>积分设置</span>
 				<div class="clearfix"></div></a>
 			</li>
