@@ -65,13 +65,16 @@ setInterval('t()',500);
 				<!-- Main begin -->
 				<div class="validation-system">
 					<!-- 这是大背景 -->
+					<div class="alert alert-warning" >
+						<strong>${returnMessage}</strong>		
+					</div>
 					<div class="validation-form">
 						<!---->
 
 						<form action="UserAddToSql" method="post">
 							<div class="vali-form">
 								<div class="col-md-6 form-group1">
-									<label class="control-label">客户卡号</label> <input name="uIdtr"
+									<label class="control-label">客户卡号</label> <input name="uIdStr"
 										type="text" placeholder="123456" required="">
 								</div>
 								<div class="col-md-6 form-group1 form-last">

@@ -34,21 +34,6 @@
 	rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
 
-<script type="text/javascript">
-function t(){
-var now= new Date();
-var y=now.getFullYear();
-var mo=now.getMonth()+1;
-var d=now.getDay();
-var h=now.getHours();
-var mi=now.getMinutes();
-var s=now.getSeconds(); 
-var tt=y+"-"+mo+"-"+d+"-"+h+"-"+mi+"-"+s;
-document.getElementById("sRegDate").value=tt;
-}
-setInterval('t()',500);
-</script>
-
 </head>
 
 <body>
@@ -58,73 +43,102 @@ setInterval('t()',500);
 				<jsp:include page="baseJsp/Header.jsp"></jsp:include>
 				<!-- Item begin -->
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="#">员工信息</a><i
-						class="fa fa-angle-right"></i>添加员工</li>
+					<li class="breadcrumb-item"><a href="index.html">客户信息</a><i
+						class="fa fa-angle-right"></i>修改客户</li>
 				</ol>
+				<div class="breadcrumb" style=" height:70px;"> <!-- 这是搜索框后面的白色背景 -->
+					<div class="w3layouts-left" style="width:300px;height:60px;background-color:#ffcc00;float:left;"> 
+						<!--search-box-->
+							<div class="w3-search-box" >
+								<form action="toUserUpdate" method="post">
+									<input name ="searchUser" type="text" placeholder="输入客户ID搜索" required=""/>	
+									<input type="submit" value="">					
+								</form>
+							
+							</div>
+							<!--//end-search-box-->
+					 </div>
+					<div class="alert alert-warning" style="height:60px;" >
+								<strong>客户ID和注册时间不可修改<br>${returnMessage}</strong>		<!-- 这是提示信息显示栏 -->
+					</div>			
+				</div>
+			</div>
 				<!-- Item end -->
 				<!-- Main begin -->
 				<div class="validation-system">
 					<!-- 这是大背景 -->
+					
 					<div class="validation-form">
 						<!---->
-					<div class="alert alert-warning" >
-						<strong>${returnMessage}</strong>	<!-- 这是注册是否成功等的提示 -->	
-					</div>
-						<form action="StaffAddToSql" method="post">
+
+						<form action="UserUpDateToSql" method="post">
 							<div class="vali-form">
 								<div class="col-md-6 form-group1">
-									<label class="control-label">员工号</label> <input name="sIdStr"
-										type="text" placeholder="123456" required="">
-								</div>
+									<label class="control-label">客户卡号</label> <input name="uIdStr"
+										type="text" placeholder="123456" value ="${usermessage.uId}" required="" readonly="readonly"><!-- id不可以修改 -->
+								</div>																				
 								<div class="col-md-6 form-group1 form-last">
-									<label class="control-label">员工姓名</label> <input name="sName"
-										type="text" placeholder="张三" required="">
+									<label class="control-label">客户姓名</label> <input name="uName"
+										type="text" value ="${usermessage.uName }" required="">
 								</div>
 								<div class="clearfix"></div>
 							</div>
-							<div class="col-md-6 form-group1 form-last">
-									<label class="control-label">员工助记符</label> <input name="sMark"
-										type="text" required="">
-							</div>
+
 							<div class="col-md-12 form-group2 group-mail">
-								<label class="control-label">员工性别</label> <select name="sSex">
-									<option value="0">男</option>
-									<option value="1">女</option>
+								<label class="control-label">客户性别</label> <select name="uSex" >
+								 <!-- 此处 c:if /c:if不能放进option中，代码正确，但eclipse会报错 -->
+									<c:if test="${usermessage.uSex==0}" >     
+										<option value="0">男</option>
+										<option  value="1">女</option>
+									</c:if>
+									<c:if test="${usermessage.uSex==1}">
+										<option  value="1">女</option>
+										<option value="0">男</option>
+									</c:if>
 								</select>
 							</div>
-						
+							<div class="col-md-12 form-group1 group-mail">
+								<label class="control-label ">出生日期</label> <input name="uBirth"
+									type="Date"
+									class="form-control1 ng-invalid ng-invalid-required"
+									ng-model="model.date" value ="${usermessage.uBirth }">
+							</div>
 							<div class="clearfix"></div>
 							<div class="vali-form">
-							<div class="col-md-6 form-group1">
-								<label class="control-label">员工电话</label> <input name="sTel"
-									type="text" >
-							</div>
-						
-							<div class="clearfix"></div>
+								<div class="col-md-6 form-group1">
+									<label class="control-label">客户电话</label> <input name="uTel"
+										type="text" value ="${usermessage.uTel }">
+								</div>
+								<div class="col-md-6 form-group1 form-last">
+									<label class="control-label">客户手机</label> <input name="uPhoNum"
+										type="text" value ="${usermessage.uPhoNum }" required="">
+								</div>
+								<div class="clearfix"></div>
 							</div>
 							<div class="col-md-12 form-group1 group-mail">
-								<label class="control-label">员工地址</label> <input name="sAddr"
-									type="text">
+								<label class="control-label">客户地址</label> <input name="uAddr"
+									type="text" value ="${usermessage.uAddr }">
 								<p class=" hint-block">格式:X省X市X县X街道</p>
 							</div>
 							<div class="col-md-12 form-group1 group-mail">
-								<label class="control-label ">注册日期</label> <input id="sRegDate" name="sRegDate"
+								<label class="control-label ">注册日期</label> <input id="uRegDate" name="uRegDate"
 									type="text"
 									class="form-control1 ng-invalid ng-invalid-required"
-									ng-model="model.date"  value="" readonly="readonly">
+									ng-model="model.date"  value ="${usermessage.uRegDate }" readonly="readonly">
 							</div>
 
 							<div class="clearfix"></div>
 							<div class="col-md-12 form-group1 ">
 								<label class="control-label">备注</label>
-								<textarea name="sRemark" placeholder="个人说明等备注"></textarea>
+								<textarea name="uRemark">${usermessage.uRemark}</textarea>
 							</div>
 							<div class="clearfix"></div>
 
 							<div class="clearfix"></div>
 
 							<div class="col-md-12 form-group">
-								<button type="submit" class="btn btn-primary">保存</button>
+								<input  type="hidden" name="updateUser"value="${usermessage.uId}"/>
+								<button type="submit" class="btn btn-primary">修改</button>
 								<button type="reset" class="btn btn-default">重置</button>
 							</div>
 							<div class="clearfix"></div>

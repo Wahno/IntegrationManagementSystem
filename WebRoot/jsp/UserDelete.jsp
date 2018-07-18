@@ -85,10 +85,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					 	<form action="UserDeleteFromeSql" method="post">	
 					 				<input name="deleteUser" type="hidden" value="${usermessage.uId}"/>
 									<input class="button-delete" type="submit" value="删除用户"/>					
-						</form>			
-												
-					</div>
-										
+						</form>											
+					</div>							
 				</div>
 			</div>
 			
