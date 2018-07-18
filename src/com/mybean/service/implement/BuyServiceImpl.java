@@ -19,9 +19,9 @@ public class BuyServiceImpl implements BuyService{
 	}
 
 	@Override
-	public void delete(int BTid) {
+	public void delete(int bTid) {
 		// TODO 自动生成的方法存根
-		buymapper.delete(BTid);
+		buymapper.delete(bTid);
 	}
 
 	@Override
@@ -31,9 +31,9 @@ public class BuyServiceImpl implements BuyService{
 	}
 
 	@Override
-	public Buy get(int BTid) {
+	public Buy get(int bTid) {
 		// TODO 自动生成的方法存根
-		return buymapper.get(BTid);
+		return buymapper.get(bTid);
 	}
 
 	@Override

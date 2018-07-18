@@ -1,25 +1,25 @@
 package com.mybean.data;
 
 public class Buy {	
-	private int 	BTid;				//购买类型ID
-	private String  BTname;				//类型名称
-	private int	 	BTCredit;			//对应1元的积分
-	public int getBTid() {
-		return BTid;
+	private int 	bTid;				//购买类型ID
+	private String  bTname;				//类型名称
+	private int	 	bTCredit;			//对应1元的积分
+	public int getbTid() {
+		return bTid;
 	}
-	public void setBTid(int BTid) {
-		this.BTid = BTid;
+	public void setbTid(int bTid) {
+		this.bTid = bTid;
 	}
-	public String getBTname() {
-		return BTname;
+	public String getbTname() {
+		return bTname;
 	}
-	public void setBTname(String BTname) {
-		this.BTname = BTname;
+	public void setbTname(String bTname) {
+		this.bTname = bTname;
 	}
-	public int getBTCredit() {
-		return BTCredit;
+	public int getbTCredit() {
+		return bTCredit;
 	}
-	public void setBTCredit(int BTCredit) {
-		this.BTCredit = BTCredit;
+	public void setbTCredit(int bTCredit) {
+		this.bTCredit = bTCredit;
 	}
 }

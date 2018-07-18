@@ -20,9 +20,9 @@ public class AllServiceImpl implements AllService{
 	}
 
 	@Override
-	public void delete(int Uid) {
+	public void delete(int uId) {
 		// TODO 自动生成的方法存根
-		allmapper.delete(Uid);
+		allmapper.delete(uId);
 	}
 
 	@Override
@@ -32,9 +32,9 @@ public class AllServiceImpl implements AllService{
 	}
 
 	@Override
-	public All get(int Uid) {
+	public All get(int uId) {
 		// TODO 自动生成的方法存根
-		return allmapper.get(Uid);
+		return allmapper.get(uId);
 	}
 
 	@Override

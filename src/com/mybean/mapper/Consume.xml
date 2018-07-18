@@ -5,21 +5,21 @@
     <mapper namespace="com.mybean.mapper.ConsumeMapper">
     	
         <insert id="add" parameterType="Consume" >
-            insert into Consume_info (Uid,Cdate,Ctime,Gid,Cnum,OTid,BTid,Credits,Cremark,Sid) values (#{Uid},#{Cdate},#{Ctime},#{Gid},#{Cnum},#{OTid},#{BTid},#{Credits},#{Cremark},#(Sid))   
+            insert into consume_info (uId,cDate,cTime,gId,cNum,oTid,bTid,cRedits,cRedits,sId) values (#{uId},#{cDate},#{cTime},#{gId},#{cNum},#{oTid},#{bTid},#{cRedits},#{cRemark},#(sId))   
         </insert>
          
         <delete id="delete" parameterType="_int" >
-            delete from Consume_info where Uid= #{Uid}  
+            delete from consume_info where uId= #{uId}  
         </delete>
          
         <select id="get" parameterType="_int" resultType="Consume">
-            select * from Consume_info  where Uid= #{Uid}   
+            select * from consume_info  where uId= #{uId}   
         </select>
  
         <update id="update" parameterType="Consume" >
-            update Consume_info set Cdate=#{Cdate},Ctime=#{Ctime},Gid=#{Gid},Cnum=#{Cnum},OTid=#{OTid},BTid=#{BTid},Credits=#{Credits},Cremark=#{Cremark},Sid=#{Sid}  where Uid=#{Uid}   
+            update consume_info set cDate=#{cDate},cTime=#{cTime},gId=#{gId},cNum=#{cNum},oTid=#{oTid},bTid=#{bTid},cRedits=#{cRedits},cRemark=#{cRemark},sId=#{sId}  where uId=#{uId}   
         </update>
         <select id="list" resultType="Consume">
-            select * from Consume_info     
+            select * from consume_info     
         </select>    
     </mapper>
