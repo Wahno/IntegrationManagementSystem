@@ -5,21 +5,21 @@
     <mapper namespace="com.mybean.mapper.ExchangeMapper">
     	
         <insert id="add" parameterType="Exchange" >
-            insert into Exchange_info (Uid,Exdate,Extime,Gid,ExNum,Credits,Sid) values (#{Uid},#{Exdate},#{Extime},#{Gid},#{ExNum},#{Credits},#{Sid})   
+            insert into exchange_info (uId,exDate,exTime,gId,exNum,cRedits,sId) values (#{uId},#{exDate},#{exTime},#{gId},#{exNum},#{cRedits},#{sId})   
         </insert>
          
         <delete id="delete" parameterType="_int" >
-            delete from Exchange_info where Uid= #{Uid}  
+            delete from exchange_info where uId= #{uId}  
         </delete>
          
         <select id="get" parameterType="_int" resultType="Exchange">
-            select * from Exchange_info  where Uid= #{Uid}   
+            select * from exchange_info  where uId= #{uId}   
         </select>
  
         <update id="update" parameterType="Exchange" >
-            update Exchange_info set Exdate=#{Exdate},Extime=#{Extime},Gid=#{Gid},ExNum=#{ExNum},Credits=#{Credits},Sid=#{Sid}  where Uid=#{Uid}   
+            update exchange_info set exDate=#{exDate},exTime=#{exTime},gId=#{gId},exNum=#{exNum},cRedits=#{cRedits},sId=#{sId}  where uId=#{uId}   
         </update>
         <select id="list" resultType="Exchange">
-            select * from Exchange_info     
+            select * from exchange_info     
         </select>    
     </mapper>

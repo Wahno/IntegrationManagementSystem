@@ -16,6 +16,7 @@ import com.mybean.service.AdminService;
 import com.mybean.service.AllService;
 import com.mybean.service.BuyService;
 import com.mybean.service.ConsumeService;
+import com.mybean.service.ExchangeService;
 import com.mybean.service.GoodsService;
 import com.mybean.service.OperationService;
 import com.mybean.service.StaffService;
@@ -125,6 +126,19 @@ public class TestController {
 		List<com.mybean.data.Consume> consume= consumeservice.list();
 		mav.addObject("consume", consume);
 		mav.setViewName("TestJsp/Consume");//返回到的JSP文件名
+		return mav;
+	}
+	
+	@Autowired
+	ExchangeService exchangeservice;
+
+	@RequestMapping("Exchange")
+	public ModelAndView Exchange(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		List<com.mybean.data.Exchange> exchange= exchangeservice.list();
+		mav.addObject("exchange", exchange);
+		mav.setViewName("TestJsp/Exchange");//返回到的JSP文件名
 		return mav;
 	}
 }

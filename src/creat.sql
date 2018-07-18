@@ -65,6 +65,7 @@ CREATE TABLE `integrationdb`.`goods_info`(
 );
 
 INSERT INTO `integrationdb`.`goods_info` VALUES(1,'aj32黑水泥',30,800,1098,10980000,'乔丹32代黑水泥');
+INSERT INTO `integrationdb`.`goods_info` VALUES(2,'德芙丝滑牛奶巧克力',50,10,20,200000,'德芙纵享丝滑');
 
 -- 操作类型表(消费购买，返还现金，消费金额充值)
 CREATE TABLE `integrationdb`.`operation_Type`(
@@ -123,3 +124,4 @@ CREATE TABLE `integrationdb`.`exchange_info`(
 	primary key(`uid`)	
 );
 
+INSERT INTO `integrationdb`.`exchange_info` VALUES(1,'2018-07-18','13:58:00',2,1,200000,2);
