@@ -31,8 +31,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700'
 	rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
-</head>
 
+<style>
+/*按钮样式。我把它写在这，懒得写在css里*/
+	.button-delete{
+	 	background-color: #cc41ff; /* 紫色 */
+	    border: none;
+	    color: white;
+	    padding: 15px 32px;
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-size: 20px; /*按钮大小*/
+	    border-radius: 15px; /*按钮圆角*/
+	    transition-duration: 0.4s; /*hover渐变的时间*/
+	}
+	.button-delete:hover {
+	    background-color: #4CAF50; /* Green */
+	    color: white;
+	    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);	/*鼠标悬停后显示阴影*/
+ 	}
+ .button-delete:active {/*按钮动态效果*/
+	  background-color: #3e8e41;
+	  box-shadow: 0 5px #666;
+	  transform: translateY(4px);
+}
+</style>
+</head>
 <body>
 	<div class="page-container">
 		<div class="left-content">
@@ -41,28 +66,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!-- Item begin -->
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="index.html">员工信息</a><i
-						class="fa fa-angle-right"></i>查询员工
+						class="fa fa-angle-right"></i>移除员工
 				</ol>
 				<div class="breadcrumb" style=" height:70px;"> <!-- 这是搜索框后面的白色背景 -->
-					<div class="w3layouts-left" style="background-color:#cc41ff;height:60px;margin-top:0px;"> 
+					<div class="w3layouts-left" style="width:300px;height:60px;background-color:#cc41ff;"> 
 						<!--search-box-->
-							<div class="w3-search-box" ">
-								<form action="toStaffSelect" method="post">
+							<div class="w3-search-box" >
+								<form action="toStaffDelete" method="post">
 									<input name ="searchStaff" type="text" placeholder="输入员工ID搜索" required="">	
 									<input type="submit" value="">					
 								</form>
-							</div><!--//end-search-box-->
-						<div class="clearfix"> </div>
-					 </div>				
+							</div>
+							<!--//end-search-box-->
+					 </div>				 
+					 <div style="height:60px;width:130px;float:left;margin-left:50px;">
+					 	<form action="StaffDeleteFromeSql" method="post">
+					 		<input name="deleteStaff" type="hidden" value="${staffmessage.sId}"/>							
+							<input type="submit" class="button-delete"  value="删除员工"/>				
+						</form>			
+												
+					</div>
+										
 				</div>
 			
 				<!-- Item end -->
 				<!-- Main begin -->
-					
 				<div class="grid_3 grid_4 w3_agileits_icons_page">
-					<div class="alert alert-warning" >
-							<strong>${returnMessage}</strong>		
+					<div class="alert alert-info" role="alert">
+						<strong>${returnMessage}</strong>
 					</div>
+					
 					<div class="grid_3 grid_5 w3ls">
 						<h3>员工信息</h3>
 						<div class="alert alert-success" role="alert">
@@ -72,25 +105,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<strong>姓名：</strong>${staffmessage.sName }
 						</div>
 						<div class="alert alert-warning" role="alert">
-							<strong>助记符：</strong>${staffmessage.sRemark }
+							<strong>助记符：</strong>${staffmessage.sMark }
 						</div>
 						<div class="alert alert-warning" role="alert">
 						<%!String sex=""; %>
 						<c:if test="${staffmessage.sSex==0}"><%sex="男"; %></c:if>
 						<c:if test="${staffmessage.sSex==1}"><%sex="女"; %> </c:if>
 						<strong> 性别：</strong><%=sex %>
-						<% sex="";%>
-						</div>			
-						<div class="alert alert-success" role="alert">
-							<strong>手机：</strong>${staffmessage.sPhoNum}
+						<%sex="";%>>
 						</div>
-					
+						<div class="alert alert-danger" role="alert">
+							<strong>电话：</strong>${staffmessage.sTel}
+						</div>
 						<div class="alert alert-info" role="alert">
 							<strong>地址：</strong>${staffmessage.sAddr }
 						</div>
+						
+						<div class="alert alert-info" role="alert">
+							<strong>注册日期：</strong>${staffmessage.sRegDate }
+						</div>
+						
 						<div class="alert alert-info" role="alert">
 							<strong>备注：</strong>${staffmessage.sRemark }
-						</div>						
+						</div>
+					
 				</div>
 				<!-- Main end -->
 				<jsp:include page="baseJsp/Footer.jsp"></jsp:include>

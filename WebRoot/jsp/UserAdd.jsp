@@ -38,13 +38,13 @@
 function t(){
 var now= new Date();
 var y=now.getFullYear();
-var m=now.getMonth()+1;
+var mo=now.getMonth()+1;
 var d=now.getDay();
 var h=now.getHours();
-var m=now.getMinutes();
+var mi=now.getMinutes();
 var s=now.getSeconds(); 
-var tt=y+"-"+m+"-"+d+"-"+h+"-"+m+"-"+s;
-document.getElementById("UregDate").value=tt;
+var tt=y+"-"+mo+"-"+d+"-"+h+"-"+mi+"-"+s;
+document.getElementById("uRegDate").value=tt;
 }
 setInterval('t()',500);
 </script>
@@ -68,27 +68,27 @@ setInterval('t()',500);
 					<div class="validation-form">
 						<!---->
 
-						<form action="./UserAddToSql" method="post">
+						<form action="UserAddToSql" method="post">
 							<div class="vali-form">
 								<div class="col-md-6 form-group1">
-									<label class="control-label">客户卡号</label> <input name="Uname"
+									<label class="control-label">客户卡号</label> <input name="uIdtr"
 										type="text" placeholder="123456" required="">
 								</div>
 								<div class="col-md-6 form-group1 form-last">
-									<label class="control-label">客户姓名</label> <input name="Uid"
+									<label class="control-label">客户姓名</label> <input name="uName"
 										type="text" placeholder="张三" required="">
 								</div>
 								<div class="clearfix"></div>
 							</div>
 
 							<div class="col-md-12 form-group2 group-mail">
-								<label class="control-label">客户性别</label> <select name="Usex">
+								<label class="control-label">客户性别</label> <select name="uSex">
 									<option value="0">男</option>
 									<option value="1">女</option>
 								</select>
 							</div>
 							<div class="col-md-12 form-group1 group-mail">
-								<label class="control-label ">出生日期</label> <input name="Ubirth"
+								<label class="control-label ">出生日期</label> <input name="uBirth"
 									type="Date"
 									class="form-control1 ng-invalid ng-invalid-required"
 									ng-model="model.date">
@@ -96,22 +96,22 @@ setInterval('t()',500);
 							<div class="clearfix"></div>
 							<div class="vali-form">
 								<div class="col-md-6 form-group1">
-									<label class="control-label">客户电话</label> <input name="Utel"
+									<label class="control-label">客户电话</label> <input name="uTel"
 										type="text" >
 								</div>
 								<div class="col-md-6 form-group1 form-last">
-									<label class="control-label">客户手机</label> <input name="UphoNum"
+									<label class="control-label">客户手机</label> <input name="uPhoNum"
 										type="text" required="">
 								</div>
 								<div class="clearfix"></div>
 							</div>
 							<div class="col-md-12 form-group1 group-mail">
-								<label class="control-label">客户地址</label> <input name="Uaddr"
+								<label class="control-label">客户地址</label> <input name="uAddr"
 									type="text">
 								<p class=" hint-block">格式:X省X市X县X街道</p>
 							</div>
 							<div class="col-md-12 form-group1 group-mail">
-								<label class="control-label ">注册日期</label> <input id="UregDate" name="UregDate"
+								<label class="control-label ">注册日期</label> <input id="uRegDate" name="uRegDate"
 									type="text"
 									class="form-control1 ng-invalid ng-invalid-required"
 									ng-model="model.date"  value="" readonly="readonly">
@@ -120,7 +120,7 @@ setInterval('t()',500);
 							<div class="clearfix"></div>
 							<div class="col-md-12 form-group1 ">
 								<label class="control-label">备注</label>
-								<textarea name="Uremark" placeholder="个人说明等备注"></textarea>
+								<textarea name="uRemark" placeholder="个人说明等备注"></textarea>
 							</div>
 							<div class="clearfix"></div>
 

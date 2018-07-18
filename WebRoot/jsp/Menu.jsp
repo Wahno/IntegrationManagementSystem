@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<section id="new">
 			<div class="row fontawesome-icon-list">
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="./toUserSelect"><i
+					<a class="agile-icon" href="toUserSelect"><i
 						class="fa fa-search" aria-hidden="true"></i>
 						查询客户信息 </a>
 				</div>

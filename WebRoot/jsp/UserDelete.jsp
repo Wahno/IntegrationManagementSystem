@@ -73,8 +73,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="w3layouts-left" style="width:300px;height:60px;background-color:#cc41ff;"> 
 						<!--search-box-->
 							<div class="w3-search-box" >
-								<form action="toUserSelect" method="post">
-									<input name ="searchUser " type="text" placeholder="输入客户ID搜索" required="">	
+								<form action="toUserDelete" method="post">
+									<input name ="searchUser" type="text" placeholder="输入客户ID搜索" required=""/>	
 									<input type="submit" value="">					
 								</form>
 							</div>
@@ -82,52 +82,56 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					 </div>
 					 
 					 <div style="height:60px;width:130px;float:left;margin-left:50px;">
-					 	<form action="toUserDelete" method="post">	
-									<input name="deleteUser" type="submit" class="button-delete"  value="删除用户"></button>					
+					 	<form action="UserDeleteFromeSql" method="post">	
+					 				<input name="deleteUser" type="hidden" value="${usermessage.uId}"/>
+									<input class="button-delete" type="submit" value="删除用户"/>					
 						</form>			
 												
 					</div>
 										
 				</div>
+			</div>
 			
 				<!-- Item end -->
 				<!-- Main begin -->
 				<div class="grid_3 grid_4 w3_agileits_icons_page">
+					<div class="alert alert-warning" role="alert">
+						<strong>${returnMessage}</strong>
+					</div>
 					<div class="grid_3 grid_5 w3ls">
 						<h3>客户信息</h3>
 						<div class="alert alert-success" role="alert">
-							<strong>你的卡号：</strong>${usermessage.Uid}
+							<strong>你的卡号：</strong>${usermessage.uId}
 						</div>
 						<div class="alert alert-info" role="alert">
-							<strong>姓名：</strong>${usermessage.Uname }
+							<strong>姓名：</strong>${usermessage.uName }
 						</div>
 						<div class="alert alert-warning" role="alert">
-						<%String sex=""; %>
-						<c:if test="${usermessage.Usex==0}"><%sex="男"; %></c:if>
-						<c:if test="${usermessage.Usex==1}"><%sex="女"; %> </c:if>
-						<strong> 性别：</strong>${usermessage.Usex }
+						<%!String sex=""; %>
+						<c:if test="${usermessage.uSex==0}"><%sex="男"; %></c:if>
+						<c:if test="${usermessage.uSex==1}"><%sex="女"; %> </c:if>
+						<strong> 性别：</strong><%=sex %>
+						<%sex=""; %>
 						</div>
 						<div class="alert alert-danger" role="alert">
-							<strong>电话：</strong>${usermessage.Utel}
+							<strong>电话：</strong>${usermessage.uTel}
 						</div>
 						<div class="alert alert-success" role="alert">
-							<strong>手机：</strong>${usermessage.UphoNum}
+							<strong>手机：</strong>${usermessage.uPhoNum}
 						</div>
 						<div class="alert alert-info" role="alert">
-							<strong>生日：</strong>${usermessage.Ubirth }
+							<strong>生日：</strong>${usermessage.uBirth }
 						</div>
 						<div class="alert alert-info" role="alert">
-							<strong>注册日期：</strong>${usermessage.UregDate }
+							<strong>注册日期：</strong>${usermessage.uRegDate }
 						</div>
 						<div class="alert alert-info" role="alert">
-							<strong>地址：</strong>${usermessage.Uaddr }
+							<strong>地址：</strong>${usermessage.uAddr }
 						</div>
 						<div class="alert alert-info" role="alert">
-							<strong>备注：</strong>${usermessage.Uremark }
+							<strong>备注：</strong>${usermessage.uRemark }
 						</div>
-						<div class="alert alert-warning" role="alert">
-						
-						</div>
+		
 				</div>
 				<!-- Main end -->
 				<jsp:include page="baseJsp/Footer.jsp"></jsp:include>
