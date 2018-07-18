@@ -68,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li id="menu-academico-avaliacoes"><a href="toStaffAdd">添加员工信息</a></li>
 					<li id="menu-academico-avaliacoes"><a href="toStaffSelect">查询员工信息</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">修改员工信息</a></li>
-					<li id="menu-academico-avaliacoes"><a href="#">移除员工信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="toStaffDelete">移除员工信息</a></li>
 				</ul>
 			</li>
 			
