@@ -83,6 +83,8 @@ CREATE TABLE `integrationdb`.`buy_Type`(
 	primary key(`bTid`)
 );
 
+INSERT INTO `integrationdb`.`buy_Type` VALUES(1,'自己购买',10000);
+
 -- 总积分表
 CREATE TABLE `integrationdb`.`all_Credits`(
 	`uId`			INT				NOT NULL,											-- 用户ID
@@ -90,13 +92,15 @@ CREATE TABLE `integrationdb`.`all_Credits`(
 	primary key(`uId`)
 );
 
+INSERT INTO `integrationdb`.`all_Credits` VALUES(1,200000);
+
 -- 消费明细表
 CREATE TABLE `integrationdb`.`consume_info`(
 	`uId`			INT				NOT NULL,							-- 用户ID
 	`cDate`			DATE			NULL,								-- 消费日期
 	`cTime`			TIME			NULL,								-- 消费时间
 	`gId`			INT				NOT NULL,							-- 商品ID
-	`cNum`			INT				NULL,								-- 消费数量，用于统计成本和盈利
+	`cNum`			INT				NULL,								-- 消费数量(用于统计成本和盈利)
 	`oTid`			INT				NOT NULL,							-- 操作类型ID
 	`bTid`			INT				NOT NULL,							-- 购买类型ID
 	`cRedits`		INT				NULL,								-- 获得积分
@@ -104,6 +108,8 @@ CREATE TABLE `integrationdb`.`consume_info`(
 	`sId`			INT				NOT NULL,							-- 员工ID
 	primary key(`uid`)
 );
+
+INSERT INTO `integrationdb`.`consume_info` VALUES(1,'2018-07-18','12:28:00',1,1,1,1,200000,'这个月怕是要吃土',1);
 
 -- 积分兑换表
 CREATE TABLE `integrationdb`.`exchange_info`(

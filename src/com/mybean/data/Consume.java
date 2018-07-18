@@ -1,75 +1,75 @@
 package com.mybean.data;
 
 public class Consume {
-	private int Uid;			//用户ID
-	private String Cdate;		//消费日期
-	private String Ctime;		//消费时间
-	private int Gid;			//商品ID
-	private int Cnum;			//消费数量，用于统计成本和盈利
-	private int OTid;			//操作类型ID
-	private int BTid;			//购买类型ID
-	private int Credits;		//获得积分
-	private int Cremark;		//消费备注
-	private int Sid;			//员工ID
-	public int getUid() {
-		return Uid;
+	private int uId;			//用户ID
+	private String cDate;		//消费日期
+	private String cTime;		//消费时间
+	private int gId;			//商品ID
+	private int cNum;			//消费数量，用于统计成本和盈利
+	private int oTid;			//操作类型ID
+	private int bTid;			//购买类型ID
+	private int cRedits;		//获得积分
+	private String cRemark;		//消费备注
+	private int sId;			//员工ID
+	public int getuId() {
+		return uId;
 	}
-	public void setUid(int Uid) {
-		this.Uid = Uid;
+	public void setuId(int uId) {
+		this.uId = uId;
 	}
-	public String getCdate() {
-		return Cdate;
+	public String getcDate() {
+		return cDate;
 	}
-	public void setCdate(String Cdate) {
-		this.Cdate = Cdate;
+	public void setcDate(String cDate) {
+		this.cDate = cDate;
 	}
-	public String getCtime() {
-		return Ctime;
+	public String getcTime() {
+		return cTime;
 	}
-	public void setCtime(String Ctime) {
-		this.Ctime = Ctime;
+	public void setcTime(String cTime) {
+		this.cTime = cTime;
 	}
-	public int getGid() {
-		return Gid;
+	public int getgId() {
+		return gId;
 	}
-	public void setGid(int Gid) {
-		this.Gid = Gid;
+	public void setgId(int gId) {
+		this.gId = gId;
 	}
-	public int getCnum() {
-		return Cnum;
+	public int getcNum() {
+		return cNum;
 	}
-	public void setCnum(int Cnum) {
-		this.Cnum = Cnum;
+	public void setcNum(int cNum) {
+		this.cNum = cNum;
 	}
-	public int getOTid() {
-		return OTid;
+	public int getoTid() {
+		return oTid;
 	}
-	public void setOTid(int OTid) {
-		this.OTid = OTid;
+	public void setoTid(int oTid) {
+		this.oTid = oTid;
 	}
-	public int getBTid() {
-		return BTid;
+	public int getbTid() {
+		return bTid;
 	}
-	public void setBTid(int BTid) {
-		this.BTid = BTid;
+	public void setbTid(int bTid) {
+		this.bTid = bTid;
 	}
-	public int getCredits() {
-		return Credits;
+	public int getcRedits() {
+		return cRedits;
 	}
-	public void setCredits(int Credits) {
-		this.Credits = Credits;
+	public void setcRedits(int cRedits) {
+		this.cRedits = cRedits;
 	}
-	public int getCremark() {
-		return Cremark;
+	public String getcRemark() {
+		return cRemark;
 	}
-	public void setCremark(int Cremark) {
-		this.Cremark = Cremark;
+	public void setcRemark(String cRemark) {
+		this.cRemark = cRemark;
 	}
-	public int getSid() {
-		return Sid;
+	public int getsId() {
+		return sId;
 	}
-	public void setSid(int Sid) {
-		this.Sid = Sid;
+	public void setsId(int sId) {
+		this.sId = sId;
 	}
 	
 }

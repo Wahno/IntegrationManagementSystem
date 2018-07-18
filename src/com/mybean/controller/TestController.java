@@ -13,7 +13,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mybean.data.Staff;
 import com.mybean.data.User;
 import com.mybean.service.AdminService;
+import com.mybean.service.AllService;
+import com.mybean.service.BuyService;
+import com.mybean.service.ConsumeService;
 import com.mybean.service.GoodsService;
+import com.mybean.service.OperationService;
 import com.mybean.service.StaffService;
 import com.mybean.service.UserService;
 
@@ -72,6 +76,55 @@ public class TestController {
 		return mav;
 	}
 	
+	@Autowired
+	OperationService operationservice;
+
+	@RequestMapping("Operation")
+	public ModelAndView Operation(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		List<com.mybean.data.Operation> operation= operationservice.list();
+		mav.addObject("operation", operation);
+		mav.setViewName("TestJsp/Operation");//返回到的JSP文件名
+		return mav;
+	}
 	
+	@Autowired
+	BuyService buyservice;
+
+	@RequestMapping("Buy")
+	public ModelAndView Buy(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		List<com.mybean.data.Buy> buy= buyservice.list();
+		mav.addObject("buy", buy);
+		mav.setViewName("TestJsp/Buy");//返回到的JSP文件名
+		return mav;
+	}
 	
+	@Autowired
+	AllService allservice;
+
+	@RequestMapping("All")
+	public ModelAndView All(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		List<com.mybean.data.All> all= allservice.list();
+		mav.addObject("all", all);
+		mav.setViewName("TestJsp/All");//返回到的JSP文件名
+		return mav;
+	}
+	
+	@Autowired
+	ConsumeService consumeservice;
+
+	@RequestMapping("Consume")
+	public ModelAndView Consume(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		List<com.mybean.data.Consume> consume= consumeservice.list();
+		mav.addObject("consume", consume);
+		mav.setViewName("TestJsp/Consume");//返回到的JSP文件名
+		return mav;
+	}
 }

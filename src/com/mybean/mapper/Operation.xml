@@ -5,21 +5,21 @@
     <mapper namespace="com.mybean.mapper.OperationMapper">
     	
         <insert id="add" parameterType="Operation" >
-            insert into Operation_Type (oTid,oTName) values (#{oTid},#{oTName})   
+            insert into operation_Type (oTid,oTName) values (#{oTid},#{oTName})   
         </insert>
          
         <delete id="delete" parameterType="_int" >
-            delete from Operation_Type where oTid= #{oTid}  
+            delete from operation_Type where oTid= #{oTid}  
         </delete>
          
         <select id="get" parameterType="_int" resultType="Operation">
-            select * from Operation_Type  where oTid= #{oTid}   
+            select * from operation_Type  where oTid= #{oTid}   
         </select>
  
         <update id="update" parameterType="Operation" >
-            update Operation_Type set oTName=#{oTName}  where oTid=#{oTid}   
+            update operation_Type set oTName=#{oTName}  where oTid=#{oTid}   
         </update>
         <select id="list" resultType="Operation">
-            select * from Operation_Type     
+            select * from operation_Type     
         </select>    
     </mapper>

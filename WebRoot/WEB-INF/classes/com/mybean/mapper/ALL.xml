@@ -5,21 +5,21 @@
     <mapper namespace="com.mybean.mapper.AllMapper">
     	
         <insert id="add" parameterType="All" >
-            insert into All_Credits (Uid,Acredits) values (#{Uid},#{Acredits})   
+            insert into all_Credits (uId,aCredits) values (#{uId},#{aCredits})   
         </insert>
          
         <delete id="delete" parameterType="_int" >
-            delete from All_Credits where Uid= #{Uid}  
+            delete from all_Credits where uId= #{uId}  
         </delete>
          
         <select id="get" parameterType="_int" resultType="All">
-            select * from All_Credits  where Uid= #{Uid}   
+            select * from all_Credits  where uId= #{uId}   
         </select>
  
         <update id="update" parameterType="All" >
-            update All_Credits set Uid=#{Uid},Acredits=#{Acredits}  where Uid=#{Uid}   
+            update all_Credits set uId=#{uId},aCredits=#{aCredits}  where uId=#{uId}   
         </update>
         <select id="list" resultType="All">
-            select * from All_Credits     
+            select * from all_Credits     
         </select>    
     </mapper>

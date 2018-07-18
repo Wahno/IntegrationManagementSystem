@@ -4,8 +4,8 @@ public class Goods{
 	private int 	gId;		//商品ID
 	private String gName;		//商品名称
 	private int	  gNum;			//商品数量
-	private float  gCost;		//商品成本
-	private float  gPrice;		//商品售价
+	private int  gCost;			//商品成本
+	private int  gPrice;		//商品售价
 	private int gExchange;		//商品兑换所需积分
 	private String gRemark;		//商品备注
 
@@ -27,18 +27,16 @@ public class Goods{
 	public void setgNum(int gNum) {
 		this.gNum = gNum;
 	}
-	public float getgCost() {
+	public int getgCost() {
 		return gCost;
 	}
-	public void setgCost(float gCost) {
+	public void setgCost(int gCost) {
 		this.gCost = gCost;
 	}
-	
-	
-	public float getgPrice() {
+	public int getgPrice() {
 		return gPrice;
 	}
-	public void setgPrice(float gPrice) {
+	public void setgPrice(int gPrice) {
 		this.gPrice = gPrice;
 	}
 	public int getgExchange() {

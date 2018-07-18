@@ -19,9 +19,9 @@ public class ConsumeServiceImpl implements ConsumeService{
 	}
 
 	@Override
-	public void delete(int Uid) {
+	public void delete(int uId) {
 		// TODO 自动生成的方法存根
-		consumemapper.delete(Uid);
+		consumemapper.delete(uId);
 	}
 
 	@Override
@@ -31,9 +31,9 @@ public class ConsumeServiceImpl implements ConsumeService{
 	}
 
 	@Override
-	public Consume get(int Uid) {
+	public Consume get(int uId) {
 		// TODO 自动生成的方法存根
-		return consumemapper.get(Uid);
+		return consumemapper.get(uId);
 	}
 
 	@Override

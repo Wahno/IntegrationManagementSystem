@@ -1,18 +1,18 @@
 package com.mybean.data;
 
 public class All {
-	private int Uid;			//用户ID
-	private int Acredits;		//用户当前总积分
-	public int getUid() {
-		return Uid;
+	private int uId;			//用户ID
+	private int aCredits;		//用户当前总积分
+	public int getuId() {
+		return uId;
 	}
-	public void setUid(int Uid) {
-		this.Uid = Uid;
+	public void setuId(int uId) {
+		this.uId = uId;
 	}
-	public int getAcredits() {
-		return Acredits;
+	public int getaCredits() {
+		return aCredits;
 	}
-	public void setAcredits(int Acredits) {
-		this.Acredits = Acredits;
+	public void setaCredits(int aCredits) {
+		this.aCredits = aCredits;
 	}
 }
