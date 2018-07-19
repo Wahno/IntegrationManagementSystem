@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="#"><i class="fa fa-search"
+					<a class="agile-icon" href="toGoodsSelect"><i class="fa fa-search"
 						aria-hidden="true"></i> 
 						查询商品信息</a>
 				</div>
@@ -46,14 +46,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="./ConsumeExchange"><i class="fa fa-search"
+					<a class="agile-icon" href="ConsumeExchange"><i class="fa fa-search"
 						aria-hidden="true"></i> 
 						查询所有积分兑换</a>
 				</div>
 
 
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="./ConsumeInfo"><i class="fa fa-search"
+					<a class="agile-icon" href="ConsumeInfo"><i class="fa fa-search"
 						aria-hidden="true"></i>
 						查询所有客户信息</a>
 				</div>
@@ -83,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="#"><i class="fa fa-plus"
+					<a class="agile-icon" href="toGoodsAdd"><i class="fa fa-plus"
 						aria-hidden="true"></i> 
 						添加商品信息</a>
 				</div>
@@ -95,19 +95,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="#"><i
+					<a class="agile-icon" href="toGoodsDelete"><i
 						class="fa fa-minus" aria-hidden="true"></i>
 						删除商品信息 </a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="#"><i class="fa fa-pencil"
+					<a class="agile-icon" href="toUserUpdate"><i class="fa fa-pencil"
 						aria-hidden="true"></i> 
 						修改客户信息</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="#"><i
+					<a class="agile-icon" href="toGoodsUpdate"><i
 						class="fa fa-pencil" aria-hidden="true"></i>
 						修改商品信息</a>
 				</div>

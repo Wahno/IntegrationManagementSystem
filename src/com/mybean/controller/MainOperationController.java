@@ -19,9 +19,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mybean.data.Credit;
+import com.mybean.data.Goods;
 import com.mybean.data.Staff;
 import com.mybean.data.User;
 import com.mybean.service.AdminService;
+import com.mybean.service.GoodsService;
 import com.mybean.service.StaffService;
 import com.mybean.service.UserService;
 /**
@@ -36,6 +38,8 @@ public class MainOperationController {
 	UserService userservice;
 	@Autowired
 	StaffService staffservice;
+	@Autowired
+	GoodsService goodsservice;
 	
 	@RequestMapping("ConsumeMain")  //客户总界面
 	public ModelAndView ConsumeMain(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
@@ -82,6 +86,42 @@ public class MainOperationController {
 	 * 以下为客户信息处理服务
 	 * 
 	 * */
+	/**查询，在查询界面调用，修改，删除，界面的子查询里面调用
+	 * 参数：String toSrc:查询完后返回的界面
+	 * */
+	public ModelAndView selectUser(String toSrc,HttpServletRequest request, HttpServletResponse response,HttpSession session)
+	{
+		int  uId;
+		String returnMessage="";
+		ModelAndView mav = new ModelAndView();
+		if(request.getParameter("searchUser")==null)//其他界面跳转到查询页面
+		{
+			mav.setViewName(toSrc);
+			return mav;
+		}
+		//查询页面输入id提交后，把结果带回查询页面	
+		//处理输入非数字情况
+		try{
+			uId =Integer.parseInt(request.getParameter("searchUser"));//获得用户查询的id,将id转化成int
+		}catch(Exception e)  //如果用户输入的是非法字符，就会抛出异常，因为integer无法处理非数字字符
+		{
+			 returnMessage="客户ID为纯数字";
+			 mav.addObject("returnMessage", returnMessage);
+			 mav.setViewName(toSrc);
+			 return mav;
+		}
+		User user=userservice.get(uId);
+		if(user==null){
+			returnMessage="该客户不存在哦!";
+		}
+		else{
+			returnMessage="已搜索到ID为:  "+uId+"   的客户";
+			mav.addObject("usermessage", user);
+		}		
+		mav.addObject("returnMessage", returnMessage);
+		mav.setViewName(toSrc);
+		return mav;
+	}
 	@RequestMapping("toUserAdd")  //跳转到添加客户信息界面
 	public ModelAndView toUserAdd(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
@@ -123,11 +163,12 @@ public class MainOperationController {
 		}catch(Exception e)
 		{
 			e.printStackTrace();
+			returnMessage="添加客户     "+user.getuName()+"     失败,请重试(未知原因)";
 			mav.setViewName("UserAdd");
 			return mav;
 		}
 		userservice.add(user);
-		returnMessage="客户   "+user.getuName()+"   添加成功！";
+		returnMessage="客户   "+user.getuName()+"   添加成功！请输入ID查看";
 		mav.addObject("returnMessage", returnMessage);
 		mav.setViewName("UserAdd");			
 		return mav;		
@@ -136,38 +177,7 @@ public class MainOperationController {
 	public ModelAndView toUserSelect(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
-		String returnMessage="";
-		if(request.getParameter("searchUser")==null)//其他界面跳转到查询页面
-		{
-			mav.setViewName("UserSelect");
-		}
-		else  //查询页面输入id提交后，把结果带回查询页面
-		{
-			int  uId;
-			//处理输入非数字情况
-			try{
-				String searchUser=request.getParameter("searchUser");//获得用户查询的id
-				uId =Integer.parseInt(searchUser);//将id转化成int
-			}catch(Exception e)  //如果用户输入的是非法字符，就会抛出异常，因为integer无法处理非数字字符
-			{
-				// e.printStackTrace();
-				 returnMessage="客户ID为纯数字";
-				 mav.addObject("returnMessage", returnMessage);
-				 mav.setViewName("UserSelect");
-				 return mav;
-			}
-			User user=userservice.get(uId);
-			if(user==null){
-				returnMessage="该客户不存在哦!";
-			}
-			else{
-				returnMessage="已搜索到ID为:  "+uId+"   的客户";
-				mav.addObject("usermessage", user);
-			}
-			
-			mav.addObject("returnMessage", returnMessage);
-			mav.setViewName("UserSelect");
-		}
+		mav=selectUser("UserSelect",request, response,session);
 		return mav;
 	}
 	
@@ -176,37 +186,7 @@ public class MainOperationController {
 	public ModelAndView toUserUpdate(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
-		String returnMessage="";
-		if(request.getParameter("searchUser")==null)//其他界面跳转到查询页面
-		{
-			mav.setViewName("UserUpdate");
-		}
-		else  //查询页面输入id提交后，把结果带回查询页面
-		{
-			int  uId;
-			//处理输入非数字情况
-			try{
-				String searchUser=request.getParameter("searchUser");//获得用户查询的id
-				uId =Integer.parseInt(searchUser);//将id转化成int
-			}catch(Exception e)  //如果用户输入的是非法字符，就会抛出异常，因为integer无法处理非数字字符
-			{
-				// e.printStackTrace();
-				 returnMessage="客户ID应为纯数字";
-				 mav.addObject("returnMessage", returnMessage);
-				 mav.setViewName("UserUpdate");
-				 return mav;
-			}
-			User user=userservice.get(uId); //查询
-			if(user==null){
-				returnMessage="该客户不存在哦!";
-			}
-			else{
-				returnMessage="已搜索到ID为:  "+uId+"   的客户";
-				mav.addObject("usermessage", user);
-			}		
-			mav.addObject("returnMessage", returnMessage);
-			mav.setViewName("UserUpdate");
-		}
+		mav=selectUser("UserUpdate",request, response,session);
 		return mav;
 	}
 	
@@ -251,44 +231,12 @@ public class MainOperationController {
 			mav.setViewName("UserUpdate");
 		}
 		return mav;
-	}
-	
-	
+	}		
 	@RequestMapping("toUserDelete")  //跳转到删除客户信息界面 以及 在删除界面的查询
 	public ModelAndView toUserDelete(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 		
 		ModelAndView mav = new ModelAndView();
-		String returnMessage="";
-		if(request.getParameter("searchUser")==null)//其他界面跳转到查询页面
-		{
-			mav.setViewName("UserDelete");
-		}
-		else  //查询页面输入id提交后，把结果带回查询页面
-		{
-			int  uId;
-			//处理输入非数字情况
-			try{
-				String searchUser=request.getParameter("searchUser");//获得用户查询的id
-				uId =Integer.parseInt(searchUser);//将id转化成int
-			}catch(Exception e)  //如果用户输入的是非法字符，就会抛出异常，因为integer无法处理非数字字符
-			{
-				// e.printStackTrace();
-				 returnMessage="客户ID为纯数字";
-				 mav.addObject("returnMessage", returnMessage);
-				 mav.setViewName("UserDelete");
-				 return mav;
-			}
-			User user=userservice.get(uId);
-			if(user==null){
-				returnMessage="该客户不存在哦!";
-			}
-			else{
-				returnMessage="已搜索到ID为:  "+uId+"   的客户";
-				mav.addObject("usermessage", user);
-			}		
-			mav.addObject("returnMessage", returnMessage);
-			mav.setViewName("UserDelete");
-		}
+		mav=selectUser("UserDelete",request, response,session);
 		return mav;
 	}
 	@RequestMapping("UserDeleteFromeSql")  //确认删除按钮按下后  从数据库  删除客户信息
@@ -340,6 +288,43 @@ public class MainOperationController {
 	/**
 	 * 职工信息处理开始
 	 * */
+	/**查询，在查询界面调用，修改，删除，界面的子查询里面调用
+	 * 参数：String toSrc:查询完后返回的界面
+	 * */
+	public ModelAndView selectStaff(String toSrc,HttpServletRequest request, HttpServletResponse response,HttpSession session)
+	{
+		int  sId;
+		String returnMessage="";
+		ModelAndView mav = new ModelAndView();
+		if(request.getParameter("searchStaff")==null)//其他界面跳转到查询页面
+		{
+			mav.setViewName(toSrc);
+			return mav;	
+		}
+		//查询页面输入id提交后，把结果带回查询页面	
+		//处理输入非数字情况
+		try{
+			sId =Integer.parseInt(request.getParameter("searchStaff"));//获得用户查询的id,将id转化成int
+		}catch(Exception e)  //如果用户输入的是非法字符，就会抛出异常，因为integer无法处理非数字字符
+		{
+			// e.printStackTrace();
+			 returnMessage="员工ID为纯数字";
+			 mav.addObject("returnMessage", returnMessage);
+			 mav.setViewName(toSrc);
+			 return mav;
+		}
+		Staff staff=staffservice.get(sId); 
+		if(staff==null){
+			returnMessage="该职工ID（卡号）不存在哦！";
+		}
+		else{
+			returnMessage="已搜索到ID为:  "+sId+"   的员工";
+			mav.addObject("staffmessage", staff);
+		}		
+		mav.addObject("returnMessage", returnMessage);
+		mav.setViewName(toSrc);
+		return mav;	
+	}
 	@RequestMapping("toStaffAdd")  //跳转到添加职工信息界面
 	public ModelAndView toStaffAdd(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
@@ -350,8 +335,7 @@ public class MainOperationController {
 	
 	@RequestMapping("StaffAddToSql") //添加职工信息到数据库   后台处理添加成功 返回添加界面
 	public ModelAndView StaffAddToSql(Staff staff,HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
-/*暂时没有加电话等合法性的判断*/
-		
+		/*暂时没有加电话等合法性的判断*/		
 		int sId;
 		String returnMessage="";
 		String sIdStr=request.getParameter("sIdStr");
@@ -362,7 +346,6 @@ public class MainOperationController {
 			
 		}catch(Exception e) //处理ID非法输入
 		{
-			//e.printStackTrace(); 
 			returnMessage="输入的ID  "+sIdStr+"   不为纯数字";
 			mav.addObject("returnMessage", returnMessage);
 			mav.setViewName("StaffAdd");
@@ -387,7 +370,7 @@ public class MainOperationController {
 			return mav;
 		}
 		staffservice.add(staff);
-		returnMessage="职工  "+staff.getsName()+"  添加成功！";
+		returnMessage="职工  "+staff.getsName()+"  添加成功！请输入ID查看";
 		mav.addObject("returnMessage", returnMessage);
 		mav.setViewName("StaffAdd");			
 		return mav;		
@@ -397,73 +380,14 @@ public class MainOperationController {
 	public ModelAndView toStaffSelect(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
-		String returnMessage="";
-		if(request.getParameter("searchStaff")==null)//其他界面跳转到查询页面
-		{
-			mav.setViewName("StaffSelect");
-		}
-		else  //查询页面输入id提交后，把结果带回查询页面
-		{
-			int  sId;
-			//处理输入非数字情况
-			try{
-				String searchStaff=request.getParameter("searchStaff");//获得用户查询的id
-				sId =Integer.parseInt(searchStaff);//将id转化成int
-			}catch(Exception e)  //如果用户输入的是非法字符，就会抛出异常，因为integer无法处理非数字字符
-			{
-				// e.printStackTrace();
-				 returnMessage="员工ID为纯数字";
-				 mav.addObject("returnMessage", returnMessage);
-				 mav.setViewName("StaffSelect");
-				 return mav;
-			}
-			Staff staff=staffservice.get(sId); 
-			if(staff==null){
-				returnMessage="该职工ID（卡号）不存在哦！";
-			}
-			else{
-				returnMessage="已搜索到ID为:  "+sId+"   的员工";
-				mav.addObject("staffmessage", staff);
-			}		
-			mav.addObject("returnMessage", returnMessage);
-			mav.setViewName("StaffSelect");
-		}
+		mav=selectStaff("StaffSelect",request,response,session);
 		return mav;	
 	}
 	@RequestMapping("toStaffUpdate")  //跳转到修改职工信息界面 以及职工界面信息查询
 	public ModelAndView toStaffUpdate(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
-		String returnMessage="";
-		if(request.getParameter("searchStaff")==null)//其他界面跳转到查询页面
-		{
-			mav.setViewName("StaffUpdate");
-		}
-		else  //查询页面输入id提交后，把结果带回查询页面
-		{
-			int  sId;
-			//处理输入非数字情况
-			try{
-				String searchStaff=request.getParameter("searchStaff");//获得用户查询的id
-				sId =Integer.parseInt(searchStaff);//将id转化成int
-			}catch(Exception e)  //如果用户输入的是非法字符，就会抛出异常，因为integer无法处理非数字字符
-			{
-				 returnMessage="客户ID应为纯数字";
-				 mav.addObject("returnMessage", returnMessage);
-				 mav.setViewName("StaffUpdate");
-				 return mav;
-			}
-			Staff staff=staffservice.get(sId); //查询
-			if(staff==null){
-				returnMessage="该员工不存在哦!";
-			}
-			else{
-				returnMessage="已搜索到ID为:  "+sId+"   的员工";
-				mav.addObject("staffmessage", staff);
-			}		
-			mav.addObject("returnMessage", returnMessage);
-			mav.setViewName("StaffUpdate");
-		}
+		mav=selectStaff("StaffUpdate",request,response,session);
 		return mav;
 	}
 	
@@ -515,37 +439,7 @@ public class MainOperationController {
 	public ModelAndView toStaffDelete(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 		
 		ModelAndView mav = new ModelAndView();
-		String returnMessage="";
-		if(request.getParameter("searchStaff")==null)//其他界面跳转到查询页面
-		{
-			mav.setViewName("StaffDelete");
-		}
-		else  //查询页面输入id提交后，把结果带回查询页面
-		{
-			int  sId;
-			//处理输入非数字情况
-			try{
-				String searchStaff=request.getParameter("searchStaff");//获得用户查询的id
-				sId =Integer.parseInt(searchStaff);//将id转化成int
-			}catch(Exception e)  //如果用户输入的是非法字符，就会抛出异常，因为integer无法处理非数字字符
-			{
-				 e.printStackTrace();
-				 returnMessage="员工ID应该为纯数字";
-				 mav.addObject("returnMessage", returnMessage);
-				 mav.setViewName("StaffDelete");
-				 return mav;
-			}
-			Staff staff=staffservice.get(sId); 
-			if(staff==null){
-				returnMessage="该职工ID（卡号）不存在哦！";
-			}
-			else{
-				returnMessage="已搜索到ID为:  "+sId+"   的员工";
-				mav.addObject("staffmessage", staff);
-			}		
-			mav.addObject("returnMessage", returnMessage);
-			mav.setViewName("StaffDelete");
-		}
+		mav=selectStaff("StaffDelete",request,response,session);
 		return mav;	
 	}
 	
@@ -595,11 +489,232 @@ public class MainOperationController {
 	 * 职工信息处理结束
 	 * */
 	
+	/**
+	 * 以下为商品信息处理服务
+	 * 
+	 * */
+	
+	/**
+	 * 查询，在查询界面调用，修改，删除，界面的子查询里面调用
+	 * 参数：String toSrc:查询完后返回的界面
+	 * */
+	public ModelAndView selectGoods(String toSrc,HttpServletRequest request, HttpServletResponse response,HttpSession session)
+	{
+		int  gId;
+		String returnMessage="";
+		ModelAndView mav = new ModelAndView();
+		if(request.getParameter("searchGoods")==null)//其他界面跳转到查询页面
+		{
+			mav.setViewName(toSrc);
+			return mav;
+		}
+		//查询页面输入id提交后，把结果带回查询页面	
+		//处理输入非数字情况
+		try{
+			gId =Integer.parseInt(request.getParameter("searchGoods"));//获得用户查询的id,将id转化成int
+		}catch(Exception e)  //如果用户输入的是非法字符，就会抛出异常，因为integer无法处理非数字字符
+		{
+			 returnMessage="商品ID为纯数字";
+			 mav.addObject("returnMessage", returnMessage);
+			 mav.setViewName(toSrc);
+			 return mav;
+		}
+		Goods goods=goodsservice.get(gId);
+		if(goods==null){
+			returnMessage="该商品不存在哦!";
+		}
+		else{
+			returnMessage="已搜索到ID为:  "+gId+"   的商品";
+			mav.addObject("goodsmessage", goods);
+		}		
+		mav.addObject("returnMessage", returnMessage);
+		mav.setViewName(toSrc);
+		return mav;
+	}
+	@RequestMapping("toGoodsAdd")  //跳转到添加客户信息界面
+	public ModelAndView toGoodsAdd(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("GoodsAdd");
+		return mav;
+	}	
+	@RequestMapping("GoodsAddToSql")  //添加客户信息到数据库   添加成功返回添加界面
+	public ModelAndView GoodsAddToSql(Goods goods,HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+	
+		int gId;
+		int gNum;
+		int gCost;
+		int gPrice;
+		int gExchange;
+		String returnMessage="";
+		ModelAndView mav = new ModelAndView();
+		try{
+			//gName和gRemark自动转入
+			gId=Integer.parseInt(request.getParameter("gIdStr"));
+			gNum=Integer.parseInt(request.getParameter("gNumStr"));
+			gCost=Integer.parseInt(request.getParameter("gCostStr"));
+			gPrice=Integer.parseInt(request.getParameter("gPriceStr"));
+			gExchange=Integer.parseInt(request.getParameter("gExchangeStr"));
+			
+		}catch(Exception e) //处理ID非法输入,时间关系我就不一一检测了
+		{
+			returnMessage="一个或多个输入不合法，请重新输入";
+			mav.addObject("returnMessage", returnMessage);
+			mav.setViewName("GoodsAdd");
+			return mav;
+		}
+		Goods goodsCheck=goodsservice.get(gId);//检测ID是否添加了
+		if(goodsCheck!=null)
+		{
+			returnMessage="商品ID   "+gId+"   已经添加，请换另一个ID.";
+			mav.addObject("returnMessage", returnMessage);
+			mav.setViewName("GoodsAdd");
+			return mav;
+		}	
+		try{
+			goods.setgId(gId);
+			goods.setgNum(gNum);
+			goods.setgCost(gCost);
+			goods.setgPrice(gPrice);
+			goods.setgExchange(gExchange);
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+			returnMessage="商品     "+goods.getgName()+"    添加失败,请重试(未知原因)";
+			mav.setViewName("GoodsAdd");
+			return mav;
+		}
+		goodsservice.add(goods);
+		returnMessage="商品   "+goods.getgName()+"   添加成功！请输入ID查看";
+		mav.addObject("returnMessage", returnMessage);
+		mav.setViewName("GoodsAdd");			
+		return mav;		
+	}
+	@RequestMapping("toGoodsSelect")  //跳转到查询客户信息界面
+	public ModelAndView toGoodsSelect(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		mav=selectUser("GoodsSelect",request, response,session);
+		return mav;
+	}
+	
+	
+	@RequestMapping("toGoodsUpdate")  //跳转到修改客户信息界面 以及在修改页面查询
+	public ModelAndView toGoodsUpdate(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		mav=selectUser("GoodsUpdate",request, response,session);
+		return mav;
+	}
+	
+	@RequestMapping("GoodsUpDateToSql")//将修改后的信息提交到数据库
+	public ModelAndView GoodsUpDateToSql(Goods goods,HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+		//暂时不加是否有改动的检测，就算没有改动也当改动来 写入数据库
+		int gId;
+		int gNum;
+		int gCost;
+		int gPrice;
+		int gExchange;
+		String returnMessage="";	
+		ModelAndView mav = new ModelAndView();
+		
+		if((request.getParameter("updateGoods")=="")|| (request.getParameter("updateGoods")==null))//前端通过${}赋值，此处不能改为null 如果没有输入ID就点击删除，由这句处理
+		{
+			returnMessage="为了安全，请输入需要修改的商品ID并搜索信息查看确认";
+			mav.addObject("returnMessage",returnMessage);
+			mav.setViewName("GoodsUpdate");
+			return mav;
+		}
+		 //查询页面输入id提交后，把结果带回查询页面
+		try
+		{
+			//gName和gRemark自动转入
+			gId=Integer.parseInt(request.getParameter("updateGoods"));//保证Id不会被修改
+			gNum=Integer.parseInt(request.getParameter("gNumStr"));
+			gCost=Integer.parseInt(request.getParameter("gCostStr"));
+			gPrice=Integer.parseInt(request.getParameter("gPriceStr"));
+			gExchange=Integer.parseInt(request.getParameter("gExchangeStr"));
+		}catch(Exception e) //此处不一一检验是哪一个输入不合法，时间关系
+		{
+			returnMessage="一个或多个输入不和法,请重试";
+			mav.addObject("returnMessage", returnMessage);
+			mav.setViewName("GoodsUpdate");
+			return mav;			
+		}				
+		try{
+			//gName和gRemark自动装入
+			goods.setgId(gId);
+			goods.setgNum(gNum);
+			goods.setgCost(gCost);
+			goods.setgPrice(gPrice);
+			goods.setgExchange(gExchange);
+			goodsservice.update(goods);
+		}catch(Exception e)
+		{
+			returnMessage="更新ID为:  "+gId+"   的商品失败(未知错误)";
+			e.printStackTrace();
+		}			
+		returnMessage="更新ID为:  "+gId+"   的商品成功,请输入ID查看";
+		mav.addObject("returnMessage", returnMessage);
+		mav.setViewName("GoodsUpdate");
+		return mav;
+	}		
+	@RequestMapping("toGoodsDelete")  //跳转到删除客户信息界面 以及 在删除界面的查询
+	public ModelAndView toGoodsDelete(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+		
+		ModelAndView mav = new ModelAndView();
+		mav=selectUser("GoodsDelete",request, response,session);
+		return mav;
+	}
+	@RequestMapping("GoodsDeleteFromeSql")  //确认删除按钮按下后  从数据库  删除客户信息
+	public ModelAndView GoodsDeleteFromeSql(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+
+		int gId;
+		String returnMessage="";
+		ModelAndView mav = new ModelAndView();
+		
+		if((request.getParameter("deleteGoods")=="")|| (request.getParameter("deleteGoods")==null))//前端通过${}赋值，此处不能改为null 如果没有输入ID就点击删除，由这句处理
+		{
+			returnMessage="为了安全，请输入需要删除的商品ID并搜索信息查看确认";
+			mav.addObject("returnMessage",returnMessage);
+			mav.setViewName("GoodsDelete");
+			return mav;
+		}
+		 //查询页面输入id提交后，把结果带回查询页面
+		try
+		{	//获得用户查询的id
+			gId=Integer.parseInt(request.getParameter("deleteGoods"));
+		}catch(Exception e) //捕获输入非法字符的情况,这个捕获其实不用加
+		{
+			returnMessage="ID应该是纯数字";
+			mav.addObject("returnMessage", returnMessage);
+			mav.setViewName("GoodsDelete");
+			return mav;			
+		}				
+		try{
+			goodsservice.delete(gId);
+		}catch(Exception e)
+		{
+			returnMessage="删除ID为:  "+gId+"   的商品失败,请重试";
+			e.printStackTrace();
+		}
+		returnMessage="删除ID为:  "+gId+"   的商品成功";
+		mav.addObject("returnMessage", returnMessage);
+		mav.setViewName("GoodsDelete");
+		return mav;
+	}
+	
+	/**
+	 * 商品信息处理结束
+	 * */
 	
 	
 	
 	
 	
+	/**
+	 * 积分设置开始
+	 * */
 	@RequestMapping("SetCredits")  
 	public ModelAndView SetCredits(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
@@ -637,9 +752,7 @@ public class MainOperationController {
 		mav.setViewName("MessagePage");
 		return mav;
 	}
-	
-	
-	
+		
 	@RequestMapping("toExportExcel")  //跳转到查询客户信息界面
 	public ModelAndView toExportExcel(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
@@ -647,7 +760,6 @@ public class MainOperationController {
 		mav.setViewName("ExportExcel");
 		return mav;
 	}
-	
 	
 	@RequestMapping("toSystemDescription")  //跳转到系统界面
 	public ModelAndView toSystemDescriptiom(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
