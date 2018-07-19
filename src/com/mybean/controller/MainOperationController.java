@@ -722,7 +722,7 @@ public class MainOperationController {
 		ModelAndView mav = new ModelAndView();
 		Credit credit = new Credit();
 		String filePath = new ClassPathResource("credit.properties").getPath();// 文件的路径
-		System.out.println("propertiesPath:" + filePath);
+		System.out.println("Read propertiesPath:" + filePath);
 		Properties pps = new Properties();
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath)));
 		pps.load(br);
@@ -738,7 +738,7 @@ public class MainOperationController {
 
 		ModelAndView mav = new ModelAndView();
 		String filePath = new ClassPathResource("credit.properties").getPath();// 文件的路径
-		System.out.println("propertiesPath:" + filePath);
+		System.out.println("Write propertiesPath:" + filePath);
 		Properties pps = new Properties();
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath)));
 		pps.load(br);
