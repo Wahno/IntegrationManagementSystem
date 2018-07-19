@@ -49,7 +49,29 @@ var time=h+":"+mi+":"+s;
 document.getElementById("cDate").value=date;
 document.getElementById("cTime").value=time;
 }
+/*获取输入的商品id,输入的数量，来设置获得的积分*/
+var goodsIdOne=null;
+
+function setcReditsStr()
+{	
+	var goodsId=document.getElementById("gIdStr");
+	document.getElementById("searchGoods").value=goosId;
+	if(goodsId!=null && (goodsIdOne==null))
+	{	goodsIdOne=goodsId;		
+			document.getElementById("searchGoods").value=goosId;
+			document.getElementById("toConsumeGoodsSelect").submit();
+		document.toConsumeGoodsSelect.submit();
+	}
+	if((goodsIdOne!=goodsId) && (goodsId!=null))
+	{
+		goodsIdOne=goodsId;	
+		document.getElementById("searchGoods").value=goosId;
+		document.getElementById("toConsumeGoodsSelect").submit();
+		document.toConsumeGoodsSelect.submit();
+	}
+}
 setInterval('t()',500);
+setInterval('setcReditsStr()',500);
 </script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -124,7 +146,19 @@ setInterval('t()',500);
 				</div>
 			</div>			
 				<!-- Item end -->
-				<!-- Main begin -->		
+				<!-- Main begin -->	
+				<%!String goodsName;
+				Goods goods; %>
+				<%
+					
+					Goods goods=(Goods)request.getAttribute("goodsmessage");
+				
+					if(goods==null)
+					goodsName="";
+					else {%>
+					<% goodsName=goods.getgName();
+						
+					%><%}%>
 				<div class="agile-grids">
 					<div class="breadcrumb">
 						<div class="agile-tables" style="padding-top:0px;padding-bottom:0px;"><!-- 设置表格和div的内边距 -->
@@ -172,8 +206,9 @@ setInterval('t()',500);
 										<th>商品名字</th>
 										<th>消费日期</th>
 										<th>消费时间</th>
-										<th>消费金额</th>
 										<th>消费数量</th>
+										<th>消费金额</th>
+										
 										<th>购买类型</th>
 										<th>操作类型</th>
 										<th>获得积分</th>
@@ -186,8 +221,8 @@ setInterval('t()',500);
 									
 									<tr>
 								
-										<td><input name="gIdStr" type="text" placeholder="123456"  required="" style="width:50px;"/></td>
-										<td><input name="gName" type="text" placeholder="橘子"  required="" style="width:60px;"/></td>
+										<td><input id="gIdStr" name="gIdStr" type="text"  placeholder="123456"  required="" style="width:50px;"/></td>
+										<td><input name="gName" type="text" placeholder="橘子" value="<%=goodsName %>" required="" style="width:60px;"/></td>
 										<td><input id="cDate" name="cDate" type="text" 
 												   class="form-control1 ng-invalid ng-invalid-required"
 												   ng-model="model.date"  readonly="readonly" style="width:70px;"/>
@@ -196,8 +231,9 @@ setInterval('t()',500);
 												   class="form-control1 ng-invalid ng-invalid-required"
 												   ng-model="model.date"  readonly="readonly" style="width:70px;"/>
 										</td>
-										<td><input name="gPriceStr" type="text" placeholder="1209元"  required="" style="width:50px;"/></td>
 										<td><input name="cNumStr" type="text" placeholder="件"  required="" style="width:50px;"/></td>
+										<td><input name="gPriceStr" type="text" placeholder="1209元"  required="" style="width:50px;"/></td>
+										
 										<td> <select name="bTidStr" style="width:100px; height:50px;">
 												<option value="0">自己购买</option>
 												<option value="1">别人介绍</option>
@@ -209,8 +245,8 @@ setInterval('t()',500);
 											</select>
 										</td>
 										<td><input name="cReditsStr" type="text" placeholder="1209分" value="" style="width:50px;"/></td>
-										<td><input name="sIdStr" type="text" placeholder="5" value="" required="" style="width:50px;"/></td>
-										<td><input name="cRemark" type="text" placeholder="购买备注哦" value="" style="width:100px;"/></td>
+										<td><input name="sIdStr" type="text" placeholder="5"  required="" style="width:50px;"/></td>
+										<td><input name="cRemark" type="text" placeholder="购买备注哦" style="width:100px;"/></td>
 									</tr>
 								</tbody>
 							</table>
@@ -224,7 +260,9 @@ setInterval('t()',500);
 						</div>	 
 					</div>
 				</div>
-				
+				<form id="toConsumeGoodsSelect" name="toConsumeGoodsSelect"  action="toConsumeGoodsSelect" method="post" style="display:none;" >
+									<input id="searchGoods" name ="searchGoods" type="text" value=""/>						
+				</form>	
 				<!-- Main end -->
 				<jsp:include page="baseJsp/Footer.jsp"></jsp:include>
 			</div>

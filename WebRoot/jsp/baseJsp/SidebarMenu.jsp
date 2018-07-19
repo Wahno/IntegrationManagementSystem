@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="clearfix"></div></a>
 				<ul id="menu-academico-sub">
 					<li id="menu-academico-avaliacoes"><a href="toConsumeAdd">添加消费</a></li>
-					<li id="menu-academico-avaliacoes"><a href="#">查询消费</a></li>
+					<li id="menu-academico-avaliacoes"><a href="toConsumeSelect">查询消费</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">导出表格</a></li>
 				</ul>
 			</li>

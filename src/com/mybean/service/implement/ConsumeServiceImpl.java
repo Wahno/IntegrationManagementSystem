@@ -31,7 +31,7 @@ public class ConsumeServiceImpl implements ConsumeService{
 	}
 
 	@Override
-	public Consume get(int uId) {
+	public List<Consume> get(int uId) {
 		// TODO 自动生成的方法存根
 		return consumemapper.get(uId);
 	}

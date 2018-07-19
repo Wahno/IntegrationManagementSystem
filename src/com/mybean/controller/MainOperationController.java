@@ -6,6 +6,9 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
@@ -716,6 +719,25 @@ public class MainOperationController {
 	/**
 	 * 客户消费处理开始
 	 * */
+	@RequestMapping("toConsumeGoodsSelect")  //跳转到添加客户消费界面界面 以及 在添加界面里查询客户
+	public  void toConsumeGoosSelect(HttpServletRequest request) throws Exception {
+		int gId;
+		System.out.println("你好");
+		try{
+			gId =Integer.parseInt("searchGoods");
+		}catch(Exception e)  
+		{
+			 request.setAttribute("goodsmessage", null);
+			 return;
+		}
+		Goods goods=goodsservice.get(gId);
+		if(goods==null){
+			
+			 request.setAttribute("goodsmessage", null);
+			 return;
+		}				
+		request.setAttribute("goodsmessage", goods);
+	}
 	
 	@RequestMapping("toConsumeAdd")  //跳转到添加客户消费界面界面 以及 在添加界面里查询客户
 	public ModelAndView toConsumeAdd(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
@@ -782,6 +804,40 @@ public class MainOperationController {
 		mav.addObject("returnMessage", returnMessage);
 		mav.setViewName("ConsumeAdd");			
 		return mav;		
+	}
+	/**
+	 * */
+	public List<Consume> selectConsume(int uId)
+	{
+		List<Consume> list= consumeservice.get(uId);
+		return list;
+	}
+	@RequestMapping("toConsumeSelect")  //跳转到添加客户消费界面界面 以及 在添加界面里查询客户
+	public ModelAndView toConsumeSelect(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+		
+		ModelAndView mav = new ModelAndView();
+		int uId;
+		String returnMessage="";
+		mav=selectUser("ConsumeSelect",request, response,session);//处理添加界面的查询
+
+			
+		try{
+		 uId=Integer.parseInt(request.getParameter("searchUser"));
+		}catch(Exception e)
+		{
+			returnMessage="暂无消费信息";
+			mav.addObject("returnMessageOne", returnMessage);
+			return mav;
+		}
+		List<Consume> list= consumeservice.get(uId);
+		if(list==null)
+		{
+			returnMessage="暂无消费信息";
+			mav.addObject("returnMessageOne", returnMessage);
+			return mav;
+		}
+		mav.addObject("consumelist",list);
+	return mav;
 	}
 	
 	/**
