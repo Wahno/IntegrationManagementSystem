@@ -841,6 +841,30 @@ public class MainOperationController {
 	}
 	
 	/**
+	 * 导出表格信息
+	 * */
+	
+	public void Export(String path,Object objectservice)
+	{
+			
+	}
+	@RequestMapping("toExportUserInfo") //跳到导出界面，并查询
+	public ModelAndView toExportUserInfo(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception{
+		ModelAndView mav = new ModelAndView();
+		mav=selectUser("ExportExcel/ExportUserInfo",request,response,session);
+		return mav;
+	}
+	@RequestMapping("toExportUser") //跳到导出界面，并查询
+	public ModelAndView toExport(User user,HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception{
+		ModelAndView mav = new ModelAndView();
+		user=request.getParameter("usermessage");
+		mav=selectUser("ExportExcel/ExportUserInfo",request,response,session);
+		Goods goods =new Goods();
+
+		return mav;
+	}
+	
+	/**
 	 * 积分设置开始
 	 * */
 	@RequestMapping("SetCredits")  

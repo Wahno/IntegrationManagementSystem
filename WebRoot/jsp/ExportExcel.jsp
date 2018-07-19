@@ -44,16 +44,56 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!-- Item end -->
 				<!-- Main begin -->
 							<!--grid-->
-					 	<div class="grid-form">
-					 		<div class="grid-form1">
-					 		<h2 id="forms-example" class="">导出查询客户信息</h2>		 
-					<div >
-									<form action="#" method="post" >
-										<input name="searchUser" type="search" placeholder="输入客户id搜索"  style="background:#ffCFff"required="">
-										<button type="submit" class="btn btn-default" >导出</button>						
-									</form>
+				<div class="grid_3 grid_4 w3_agileits_icons_page">
+					<div class="panel1 button-sizes">
+						<div class="panel-heading">
+							<div class="panel-title pn">
+								<h3 class="mtn mb10 fw400">导出表格</h3>
+							</div>
 						</div>
+						<section id="new">
+							<div class="row fontawesome-icon-list">
+								<div class="icon-box col-md-3 col-sm-4">
+									<a class="agile-icon" href="toExportUserInfo"><i class="fa fa-copy"
+										aria-hidden="true"></i> 导出查询用户表格</a>
+								</div>
+
+								<div class="icon-box col-md-3 col-sm-4">
+									<a class="agile-icon" href="DataRestore"><i class="fa fa-repeat"
+										aria-hidden="true"></i> 导出所有用户表格</a>
+								</div>
+			
+								<div class="icon-box col-md-3 col-sm-4">
+									<a class="agile-icon" href="#"><i class="fa fa-table"
+										aria-hidden="true"></i> 导出表格信息</a>
+								</div>
+							</div>
+						</section>
 					</div>
+					<div class="panel1 button-sizes">
+						<div class="panel-heading">
+						
+						</div>
+						<section id="new">
+							<div class="row fontawesome-icon-list">
+								<div class="icon-box col-md-3 col-sm-4">
+									<a class="agile-icon" href="DataBackup"><i class="fa fa-copy"
+										aria-hidden="true"></i> 备份数据信息</a>
+								</div>
+
+								<div class="icon-box col-md-3 col-sm-4">
+									<a class="agile-icon" href="DataRestore"><i class="fa fa-repeat"
+										aria-hidden="true"></i> 恢复数据信息</a>
+								</div>
+					
+								<div class="icon-box col-md-3 col-sm-4">
+									<a class="agile-icon" href="#"><i class="fa fa-table"
+										aria-hidden="true"></i> 导出表格信息aaa</a>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
 					<!----->
 				<!-- Main end -->
 				<jsp:include page="baseJsp/Footer.jsp"></jsp:include>

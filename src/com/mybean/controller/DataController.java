@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+//表格导出导入
+import jxl.Workbook;
+import jxl.write.*;
+
 @Controller
 @RequestMapping("")
 public class DataController {
@@ -64,7 +68,7 @@ public class DataController {
 			mav.setViewName("MessagePage");//中继界面
 			return mav;
 		}
-
 	}
+
 
 }

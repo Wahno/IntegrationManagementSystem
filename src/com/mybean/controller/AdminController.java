@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mybean.data.Admin;
 import com.mybean.service.AdminService;
 
+
 @Controller
 @RequestMapping("")
 public class AdminController {
