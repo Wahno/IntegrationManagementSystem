@@ -524,10 +524,8 @@ public class MainOperationController {
 		Goods goods=goodsservice.get(gId);
 		if(goods==null){
 			returnMessage="该商品不存在哦!";
-			System.out.println("该商品不存在哦");
 		}
 		else{
-			System.out.println("该商品不存在哦11111");
 			returnMessage="已搜索到ID为:  "+gId+"   的商品";
 			mav.addObject("goodsmessage", goods);
 		}		
