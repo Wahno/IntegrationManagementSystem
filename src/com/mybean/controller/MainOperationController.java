@@ -18,11 +18,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mybean.data.Consume;
 import com.mybean.data.Credit;
 import com.mybean.data.Goods;
 import com.mybean.data.Staff;
 import com.mybean.data.User;
 import com.mybean.service.AdminService;
+import com.mybean.service.ConsumeService;
 import com.mybean.service.GoodsService;
 import com.mybean.service.StaffService;
 import com.mybean.service.UserService;
@@ -40,6 +42,8 @@ public class MainOperationController {
 	StaffService staffservice;
 	@Autowired
 	GoodsService goodsservice;
+	@Autowired
+	ConsumeService consumeservice;
 	
 	@RequestMapping("ConsumeMain")  //客户总界面
 	public ModelAndView ConsumeMain(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
@@ -722,6 +726,63 @@ public class MainOperationController {
 		return mav;
 	}
 	
+	@RequestMapping("ConsumeAddToSql")  //跳转到添加客户消费界面界面 以及 
+	public ModelAndView ConsumeAddToSql(Consume consume,HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+		
+		int uId;			//用户ID
+		String cDate;		//消费日期
+		String cTime;		//消费时间
+		int gId;			//商品ID
+		int cNum;			//消费数量，用于统计成本和盈利
+		int oTid;			//操作类型ID
+		int bTid;			//购买类型ID
+		int cRedits;		//获得积分
+		String cRemark;		//消费备注
+		int sId;	
+		String returnMessage="";
+		ModelAndView mav = new ModelAndView();
+		try{
+			//gName和gRemark自动转入
+			uId=Integer.parseInt(request.getParameter("uIdStr"));
+			gId=Integer.parseInt(request.getParameter("gIdStr"));
+			cNum=Integer.parseInt(request.getParameter("cNumStr"));
+			oTid=Integer.parseInt(request.getParameter("oTidStr"));
+			bTid=Integer.parseInt(request.getParameter("gPriceStr"));
+			cRedits=Integer.parseInt(request.getParameter("cReditsStr"));
+			sId=Integer.parseInt(request.getParameter("sIdStr"));
+		}catch(Exception e) //处理ID非法输入,时间关系我就不一一检测了
+		{
+			e.printStackTrace();
+			returnMessage="一个或多个输入不合法，请重新输入";
+			mav.addObject("returnMessage", returnMessage);
+			mav.setViewName("ConsumeAdd");
+			return mav;
+		}
+		//此处才发觉消费信息数据库设计有问题，是把客户uid当做主键，这就意味着每个客户只能消费一次
+		//因为主键数据库中只能有一个，，我日你么啊，整个几把了
+		//所以我把主键改成了cTime.用时间来当做主键
+			
+		try{//Ctime,cDate,cRemark自动装入
+			consume.setuId(uId);
+			consume.setgId(gId);
+			consume.setcNum(cNum);
+			consume.setoTid(oTid);
+			consume.setbTid(bTid);
+			consume.setcRedits(cRedits);
+			consume.setsId(sId);
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+			returnMessage="客户消费添加失败,请重试(未知原因)";
+			mav.setViewName("ConseumeAdd");
+			return mav;
+		}
+		consumeservice.add(consume);
+		returnMessage="客户消费添加成功！请输入客户ID查看，欢迎下次光临";
+		mav.addObject("returnMessage", returnMessage);
+		mav.setViewName("ConsumeAdd");			
+		return mav;		
+	}
 	
 	/**
 	 * 积分设置开始

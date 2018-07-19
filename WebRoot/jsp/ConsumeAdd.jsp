@@ -111,7 +111,7 @@ setInterval('t()',500);
 					<div class="w3layouts-left" style="width:300px;height:60px;background-color:#ffcc00;float:left;"> 
 						<!--search-box-->
 							<div class="w3-search-box" >
-								<form action="toCosumeAdd" method="post">
+								<form action="toConsumeAdd" method="post">
 									<input name ="searchUser" type="text" placeholder="输入消费客户ID搜索" required=""/>	
 									<input type="submit" value="">					
 								</form>					
@@ -164,7 +164,7 @@ setInterval('t()',500);
 					<div class="agile-tables" style="padding-top:5px;padding-bottom:0px;">
 						<div class="w3l-table-info">
 							<h2>添加消费信息</h2>
-							<form action="StaffAddToSql" method="post">
+							<form action="ConsumeAddToSql" method="post">
 							<table id="table">
 								<thead>  <!-- 此处写入数据库包含：用户iD,商品Id,消费时间，消费日期，消费数量，购买类型，操作类型，获得积分，员工ID,备注 -->
 									<tr>
@@ -215,7 +215,7 @@ setInterval('t()',500);
 								</tbody>
 							</table>
 							<div class="col-md-12 form-group">
-								<input type="hidden" value="${usermessage.uId}"/>
+								<input type="hidden" name="uIdStr" value="${usermessage.uId}"/>
 								<button type="submit" class="btn btn-primary">添加</button>
 								<button type="reset" class="btn btn-default">重置</button>
 							</div>
