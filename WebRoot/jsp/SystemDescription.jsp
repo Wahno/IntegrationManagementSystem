@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <base href="<%=basePath%>">
-<title>控制台</title>
+<title>系统说明</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="" />
@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<jsp:include page="baseJsp/Header.jsp"></jsp:include>
 				<!-- Item begin -->
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="./Main">系统说明</a> <i class="fa fa-angle-right"></i></li>
+					<li class="breadcrumb-item"><a href="Main">控制台</a> <i class="fa fa-angle-right"></i><a href="toSystemDescription">系统说明</a></li>
 				</ol>
 				<!-- Item end -->
 				<!-- Main begin -->
@@ -49,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				<div class="asked">
 					<div class="questions">
-						<h2>1.该系统能面对的用户</h2>
+						<h2>1.该系统面对的用户</h2>
 						<p>客户消费获得积分后可参与积分兑换礼品活动的商家或公司。</p>
 					</div>
 					 <div class="questions">
@@ -76,11 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							href="https://github.com/hao0129/IntegrationManagementSystem">https://github.com/hao0129/IntegrationManagementSystem</a></p>
 					 </div>	
 					  <div class="questions">
-						<h5>6.公司简介</h5>
-						<p> 强强科技集团成立于2018.06.12，旨在为客户提供良好的服务。</p>
-					 </div>	
-					  <div class="questions">
-						<h5>7.联系我们</h5>
+						<h5>6.联系我们</h5>
 						<p> QQ:843021061</p>
 						<p> 电话:15180450316</p>
 					 </div>				    

@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <base href="<%=basePath%>">
-<title>控制台</title>
+<title>数据恢复</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="" />

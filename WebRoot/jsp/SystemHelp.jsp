@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<jsp:include page="baseJsp/Header.jsp"></jsp:include>
 				<!-- Item begin -->
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="./Main">系统说明</a> <i class="fa fa-angle-right"></i></li>
+					<li class="breadcrumb-item"><a href="Main">控制台</a> <i class="fa fa-angle-right"></i><a href="toSystemHelp">系统帮助</a></li>
 				</ol>
 				<!-- Item end -->
 				<!-- Main begin -->
@@ -49,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				<div class="asked">
 					<div class="questions">
-						<h2>1.系统说明</h2>
+						<h2>系统帮助</h2>
 						<p>为了带给您更舒适的使用体验，积分管理系统全新上线啦！
 							本次升级优化了图形界面，让您使用各项功
 							能更方便快捷。新增在线功能，开启网络新服务
@@ -58,32 +58,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							下面为您介绍新系统各项功能的操作指南：</p>
 					</div>
 					 <div class="questions">
-						<h5>2.登录</h5>
+						<h5>1.登录</h5>
 						<p>用管理员账号可以登录账号。</p>
 						<p>	默认： 账号0， 密码123456</p>
-						<p>	如果没有账号，您可以注册管理员账号。
+						<p>	如果没有账号，您可以联系管理员或者使用管理员身份注册账号。
 								</p>
 					 </div>	
 					
 					  <div class="questions">
-						<h5>3.注册</h5>
-						<p>可向开发人员告知注册，开发人员会将注册人计入数据库，创建新的管理员。
+						<h5>2.注册</h5>
+						<p>使用管理员身份创建新的管理员或操作员。
 						</p>
 					 </div>	
 											
 					  <div class="questions">
-						<h5>4.添加用户信息</h5>
+						<h5>3.添加用户信息</h5>
 						<p>如果您要管理客户的积分，可以在您的管理员账号中添加客户。添加后，您便可以管理该客户的各种信息，如管理客户基本信息，管理客户消费情况，管理员工信息，管理商品信息，查看员工业绩、设置积分情况、查看系统说明等。
 						添加方式：登录管理员账号，如果想要管理客户信息，点击左侧导航栏中“客户信息”旁边的按钮【添加客户】，在打开的添加客户页面中，选择您要添加的客户类型，根据页面提示完成操作即可。
 						如果想要管理员工信息，请点击左侧导航栏中“员工信息”旁边的按钮【添加员工】”，进行添加；如果想要积分信息，请点击左侧导航栏中的按钮【积分设置】”，进行变动。
 						</p>
 					 </div>	
 					  <div class="questions">
-						<h5>5.移除用户</h5>
+						<h5>4.移除用户</h5>
 						<p>点击左侧导航栏中“客户信息”旁边的按钮【移除客户】，在打开的添加客户页面中，选择您要添加的客户类型，根据页面提示完成操作即可。员工可以同样管理。</p>
 					 </div>	
 					  <div class="questions">
-						<h5>6.修改信息</h5>
+						<h5>5.修改信息</h5>
 						<p>点击左侧导航栏“客户信息”旁边的按钮【修改客户】，在打开的添加客户页面中，进入信息页面。您可以修改客户的信息。
 						点击左侧导航栏“员工信息”旁边的按钮【修改员工】，在打开的添加员工页面中，进入信息页面。您可以修改员工的信息。
 						如果您在修改过程中遇到问题，请与管理员方志强（1432769669@qq.com）联系。
