@@ -717,8 +717,8 @@ public class MainOperationController {
 	public ModelAndView toConsumeAdd(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 		
 		ModelAndView mav = new ModelAndView();
-		//mav=selectUser("ConsumeAdd",request, response,session);//处理添加界面的查询
-		mav.setViewName("ConsumeAdd");
+		mav=selectUser("ConsumeAdd",request, response,session);//处理添加界面的查询
+		//mav.setViewName("ConsumeAdd");
 		return mav;
 	}
 	

@@ -44,9 +44,10 @@ var d=now.getDay();
 var h=now.getHours();
 var mi=now.getMinutes();
 var s=now.getSeconds(); 
-var tt=y+"-"+mo+"-"+d+"-"+h+"-"+mi+"-"+s;
-document.getElementById("cDate").value=tt;
-document.getElementById("cTime").value=tt;
+var date=y+"-"+mo+"-"+d;
+var time=h+"-"+mi+"-"+s;
+document.getElementById("cDate").value=date;
+document.getElementById("cTime").value=time;
 }
 setInterval('t()',500);
 </script>
@@ -87,6 +88,8 @@ setInterval('t()',500);
 			width:100px;
 	}
 	table{
+	cellspacing:"0";
+	cellpadding:"0";
 	}
 	table thead th{
 	background-color:#ffcc66;/*表格头背景*/
@@ -161,6 +164,7 @@ setInterval('t()',500);
 					<div class="agile-tables" style="padding-top:5px;padding-bottom:0px;">
 						<div class="w3l-table-info">
 							<h2>添加消费信息</h2>
+							<form action="StaffAddToSql" method="post">
 							<table id="table">
 								<thead>  <!-- 此处写入数据库包含：用户iD,商品Id,消费时间，消费日期，消费数量，购买类型，操作类型，获得积分，员工ID,备注 -->
 									<tr>
@@ -179,38 +183,45 @@ setInterval('t()',500);
 								</thead>
 								<tbody>
 								<!-- 上右下左 -->
+									
 									<tr>
-										<td><input name="" type="text" placeholder="123456" value="" required="" style="width:50px;"/></td>
-										<td><input name="id" type="text" placeholder="橘子" value="" required="" style="width:50px;"/></td>
+								
+										<td><input name="gIdStr" type="text" placeholder="123456"  required="" style="width:50px;"/></td>
+										<td><input name="gName" type="text" placeholder="橘子"  required="" style="width:60px;"/></td>
 										<td><input id="cDate" name="cDate" type="text" 
 												   class="form-control1 ng-invalid ng-invalid-required"
-												   ng-model="model.date"  readonly="readonly" style="width:120px;"/>
+												   ng-model="model.date"  readonly="readonly" style="width:70px;"/>
 										</td>
 										<td><input  id="cTime" name="cTime" type="text" 
 												   class="form-control1 ng-invalid ng-invalid-required"
-												   ng-model="model.date"  readonly="readonly" style="width:120px;"/>
+												   ng-model="model.date"  readonly="readonly" style="width:70px;"/>
 										</td>
-										<td><input name="" type="text" placeholder="1209元"  required="" style="width:50px;"/></td>
-										<td><input name="" type="text" placeholder="件"  required="" style="width:50px;"/></td>
-										<td> <select name="bT" style="width:90px; height:50px;">
+										<td><input name="gPriceStr" type="text" placeholder="1209元"  required="" style="width:50px;"/></td>
+										<td><input name="cNumStr" type="text" placeholder="件"  required="" style="width:50px;"/></td>
+										<td> <select name="bTidStr" style="width:100px; height:50px;">
 												<option value="0">自己购买</option>
 												<option value="1">别人介绍</option>
 											</select>
 										</td>
-										<td> <select name="sSex" style="width:90px; height:50px;">
+										<td> <select name="oTidStr" style="width:100px; height:50px;">
 												<option value="0">消费购买</option>
 												<option value="1">返还现金</option>
 											</select>
 										</td>
-										<td><input name="" type="text" placeholder="1209分" value="" style="width:50px;"/></td>
-										<td><input name="" type="text" placeholder="5" value="" required="" style="width:50px;"/></td>
-										<td><input name="" type="text" placeholder="购买备注哦" value="" style="width:100px;"/></td>
+										<td><input name="cReditsStr" type="text" placeholder="1209分" value="" style="width:50px;"/></td>
+										<td><input name="sIdStr" type="text" placeholder="5" value="" required="" style="width:50px;"/></td>
+										<td><input name="cRemark" type="text" placeholder="购买备注哦" value="" style="width:100px;"/></td>
 									</tr>
-							
 								</tbody>
 							</table>
-							 
-						</div>
+							<div class="col-md-12 form-group">
+								<input type="hidden" value="${usermessage.uId}"/>
+								<button type="submit" class="btn btn-primary">添加</button>
+								<button type="reset" class="btn btn-default">重置</button>
+							</div>
+							<div class="clearfix"></div>
+							</form>
+						</div>	 
 					</div>
 				</div>
 				
