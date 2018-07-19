@@ -335,7 +335,8 @@ public class MainOperationController {
 	
 	@RequestMapping("StaffAddToSql") //添加职工信息到数据库   后台处理添加成功 返回添加界面
 	public ModelAndView StaffAddToSql(Staff staff,HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
-		/*暂时没有加电话等合法性的判断*/		
+		/*暂时没有加电话等合法性的判断*/
+		
 		int sId;
 		String returnMessage="";
 		String sIdStr=request.getParameter("sIdStr");
@@ -505,6 +506,7 @@ public class MainOperationController {
 		ModelAndView mav = new ModelAndView();
 		if(request.getParameter("searchGoods")==null)//其他界面跳转到查询页面
 		{
+			System.out.println(request.getParameter("searchGoods"));
 			mav.setViewName(toSrc);
 			return mav;
 		}
@@ -522,8 +524,10 @@ public class MainOperationController {
 		Goods goods=goodsservice.get(gId);
 		if(goods==null){
 			returnMessage="该商品不存在哦!";
+			System.out.println("该商品不存在哦");
 		}
 		else{
+			System.out.println("该商品不存在哦11111");
 			returnMessage="已搜索到ID为:  "+gId+"   的商品";
 			mav.addObject("goodsmessage", goods);
 		}		
@@ -594,16 +598,15 @@ public class MainOperationController {
 	public ModelAndView toGoodsSelect(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
-		mav=selectUser("GoodsSelect",request, response,session);
+		mav=selectGoods("GoodsSelect",request, response,session);
 		return mav;
 	}
-	
-	
+		
 	@RequestMapping("toGoodsUpdate")  //跳转到修改客户信息界面 以及在修改页面查询
 	public ModelAndView toGoodsUpdate(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
-		mav=selectUser("GoodsUpdate",request, response,session);
+		mav=selectGoods("GoodsUpdate",request, response,session);
 		return mav;
 	}
 	
@@ -663,7 +666,7 @@ public class MainOperationController {
 	public ModelAndView toGoodsDelete(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 		
 		ModelAndView mav = new ModelAndView();
-		mav=selectUser("GoodsDelete",request, response,session);
+		mav=selectGoods("GoodsDelete",request, response,session);
 		return mav;
 	}
 	@RequestMapping("GoodsDeleteFromeSql")  //确认删除按钮按下后  从数据库  删除客户信息

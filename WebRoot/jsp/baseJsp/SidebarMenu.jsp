@@ -77,8 +77,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				class="fa fa-angle-right" style="float: right"></span>
 				<div class="clearfix"></div></a>
 				<ul id="menu-academico-sub">
-					<li id="menu-academico-avaliacoes"><a href="#">添加商品信息</a></li>
-					<li id="menu-academico-avaliacoes"><a href="#">查询商品信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="toGoodsAdd">添加商品信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="toGoodsSelect">查询商品信息</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">修改商品信息</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">移除商品信息</a></li>
 				</ul>

@@ -65,12 +65,12 @@ setInterval('t()',500);
 				<!-- Main begin -->
 				<div class="validation-system">
 					<!-- 这是大背景 -->
+				
+					<div class="validation-form">
+						<!---->
 					<div class="alert alert-warning" >
 						<strong>${returnMessage}</strong>		
 					</div>
-					<div class="validation-form">
-						<!---->
-
 						<form action="UserAddToSql" method="post">
 							<div class="vali-form">
 								<div class="col-md-6 form-group1">

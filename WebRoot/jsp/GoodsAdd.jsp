@@ -11,7 +11,7 @@
 <html>
 <head>
 <base href="<%=basePath%>">
-<title>控制台</title>
+<title>商品添加</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="" />
@@ -34,21 +34,6 @@
 	rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
 
-<script type="text/javascript">
-function t(){
-var now= new Date();
-var y=now.getFullYear();
-var mo=now.getMonth()+1;
-var d=now.getDay();
-var h=now.getHours();
-var mi=now.getMinutes();
-var s=now.getSeconds(); 
-var tt=y+"-"+mo+"-"+d+"-"+h+"-"+mi+"-"+s;
-document.getElementById("uRegDate").value=tt;
-}
-setInterval('t()',500);
-</script>
-
 </head>
 
 <body>
@@ -67,11 +52,13 @@ setInterval('t()',500);
 					<!-- 这是大背景 -->
 					<div class="validation-form">
 						<!---->
-
+					<div class="alert alert-warning" >
+						<strong>${returnMessage}</strong>		
+					</div>
 						<form action="GoodsAddToSql" method="post">
 							<div class="vali-form">
 								<div class="col-md-6 form-group1">
-									<label class="control-label">商品ID</label> <input name="gIdtr"
+									<label class="control-label">商品ID</label> <input name="gIdStr"
 										type="text" placeholder="123456" required="">
 								</div>
 								<div class="col-md-6 form-group1 form-last">
@@ -80,25 +67,37 @@ setInterval('t()',500);
 								</div>
 								<div class="clearfix"></div>
 							</div>
+							
 							<div class="vali-form">
-								<div class="col-md-6 form-group1">
-									<label class="control-label">商品数量</label> <input name="gNum"
-										type="text" >
+								<div class="col-md-6 form-group1 form-last">
+									<label class="control-label">商品售价</label> <input name="gPriceStr"
+										type="text" placeholder="" required="">
 								</div>
 								<div class="col-md-6 form-group1 form-last">
-									<label class="control-label">商品成本</label> <input name="gCost"
+									<label class="control-label">商品成本</label> <input name="gCostStr"
 										type="text" required="">
 								</div>
 								<div class="clearfix"></div>
 							</div>
+							
 							<div class="vali-form">
 								<div class="col-md-6 form-group1">
-									<label class="control-label">商品兑换所需积分</label> <input name="gExchange"
-										type="text" placeholder="233" required="">
+									<label class="control-label">商品数量</label> <input name="gNumStr"
+										type="text" >
 								</div>
-								<div class="col-md-6 form-group1 form-last">
-									<label class="control-label">商品备注</label> <input name="gRemark"
-										type="text" placeholder="新品" required="">
+								
+								<div class="col-md-6 form-group1">
+									<label class="control-label">商品兑换所需积分</label> <input name="gExchangeStr"
+										type="text" required="">
+								</div>
+							
+								<div class="col-md-12 form-group1 ">
+									<label class="control-label">商品备注</label>
+									<textarea name="gRemark" placeholder="新品说明等备注"></textarea>
+								</div>
+								<div class="col-md-12 form-group">
+									<button type="submit" class="btn btn-primary">保存</button>
+									<button type="reset" class="btn btn-default">重置</button>
 								</div>
 								<div class="clearfix"></div>
 							</div>
