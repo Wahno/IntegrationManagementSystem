@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<ul id="menu-academico-sub">
 					<li id="menu-academico-avaliacoes"><a href="toUserAdd">添加客户</a></li>
 					<li id="menu-academico-avaliacoes"><a href="toUserSelect">查询客户</a></li>
-					<li id="menu-academico-avaliacoes"><a href="#">修改客户</a></li>
+					<li id="menu-academico-avaliacoes"><a href="toUserUpdate">修改客户</a></li>
 					<li id="menu-academico-avaliacoes"><a href="toUserDelete">移除客户</a></li>
 				</ul>
 			</li>
@@ -67,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<ul id="menu-academico-sub">
 					<li id="menu-academico-avaliacoes"><a href="toStaffAdd">添加员工信息</a></li>
 					<li id="menu-academico-avaliacoes"><a href="toStaffSelect">查询员工信息</a></li>
-					<li id="menu-academico-avaliacoes"><a href="#">修改员工信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="toStaffUpdate">修改员工信息</a></li>
 					<li id="menu-academico-avaliacoes"><a href="toStaffDelete">移除员工信息</a></li>
 				</ul>
 			</li>
@@ -77,8 +77,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				class="fa fa-angle-right" style="float: right"></span>
 				<div class="clearfix"></div></a>
 				<ul id="menu-academico-sub">
-					<li id="menu-academico-avaliacoes"><a href="#">添加商品信息</a></li>
-					<li id="menu-academico-avaliacoes"><a href="#">查询商品信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="toGoodsAdd">添加商品信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="toGoodsSelect">查询商品信息</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">修改商品信息</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">移除商品信息</a></li>
 				</ul>

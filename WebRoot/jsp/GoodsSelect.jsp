@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <base href="<%=basePath%>">
-<title>个人信息</title>
+<title>商品查询</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="" />
@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<!--search-box-->
 							<div class="w3-search-box" ">
 								<form action="toGoodsSelect" method="post">
-									<input name ="GoodsStaff" type="text" placeholder="输入商品ID搜索" required="">	
+									<input name ="searchGoods" type="text" placeholder="输入商品ID搜索" required="">	
 									<input type="submit" value="">					
 								</form>
 							</div><!--//end-search-box-->
@@ -69,10 +69,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<strong>商品ID：</strong>${goodsmessage.gId}
 						</div>
 						<div class="alert alert-info" role="alert">
-							<strong>商品名称：</strong>${goodsmessage.gName }
+							<strong>商品名称：</strong>${goodsmessage.gName}
 						</div>
 						<div class="alert alert-warning" role="alert">
-							<strong>商品数量：</strong>${goodsmessage.gNum }
+							<strong>商品数量：</strong>${goodsmessage.gNum}
 						</div>		
 						<div class="alert alert-success" role="alert">
 							<strong>商品成本：</strong>${goodsmessage.gCost}
@@ -81,18 +81,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="alert alert-info" role="alert">
 							<strong>商品售价：</strong>${goodsmessage.gPrice}
 						</div>
-						<div class="alert alert-info" role="alert">
-							<strong>商品兑换所需积分：</strong>${goodsmessage.gExchange }
+						<div class="alert alert-danger" role="alert">
+							<strong>商品兑换所需积分：</strong>${goodsmessage.gExchange}
 						</div>	
 						<div class="alert alert-info" role="alert">
 							<strong>商品备注：</strong>${goodsmessage.gRemark}
-						</div>		
-						<div class="alert alert-info" role="alert">
-							<strong>获得积分：</strong>${goodsmessage.cRedits}
-						</div>	
-						<div class="alert alert-info" role="alert">
-							<strong>消费备注：</strong>${goodsmessage.cRemark}
-						</div>						
+						</div>							
 				</div>
 				<!-- Main end -->
 				<jsp:include page="baseJsp/Footer.jsp"></jsp:include>

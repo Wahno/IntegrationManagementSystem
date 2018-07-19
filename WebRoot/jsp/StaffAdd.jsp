@@ -38,13 +38,13 @@
 function t(){
 var now= new Date();
 var y=now.getFullYear();
-var m=now.getMonth()+1;
+var mo=now.getMonth()+1;
 var d=now.getDay();
 var h=now.getHours();
-var m=now.getMinutes();
+var mi=now.getMinutes();
 var s=now.getSeconds(); 
-var tt=y+"-"+m+"-"+d+"-"+h+"-"+m+"-"+s;
-document.getElementById("SregDate").value=tt;
+var tt=y+"-"+mo+"-"+d+"-"+h+"-"+mi+"-"+s;
+document.getElementById("sRegDate").value=tt;
 }
 setInterval('t()',500);
 </script>
@@ -67,25 +67,27 @@ setInterval('t()',500);
 					<!-- 这是大背景 -->
 					<div class="validation-form">
 						<!---->
-
+					<div class="alert alert-warning" >
+						<strong>${returnMessage}</strong>	<!-- 这是注册是否成功等的提示 -->	
+					</div>
 						<form action="StaffAddToSql" method="post">
 							<div class="vali-form">
 								<div class="col-md-6 form-group1">
-									<label class="control-label">员工号</label> <input name="Sname"
+									<label class="control-label">员工号</label> <input name="sIdStr"
 										type="text" placeholder="123456" required="">
 								</div>
 								<div class="col-md-6 form-group1 form-last">
-									<label class="control-label">员工姓名</label> <input name="Sid"
+									<label class="control-label">员工姓名</label> <input name="sName"
 										type="text" placeholder="张三" required="">
 								</div>
 								<div class="clearfix"></div>
 							</div>
 							<div class="col-md-6 form-group1 form-last">
-									<label class="control-label">员工助记符</label> <input name="Smark"
+									<label class="control-label">员工助记符</label> <input name="sMark"
 										type="text" required="">
 							</div>
 							<div class="col-md-12 form-group2 group-mail">
-								<label class="control-label">员工性别</label> <select name="Ssex">
+								<label class="control-label">员工性别</label> <select name="sSex">
 									<option value="0">男</option>
 									<option value="1">女</option>
 								</select>
@@ -94,19 +96,19 @@ setInterval('t()',500);
 							<div class="clearfix"></div>
 							<div class="vali-form">
 							<div class="col-md-6 form-group1">
-								<label class="control-label">员工电话</label> <input name="Stel"
+								<label class="control-label">员工电话</label> <input name="sTel"
 									type="text" >
 							</div>
 						
 							<div class="clearfix"></div>
 							</div>
 							<div class="col-md-12 form-group1 group-mail">
-								<label class="control-label">员工地址</label> <input name="Saddr"
+								<label class="control-label">员工地址</label> <input name="sAddr"
 									type="text">
 								<p class=" hint-block">格式:X省X市X县X街道</p>
 							</div>
 							<div class="col-md-12 form-group1 group-mail">
-								<label class="control-label ">注册日期</label> <input id="SregDate" name="SregDate"
+								<label class="control-label ">注册日期</label> <input id="sRegDate" name="sRegDate"
 									type="text"
 									class="form-control1 ng-invalid ng-invalid-required"
 									ng-model="model.date"  value="" readonly="readonly">
@@ -115,7 +117,7 @@ setInterval('t()',500);
 							<div class="clearfix"></div>
 							<div class="col-md-12 form-group1 ">
 								<label class="control-label">备注</label>
-								<textarea name="Sremark" placeholder="个人说明等备注"></textarea>
+								<textarea name="sRemark" placeholder="个人说明等备注"></textarea>
 							</div>
 							<div class="clearfix"></div>
 
