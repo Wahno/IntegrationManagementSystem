@@ -39,16 +39,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<jsp:include page="../baseJsp/Header.jsp"></jsp:include>
 				<!-- Item begin -->
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="./Main">控制台</a> <i class="fa fa-angle-right"></i><a href="./Data">数据恢复</a></li>
+					<li class="breadcrumb-item"><a href="Main">控制台</a> <i class="fa fa-angle-right"></i><a href="./Data">数据管理</a><i class="fa fa-angle-right"></i><a href="DataRestore">数据恢复</a></li>
 				</ol>
 				<!-- Item end -->
 				<!-- Main begin -->
 				<div class="grid_3 grid_4 w3_agileits_icons_page">
-					<div class="panel1 button-sizes">
-						<div class="panel-heading">
-							<div class="panel-title pn">
-								<h3 class="mtn mb10 fw400">数据恢复</h3>
-							</div>
+					<div class="grid_3 grid_5 w3ls">
+						<h3>数据恢复</h3>
+						<div class="form-group">
+						<form id="DataRestoreFile" method="post" enctype="multipart/form-data">
+							<label for="exampleInputFile">选择备份文件：</label> 
+							<input type="file"  name="uploadFile"><br />
+							<input type="submit" class="btn-primary btn" value="上传">
+						</form>
 						</div>
 						
 					</div>
