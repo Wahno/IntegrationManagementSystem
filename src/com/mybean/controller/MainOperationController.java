@@ -709,8 +709,18 @@ public class MainOperationController {
 	 * 商品信息处理结束
 	 * */
 	
+	/**
+	 * 客户消费处理开始
+	 * */
 	
-	
+	@RequestMapping("toConsumeAdd")  //跳转到添加客户消费界面界面 以及 在添加界面里查询客户
+	public ModelAndView toConsumeAdd(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+		
+		ModelAndView mav = new ModelAndView();
+		//mav=selectUser("ConsumeAdd",request, response,session);//处理添加界面的查询
+		mav.setViewName("ConsumeAdd");
+		return mav;
+	}
 	
 	
 	/**

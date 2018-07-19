@@ -54,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span class="fa fa-angle-right" style="float: right"></span>
 				<div class="clearfix"></div></a>
 				<ul id="menu-academico-sub">
-					<li id="menu-academico-avaliacoes"><a href="#">添加消费</a></li>
+					<li id="menu-academico-avaliacoes"><a href="toConsumeAdd">添加消费</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">查询消费</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">导出表格</a></li>
 				</ul>
@@ -119,8 +119,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="clearfix"></div></a>
 				<ul>
 					<li><a href="#">系统设置</a></li>
-					<li><a href="./toSystemDescription">系统说明</a></li>
-					<li><a href="./toSystemHelp">系统帮助</a></li>
+					<li><a href="toSystemDescription">系统说明</a></li>
+					<li><a href="toSystemHelp">系统帮助</a></li>
 					<li><a href="Logout">注销退出</a></li>
 				</ul>
 			</li>

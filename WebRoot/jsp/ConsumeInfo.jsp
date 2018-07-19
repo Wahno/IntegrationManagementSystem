@@ -62,6 +62,19 @@
 		});
 	});
 </script>
+<style type="text/css">
+	/*
+	 这是输入框的样式
+	可以直接定义input{color:#ccc;border:   ;}等全局属性。所有Input的文本框都会应用该样式。
+	可以定义某种类型文本框，比如 input[type='text']{}就是所有文本框类型为text的都应用该样式。
+	可以直接给某个input添加class，然后给指定的class进行样式渲染，比如<input type="button" class="inp-btn"/>那么就给 .inp-btn{}添加样式即可。
+	*/
+	input{
+			border-style:none none solid none;  /*上右下左*/
+			background-color:transparent;
+			width:40px;
+	}
+</style>
 </head>
 <body>
 	<div class="page-container">
@@ -101,10 +114,10 @@
 									</tr>
 								</thead>
 								<tbody>
-								
+								<!-- 上右下左 -->
 									<tr>
-										<td>123</td>
-										<td>王尼玛</td>
+										<td><input name="id" type="text" value="123456789" style="border-style: none none solid none ;background-color:transparent;"/></td>
+										<td><input name="id" type="text" value="wagnniam" style="border-style: none none solid none ;background-color:transparent;"/></td>
 										<td>aaa</td>
 										<td>0129</td>
 										<td>1209</td>
