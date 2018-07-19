@@ -747,7 +747,7 @@ public class MainOperationController {
 			gId=Integer.parseInt(request.getParameter("gIdStr"));
 			cNum=Integer.parseInt(request.getParameter("cNumStr"));
 			oTid=Integer.parseInt(request.getParameter("oTidStr"));
-			bTid=Integer.parseInt(request.getParameter("gPriceStr"));
+			bTid=Integer.parseInt(request.getParameter("bTidStr"));
 			cRedits=Integer.parseInt(request.getParameter("cReditsStr"));
 			sId=Integer.parseInt(request.getParameter("sIdStr"));
 		}catch(Exception e) //处理ID非法输入,时间关系我就不一一检测了

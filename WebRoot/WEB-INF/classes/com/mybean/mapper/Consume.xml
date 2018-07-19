@@ -5,7 +5,7 @@
     <mapper namespace="com.mybean.mapper.ConsumeMapper">
     	
         <insert id="add" parameterType="Consume" >
-            insert into consume_info (uId,cDate,cTime,gId,cNum,oTid,bTid,cRedits,cRedits,sId) values (#{uId},#{cDate},#{cTime},#{gId},#{cNum},#{oTid},#{bTid},#{cRedits},#{cRemark},#{sId})   
+            insert into consume_info (uId,cDate,cTime,gId,cNum,oTid,bTid,cRedits,cRemark,sId) values (#{uId},#{cDate},#{cTime},#{gId},#{cNum},#{oTid},#{bTid},#{cRedits},#{cRemark},#{sId})   
         </insert>
          
         <delete id="delete" parameterType="_int" >

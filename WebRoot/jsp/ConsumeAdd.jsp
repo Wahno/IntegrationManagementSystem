@@ -45,7 +45,7 @@ var h=now.getHours();
 var mi=now.getMinutes();
 var s=now.getSeconds(); 
 var date=y+"-"+mo+"-"+d;
-var time=h+"-"+mi+"-"+s;
+var time=h+":"+mi+":"+s;
 document.getElementById("cDate").value=date;
 document.getElementById("cTime").value=time;
 }
