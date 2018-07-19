@@ -11,11 +11,28 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("")
 public class DataController {
 	
+	
+	
 	@RequestMapping("Data")
-	public ModelAndView AdminMessage(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView DataMessage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("Data");//返回到的JSP文件名
+		mav.setViewName("DataJsp/Data");//返回到的JSP文件名
+		return mav;
+	}
+	
+	@RequestMapping("DataBackup")
+	public ModelAndView DataBackUp(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("DataJsp/DataBackup");//返回到的JSP文件名
+		return mav;
+	}
+	@RequestMapping("DataRestore")
+	public ModelAndView DataRestore(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("DataJsp/DataRestore");//返回到的JSP文件名
 		return mav;
 	}
 

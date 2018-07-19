@@ -101,13 +101,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="clearfix"></div></a>
 			</li>
 			
-			<li id="menu-academico"><a href="#"> <i class="fa fa-file-text-o"></i> 
+			<li id="menu-academico"><a href="Data"> <i class="fa fa-file-text-o"></i> 
 				<span>数据管理</span>
 				<span class="fa fa-angle-right" style="float: right"></span>
 				<div class="clearfix"></div></a>
 				<ul id="menu-academico-sub">
-					<li id="menu-academico-boletim"><a href="#">备份数据</a></li>
-					<li id="menu-academico-avaliacoes"><a href="#">恢复数据</a></li>
+					<li id="menu-academico-boletim"><a href="DataBackup">备份数据</a></li>
+					<li id="menu-academico-avaliacoes"><a href="DataRestore">恢复数据</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">统计数据</a></li>
 					<li id="menu-academico-avaliacoes"><a href="./toExportExcel">导出数据</a></li>
 				</ul>
