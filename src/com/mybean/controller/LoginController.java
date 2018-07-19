@@ -63,7 +63,9 @@ public class LoginController {
 	public ModelAndView Logout(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		session.invalidate();
-		mav.setViewName("../index");
+		mav.addObject("message", "已退出系统！正在返回登录界面。");
+		mav.addObject("nextPage", "./");//返回到index
+		mav.setViewName("MessagePage");//中继界面
 		return mav;
 	}
 	@RequestMapping("Main")

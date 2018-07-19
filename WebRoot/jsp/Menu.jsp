@@ -131,13 +131,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="#"><i
+					<a class="agile-icon" href="DataBackup"><i
 						class="fa fa-copy" aria-hidden="true"></i>
 						备份数据信息</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="#"><i class="fa fa-repeat"
+					<a class="agile-icon" href="DataRestore"><i class="fa fa-repeat"
 						aria-hidden="true"></i> 
 						恢复数据信息</a>
 				</div>
