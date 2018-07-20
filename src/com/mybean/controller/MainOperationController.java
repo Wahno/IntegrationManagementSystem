@@ -1026,7 +1026,6 @@ public class MainOperationController {
 		}else 
 			returnMessage="导出失败";
 		mav.addObject("returnMessage", returnMessage);	
-		mav.setViewName("ExportExcel/ExportGoodsInfo");
 		mav.setViewName("ExportExcel");
 		return mav;
 	}
@@ -1098,6 +1097,39 @@ public class MainOperationController {
 		mav.setViewName("ExportExcel/ExportConsumeInfo");
 		return mav;
 	}
+	
+	@RequestMapping("toExportAllConsumeInfo")  //跳转到导出客户信息界面
+	public ModelAndView toExportAllConsumeInfo(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		String returnMessage="";
+		List<String> strList=new ArrayList<String>();
+		List<Consume> list=consumeservice.list();
+		for(int i=0;i<list.size();i++)
+		{
+			Consume consume=list.get(i);
+			strList.add(consume.getuId()+"");
+			strList.add(consume.getcDate());
+			strList.add(consume.getcTime()+"");
+			strList.add(consume.getgId()+"");
+			strList.add(consume.getcNum()+"");
+			strList.add(consume.getoTid()+"");
+			strList.add(consume.getbTid()+"");
+			strList.add(consume.getcRedits()+"");
+			strList.add(consume.getcRemark());
+			strList.add(consume.getsId()+"");
+		}
+		String[] title={"用户ID","消费日期","消费时间","商品ID","消费数量","操作类型","购买类型","获得积分","购买备注","员工ID"};
+		if(writeToexcel("F:/allConsumeInfo",title,strList))
+		{
+			returnMessage="导出到F:/allConsumeInfo.xls成功";
+		}else 
+			returnMessage="导出失败";
+		mav.addObject("returnMessage", returnMessage);	
+		mav.setViewName("ExportExcel");
+		return mav;		
+	}
+	
 	/**
 	 * 积分设置开始
 	 * */

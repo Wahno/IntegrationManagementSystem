@@ -88,8 +88,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 					
 								<div class="icon-box col-md-3 col-sm-4">
-									<a class="agile-icon" href="#"><i class="fa fa-table"
-										aria-hidden="true"></i> 导出表格信息aaa</a>
+									<a class="agile-icon" href="toExportAllConsumeInfo"><i class="fa fa-table"
+										aria-hidden="true"></i> 导出所有客户消费信息</a>
 								</div>
 							</div>
 						</section>
