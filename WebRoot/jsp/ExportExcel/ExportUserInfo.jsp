@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <base href="<%=basePath%>">
-<title>个人信息</title>
+<title>导出用户信息</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="" />
@@ -40,14 +40,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<jsp:include page="../baseJsp/Header.jsp"></jsp:include>
 				<!-- Item begin -->
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">客户信息</a><i
-						class="fa fa-angle-right"></i>查询客户
+					<li class="breadcrumb-item"><a href="Data">数据管理</a><i
+						class="fa fa-angle-right"></i>导出客户信息
 				</ol>
 				<div class="breadcrumb" style=" height:70px;"> <!-- 这是搜索框后面的白色背景 -->
 					<div class="w3layouts-left" style="width:300px;height:60px;background-color:#ffcc00;float:left;"> 
 						<!--search-box-->
 							<div class="w3-search-box" >
-								<form action="toUserUpdate" method="post">
+								<form action="toExportUserInfo" method="post">
 									<input name ="searchUser" type="text" placeholder="输入客户ID搜索" required=""/>	
 									<input type="submit" value="">					
 								</form>
@@ -55,9 +55,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 							<!--//end-search-box-->
 					 </div>
-					<div class="w3layouts-left" style="width:100px;height:60px;background-color:#ffcc00;float:left;">
-								<input  type="hidden" name="export"value="${usermessage}"/>
+					<div class="w3layouts-left" style="width:120px;height:60px;background-color:#ffcc00;float:left;">
+							<form action="toExportUser" method="post">
+							
+								<input  type="hidden" name="searchUser"value="${usermessage.uId}"/>
 								<button type="submit" class="btn btn-primary">确认导出</button>
+								</form>
 					</div>			
 				</div>
 			</div>

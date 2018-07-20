@@ -2,10 +2,12 @@ package com.mybean.controller;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,9 +33,14 @@ import com.mybean.service.ConsumeService;
 import com.mybean.service.GoodsService;
 import com.mybean.service.StaffService;
 import com.mybean.service.UserService;
+
+import jxl.Workbook;
+import jxl.write.Label;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
 /**
- * ÒÔÏÂ·½·¨ÖĞÓĞĞí¶à´úÂë¶ÎÒ»Ñù£¬Ö»ÊÇ²ÎÊı²»Í¬
- * ÎªÁË°´ÕÕ¹¦ÄÜ·Ö£¬²¢Ã»ÓĞ´úÂëÖØÓÃ£¬¶şÊÇÖØĞ´
+ * ä»¥ä¸‹æ–¹æ³•ä¸­æœ‰è®¸å¤šä»£ç æ®µä¸€æ ·ï¼Œåªæ˜¯å‚æ•°ä¸åŒ
+ * ä¸ºäº†æŒ‰ç…§åŠŸèƒ½åˆ†ï¼Œå¹¶æ²¡æœ‰ä»£ç é‡ç”¨ï¼ŒäºŒæ˜¯é‡å†™
  * **/
 @Controller
 public class MainOperationController {
@@ -48,7 +55,7 @@ public class MainOperationController {
 	@Autowired
 	ConsumeService consumeservice;
 	
-	@RequestMapping("ConsumeMain")  //¿Í»§×Ü½çÃæ
+	@RequestMapping("ConsumeMain")  //å®¢æˆ·æ€»ç•Œé¢
 	public ModelAndView ConsumeMain(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
@@ -56,89 +63,89 @@ public class MainOperationController {
 		return mav;
 	}
 	
-	@RequestMapping("ConsumeInfo")  //ËùÓĞ¿Í»§ĞÅÏ¢½çÃæ
+	@RequestMapping("ConsumeInfo")  //æ‰€æœ‰å®¢æˆ·ä¿¡æ¯ç•Œé¢
 	public ModelAndView ConsumeInfo(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
 		/**
-		 * ´Ë´¦µ÷ÓÃĞÅÏ¢²éÑ¯Óï¾ä
+		 * æ­¤å¤„è°ƒç”¨ä¿¡æ¯æŸ¥è¯¢è¯­å¥
 		 * */
 		mav.setViewName("ConsumeInfo");
 		return mav;
 	}
 	
-	@RequestMapping("ConsumeCredits")  //ËùÓĞ»ı·ÖĞÅÏ¢½çÃæ
+	@RequestMapping("ConsumeCredits")  //æ‰€æœ‰ç§¯åˆ†ä¿¡æ¯ç•Œé¢
 	public ModelAndView ConsumeCredits(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
 		/**
-		 * ´Ë´¦µ÷ÓÃ»ı·Ö²éÑ¯Óï¾ä
+		 * æ­¤å¤„è°ƒç”¨ç§¯åˆ†æŸ¥è¯¢è¯­å¥
 		 * */
 		mav.setViewName("ConsumeCredits");
 		return mav;
 	}
 	
-	@RequestMapping("ConsumeExchange")  //ËùÓĞ¶Ò»»ĞÅÏ¢½çÃæ
+	@RequestMapping("ConsumeExchange")  //æ‰€æœ‰å…‘æ¢ä¿¡æ¯ç•Œé¢
 	public ModelAndView ConsumeExchange(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
 		/**
-		 * ´Ë´¦µ÷ÓÃ»ı·Ö²éÑ¯Óï¾ä
+		 * æ­¤å¤„è°ƒç”¨ç§¯åˆ†æŸ¥è¯¢è¯­å¥
 		 * */
 		mav.setViewName("ConsumeExchange");
 		return mav;
 	}
 	
 	/**
-	 * ÒÔÏÂÎª¿Í»§ĞÅÏ¢´¦Àí·şÎñ
+	 * ä»¥ä¸‹ä¸ºå®¢æˆ·ä¿¡æ¯å¤„ç†æœåŠ¡
 	 * 
 	 * */
-	/**²éÑ¯£¬ÔÚ²éÑ¯½çÃæµ÷ÓÃ£¬ĞŞ¸Ä£¬É¾³ı£¬½çÃæµÄ×Ó²éÑ¯ÀïÃæµ÷ÓÃ
-	 * ²ÎÊı£ºString toSrc:²éÑ¯Íêºó·µ»ØµÄ½çÃæ
+	/**æŸ¥è¯¢ï¼Œåœ¨æŸ¥è¯¢ç•Œé¢è°ƒç”¨ï¼Œä¿®æ”¹ï¼Œåˆ é™¤ï¼Œç•Œé¢çš„å­æŸ¥è¯¢é‡Œé¢è°ƒç”¨
+	 * å‚æ•°ï¼šString toSrc:æŸ¥è¯¢å®Œåè¿”å›çš„ç•Œé¢
 	 * */
 	public ModelAndView selectUser(String toSrc,HttpServletRequest request, HttpServletResponse response,HttpSession session)
 	{
 		int  uId;
 		String returnMessage="";
 		ModelAndView mav = new ModelAndView();
-		if(request.getParameter("searchUser")==null)//ÆäËû½çÃæÌø×ªµ½²éÑ¯Ò³Ãæ
+		if(request.getParameter("searchUser")==null)//å…¶ä»–ç•Œé¢è·³è½¬åˆ°æŸ¥è¯¢é¡µé¢
 		{
 			mav.setViewName(toSrc);
 			return mav;
 		}
-		//²éÑ¯Ò³ÃæÊäÈëidÌá½»ºó£¬°Ñ½á¹û´ø»Ø²éÑ¯Ò³Ãæ	
-		//´¦ÀíÊäÈë·ÇÊı×ÖÇé¿ö
+		//æŸ¥è¯¢é¡µé¢è¾“å…¥idæäº¤åï¼ŒæŠŠç»“æœå¸¦å›æŸ¥è¯¢é¡µé¢	
+		//å¤„ç†è¾“å…¥éæ•°å­—æƒ…å†µ
 		try{
-			uId =Integer.parseInt(request.getParameter("searchUser"));//»ñµÃÓÃ»§²éÑ¯µÄid,½«id×ª»¯³Éint
-		}catch(Exception e)  //Èç¹ûÓÃ»§ÊäÈëµÄÊÇ·Ç·¨×Ö·û£¬¾Í»áÅ×³öÒì³££¬ÒòÎªintegerÎŞ·¨´¦Àí·ÇÊı×Ö×Ö·û
+			uId =Integer.parseInt(request.getParameter("searchUser"));//è·å¾—ç”¨æˆ·æŸ¥è¯¢çš„id,å°†idè½¬åŒ–æˆint
+		}catch(Exception e)  //å¦‚æœç”¨æˆ·è¾“å…¥çš„æ˜¯éæ³•å­—ç¬¦ï¼Œå°±ä¼šæŠ›å‡ºå¼‚å¸¸ï¼Œå› ä¸ºintegeræ— æ³•å¤„ç†éæ•°å­—å­—ç¬¦
 		{
-			 returnMessage="¿Í»§IDÎª´¿Êı×Ö";
+			 returnMessage="å®¢æˆ·IDä¸ºçº¯æ•°å­—";
 			 mav.addObject("returnMessage", returnMessage);
 			 mav.setViewName(toSrc);
 			 return mav;
 		}
 		User user=userservice.get(uId);
 		if(user==null){
-			returnMessage="¸Ã¿Í»§²»´æÔÚÅ¶!";
+			returnMessage="è¯¥å®¢æˆ·ä¸å­˜åœ¨å“¦!";
 		}
 		else{
-			returnMessage="ÒÑËÑË÷µ½IDÎª:  "+uId+"   µÄ¿Í»§";
+			returnMessage="å·²æœç´¢åˆ°IDä¸º:  "+uId+"   çš„å®¢æˆ·";
 			mav.addObject("usermessage", user);
 		}		
 		mav.addObject("returnMessage", returnMessage);
 		mav.setViewName(toSrc);
 		return mav;
 	}
-	@RequestMapping("toUserAdd")  //Ìø×ªµ½Ìí¼Ó¿Í»§ĞÅÏ¢½çÃæ
+	@RequestMapping("toUserAdd")  //è·³è½¬åˆ°æ·»åŠ å®¢æˆ·ä¿¡æ¯ç•Œé¢
 	public ModelAndView toUserAdd(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("UserAdd");
 		return mav;
 	}	
-	@RequestMapping("UserAddToSql")  //Ìí¼Ó¿Í»§ĞÅÏ¢µ½Êı¾İ¿â   Ìí¼Ó³É¹¦·µ»ØÌí¼Ó½çÃæ
+	@RequestMapping("UserAddToSql")  //æ·»åŠ å®¢æˆ·ä¿¡æ¯åˆ°æ•°æ®åº“   æ·»åŠ æˆåŠŸè¿”å›æ·»åŠ ç•Œé¢
 	public ModelAndView UserAddToSql(User user,HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
-		/*ÔİÊ±Ã»ÓĞ¼Óµç»°µÈºÏ·¨ĞÔµÄÅĞ¶Ï*/		
+		/*æš‚æ—¶æ²¡æœ‰åŠ ç”µè¯ç­‰åˆæ³•æ€§çš„åˆ¤æ–­*/		
 		int uId;
 		String returnMessage="";
 		String uIdStr=request.getParameter("uIdStr");
@@ -147,19 +154,19 @@ public class MainOperationController {
 		try{
 			uId=Integer.parseInt(uIdStr);
 			
-		}catch(Exception e) //´¦ÀíID·Ç·¨ÊäÈë
+		}catch(Exception e) //å¤„ç†IDéæ³•è¾“å…¥
 		{
 			//e.printStackTrace();
-			returnMessage="ÊäÈëµÄID   "+uIdStr+"   ²»Îª´¿Êı×Ö";
+			returnMessage="è¾“å…¥çš„ID   "+uIdStr+"   ä¸ä¸ºçº¯æ•°å­—";
 			mav.addObject("returnMessage", returnMessage);
 			mav.setViewName("UserAdd");
 			return mav;
 		}
 		int uSex=Integer.parseInt(uSexStr);
-		User userCheck=userservice.get(uId);//¼ì²âIDÊÇ·ñ×¢²áÁË
+		User userCheck=userservice.get(uId);//æ£€æµ‹IDæ˜¯å¦æ³¨å†Œäº†
 		if(userCheck!=null)
 		{
-			returnMessage="¿Í»§ID   "+uId+"   ÒÑ¾­×¢²á£¬Çë»»Ò»¸öID.";
+			returnMessage="å®¢æˆ·ID   "+uId+"   å·²ç»æ³¨å†Œï¼Œè¯·æ¢ä¸€ä¸ªID.";
 			mav.addObject("returnMessage", returnMessage);
 			mav.setViewName("UserAdd");
 			return mav;
@@ -170,17 +177,17 @@ public class MainOperationController {
 		}catch(Exception e)
 		{
 			e.printStackTrace();
-			returnMessage="Ìí¼Ó¿Í»§     "+user.getuName()+"     Ê§°Ü,ÇëÖØÊÔ(Î´ÖªÔ­Òò)";
+			returnMessage="æ·»åŠ å®¢æˆ·     "+user.getuName()+"     å¤±è´¥,è¯·é‡è¯•(æœªçŸ¥åŸå› )";
 			mav.setViewName("UserAdd");
 			return mav;
 		}
 		userservice.add(user);
-		returnMessage="¿Í»§   "+user.getuName()+"   Ìí¼Ó³É¹¦£¡ÇëÊäÈëID²é¿´";
+		returnMessage="å®¢æˆ·   "+user.getuName()+"   æ·»åŠ æˆåŠŸï¼è¯·è¾“å…¥IDæŸ¥çœ‹";
 		mav.addObject("returnMessage", returnMessage);
 		mav.setViewName("UserAdd");			
 		return mav;		
 	}
-	@RequestMapping("toUserSelect")  //Ìø×ªµ½²éÑ¯¿Í»§ĞÅÏ¢½çÃæ
+	@RequestMapping("toUserSelect")  //è·³è½¬åˆ°æŸ¥è¯¢å®¢æˆ·ä¿¡æ¯ç•Œé¢
 	public ModelAndView toUserSelect(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
@@ -189,7 +196,7 @@ public class MainOperationController {
 	}
 	
 	
-	@RequestMapping("toUserUpdate")  //Ìø×ªµ½ĞŞ¸Ä¿Í»§ĞÅÏ¢½çÃæ ÒÔ¼°ÔÚĞŞ¸ÄÒ³Ãæ²éÑ¯
+	@RequestMapping("toUserUpdate")  //è·³è½¬åˆ°ä¿®æ”¹å®¢æˆ·ä¿¡æ¯ç•Œé¢ ä»¥åŠåœ¨ä¿®æ”¹é¡µé¢æŸ¥è¯¢
 	public ModelAndView toUserUpdate(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
@@ -197,77 +204,77 @@ public class MainOperationController {
 		return mav;
 	}
 	
-	@RequestMapping("UserUpDateToSql")//½«ĞŞ¸ÄºóµÄĞÅÏ¢Ìá½»µ½Êı¾İ¿â
+	@RequestMapping("UserUpDateToSql")//å°†ä¿®æ”¹åçš„ä¿¡æ¯æäº¤åˆ°æ•°æ®åº“
 	public ModelAndView UserUpDateToSql(User user,HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
-		//ÔİÊ±²»¼ÓÊÇ·ñÓĞ¸Ä¶¯µÄ¼ì²â£¬¾ÍËãÃ»ÓĞ¸Ä¶¯Ò²µ±¸Ä¶¯À´ Ğ´ÈëÊı¾İ¿â
+		//æš‚æ—¶ä¸åŠ æ˜¯å¦æœ‰æ”¹åŠ¨çš„æ£€æµ‹ï¼Œå°±ç®—æ²¡æœ‰æ”¹åŠ¨ä¹Ÿå½“æ”¹åŠ¨æ¥ å†™å…¥æ•°æ®åº“
 		int uId;
 		String returnMessage="";
 		String uSexStr=request.getParameter("uSex");
 		ModelAndView mav = new ModelAndView();
-		if((request.getParameter("updateUser")=="")|| (request.getParameter("updateUser")==null))//Ç°¶ËÍ¨¹ı${}¸³Öµ£¬´Ë´¦²»ÄÜ¸ÄÎªnull Èç¹ûÃ»ÓĞÊäÈëID¾Íµã»÷É¾³ı£¬ÓÉÕâ¾ä´¦Àí
+		if((request.getParameter("updateUser")=="")|| (request.getParameter("updateUser")==null))//å‰ç«¯é€šè¿‡${}èµ‹å€¼ï¼Œæ­¤å¤„ä¸èƒ½æ”¹ä¸ºnull å¦‚æœæ²¡æœ‰è¾“å…¥IDå°±ç‚¹å‡»åˆ é™¤ï¼Œç”±è¿™å¥å¤„ç†
 		{
-			returnMessage="ÎªÁË°²È«£¬ÇëÊäÈëĞèÒªĞŞ¸ÄµÄ¿Í»§ID²¢ËÑË÷ĞÅÏ¢²é¿´È·ÈÏ";
+			returnMessage="ä¸ºäº†å®‰å…¨ï¼Œè¯·è¾“å…¥éœ€è¦ä¿®æ”¹çš„å®¢æˆ·IDå¹¶æœç´¢ä¿¡æ¯æŸ¥çœ‹ç¡®è®¤";
 			mav.addObject("returnMessage",returnMessage);
 			mav.setViewName("UserUpdate");
 		}
-		else  //²éÑ¯Ò³ÃæÊäÈëidÌá½»ºó£¬°Ñ½á¹û´ø»Ø²éÑ¯Ò³Ãæ
+		else  //æŸ¥è¯¢é¡µé¢è¾“å…¥idæäº¤åï¼ŒæŠŠç»“æœå¸¦å›æŸ¥è¯¢é¡µé¢
 		{
 			try
 			{
-				String updateUser=request.getParameter("updateUser");//»ñµÃÓÃ»§²éÑ¯µÄid
+				String updateUser=request.getParameter("updateUser");//è·å¾—ç”¨æˆ·æŸ¥è¯¢çš„id
 				uId=Integer.parseInt(updateUser);
-			}catch(Exception e) //±¾À´ÓÃ»§id±»Ğ´ÈëÊı¾İ¿â£¬ÔÙ¶Á³öÀ´²»»á±»ĞŞ¸Ä£¬µ«ÎÒ°Á½¿¾ÍÒª¼ÓÕâÒ»¾ä
+			}catch(Exception e) //æœ¬æ¥ç”¨æˆ·idè¢«å†™å…¥æ•°æ®åº“ï¼Œå†è¯»å‡ºæ¥ä¸ä¼šè¢«ä¿®æ”¹ï¼Œä½†æˆ‘å‚²å¨‡å°±è¦åŠ è¿™ä¸€å¥
 			{
-				returnMessage="ID½âÎö³ö´í(ÏµÍ³´íÎó)";
+				returnMessage="IDè§£æå‡ºé”™(ç³»ç»Ÿé”™è¯¯)";
 				mav.addObject("returnMessage", returnMessage);
 				mav.setViewName("UserUpdate");
 				return mav;			
 			}				
 			try{
-				int uSex=Integer.parseInt(uSexStr);//´«¹ıÀ´µÄÊÇstring,ĞèÒª°ÑĞÔ±ğ×ª»»³Éint
-				user.setuId(uId);					//uiD²»ÊÇ×Ô¶¯·â×°µÄ
-				user.setuSex(uSex);                //ÉèÖÃuserĞÔ±ğ£¬ÆäËûµÄ¶¼ÊÇ×Ô¶¯·â×°µÄ
+				int uSex=Integer.parseInt(uSexStr);//ä¼ è¿‡æ¥çš„æ˜¯string,éœ€è¦æŠŠæ€§åˆ«è½¬æ¢æˆint
+				user.setuId(uId);					//uiDä¸æ˜¯è‡ªåŠ¨å°è£…çš„
+				user.setuSex(uSex);                //è®¾ç½®useræ€§åˆ«ï¼Œå…¶ä»–çš„éƒ½æ˜¯è‡ªåŠ¨å°è£…çš„
 				userservice.update(user);
 			}catch(Exception e)
 			{
-				returnMessage="¸üĞÂIDÎª:  "+uId+"   µÄ¿Í»§Ê§°Ü(¿ÉÄÜÊÇĞÔ±ğÉèÖÃ´íÎó)";
+				returnMessage="æ›´æ–°IDä¸º:  "+uId+"   çš„å®¢æˆ·å¤±è´¥(å¯èƒ½æ˜¯æ€§åˆ«è®¾ç½®é”™è¯¯)";
 				e.printStackTrace();
 			}			
-			returnMessage="¸üĞÂIDÎª:  "+uId+"   µÄ¿Í»§³É¹¦,ÇëÊäÈëID²é¿´";
+			returnMessage="æ›´æ–°IDä¸º:  "+uId+"   çš„å®¢æˆ·æˆåŠŸ,è¯·è¾“å…¥IDæŸ¥çœ‹";
 			mav.addObject("returnMessage", returnMessage);
 			mav.setViewName("UserUpdate");
 		}
 		return mav;
 	}		
-	@RequestMapping("toUserDelete")  //Ìø×ªµ½É¾³ı¿Í»§ĞÅÏ¢½çÃæ ÒÔ¼° ÔÚÉ¾³ı½çÃæµÄ²éÑ¯
+	@RequestMapping("toUserDelete")  //è·³è½¬åˆ°åˆ é™¤å®¢æˆ·ä¿¡æ¯ç•Œé¢ ä»¥åŠ åœ¨åˆ é™¤ç•Œé¢çš„æŸ¥è¯¢
 	public ModelAndView toUserDelete(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 		
 		ModelAndView mav = new ModelAndView();
 		mav=selectUser("UserDelete",request, response,session);
 		return mav;
 	}
-	@RequestMapping("UserDeleteFromeSql")  //È·ÈÏÉ¾³ı°´Å¥°´ÏÂºó  ´ÓÊı¾İ¿â  É¾³ı¿Í»§ĞÅÏ¢
+	@RequestMapping("UserDeleteFromeSql")  //ç¡®è®¤åˆ é™¤æŒ‰é’®æŒ‰ä¸‹å  ä»æ•°æ®åº“  åˆ é™¤å®¢æˆ·ä¿¡æ¯
 	public ModelAndView UserDeleteFromeSql(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
 		String returnMessage="";
-		if((request.getParameter("deleteUser")=="")|| (request.getParameter("deleteUser")==null))//Ç°¶ËÍ¨¹ı${}¸³Öµ£¬´Ë´¦²»ÄÜ¸ÄÎªnull Èç¹ûÃ»ÓĞÊäÈëID¾Íµã»÷É¾³ı£¬ÓÉÕâ¾ä´¦Àí
+		if((request.getParameter("deleteUser")=="")|| (request.getParameter("deleteUser")==null))//å‰ç«¯é€šè¿‡${}èµ‹å€¼ï¼Œæ­¤å¤„ä¸èƒ½æ”¹ä¸ºnull å¦‚æœæ²¡æœ‰è¾“å…¥IDå°±ç‚¹å‡»åˆ é™¤ï¼Œç”±è¿™å¥å¤„ç†
 		{
-			returnMessage="ÎªÁË°²È«£¬ÇëÊäÈëĞèÒªÉ¾³ıµÄ¿Í»§ID²¢ËÑË÷ĞÅÏ¢²é¿´È·ÈÏ";
+			returnMessage="ä¸ºäº†å®‰å…¨ï¼Œè¯·è¾“å…¥éœ€è¦åˆ é™¤çš„å®¢æˆ·IDå¹¶æœç´¢ä¿¡æ¯æŸ¥çœ‹ç¡®è®¤";
 			mav.addObject("returnMessage",returnMessage);
 			mav.setViewName("UserDelete");
 		}
-		else  //²éÑ¯Ò³ÃæÊäÈëidÌá½»ºó£¬°Ñ½á¹û´ø»Ø²éÑ¯Ò³Ãæ
+		else  //æŸ¥è¯¢é¡µé¢è¾“å…¥idæäº¤åï¼ŒæŠŠç»“æœå¸¦å›æŸ¥è¯¢é¡µé¢
 		{
 			int uId;
 			try
 			{
-				String deleteUser=request.getParameter("deleteUser");//»ñµÃÓÃ»§²éÑ¯µÄid
+				String deleteUser=request.getParameter("deleteUser");//è·å¾—ç”¨æˆ·æŸ¥è¯¢çš„id
 				uId=Integer.parseInt(deleteUser);
-			}catch(Exception e) //²¶»ñÊäÈë·Ç·¨×Ö·ûµÄÇé¿ö
+			}catch(Exception e) //æ•è·è¾“å…¥éæ³•å­—ç¬¦çš„æƒ…å†µ
 			{
 				//e.printStackTrace();
-				returnMessage="IDÓ¦¸ÃÊÇ´¿Êı×Ö";
+				returnMessage="IDåº”è¯¥æ˜¯çº¯æ•°å­—";
 				mav.addObject("returnMessage", returnMessage);
 				mav.setViewName("UserDelete");
 				return mav;
@@ -277,10 +284,10 @@ public class MainOperationController {
 				userservice.delete(uId);
 			}catch(Exception e)
 			{
-				returnMessage="É¾³ıIDÎª:  "+uId+"   µÄ¿Í»§Ê§°Ü";
+				returnMessage="åˆ é™¤IDä¸º:  "+uId+"   çš„å®¢æˆ·å¤±è´¥";
 				e.printStackTrace();
 			}
-			returnMessage="É¾³ıIDÎª:  "+uId+"   µÄ¿Í»§³É¹¦";
+			returnMessage="åˆ é™¤IDä¸º:  "+uId+"   çš„å®¢æˆ·æˆåŠŸ";
 			mav.addObject("returnMessage", returnMessage);
 			mav.setViewName("UserDelete");
 		}
@@ -288,51 +295,51 @@ public class MainOperationController {
 	}
 	
 	/**
-	 * ¿Í»§ĞÅÏ¢´¦Àí½áÊø
+	 * å®¢æˆ·ä¿¡æ¯å¤„ç†ç»“æŸ
 	 * */
 	
 	
 	/**
-	 * Ö°¹¤ĞÅÏ¢´¦Àí¿ªÊ¼
+	 * èŒå·¥ä¿¡æ¯å¤„ç†å¼€å§‹
 	 * */
-	/**²éÑ¯£¬ÔÚ²éÑ¯½çÃæµ÷ÓÃ£¬ĞŞ¸Ä£¬É¾³ı£¬½çÃæµÄ×Ó²éÑ¯ÀïÃæµ÷ÓÃ
-	 * ²ÎÊı£ºString toSrc:²éÑ¯Íêºó·µ»ØµÄ½çÃæ
+	/**æŸ¥è¯¢ï¼Œåœ¨æŸ¥è¯¢ç•Œé¢è°ƒç”¨ï¼Œä¿®æ”¹ï¼Œåˆ é™¤ï¼Œç•Œé¢çš„å­æŸ¥è¯¢é‡Œé¢è°ƒç”¨
+	 * å‚æ•°ï¼šString toSrc:æŸ¥è¯¢å®Œåè¿”å›çš„ç•Œé¢
 	 * */
 	public ModelAndView selectStaff(String toSrc,HttpServletRequest request, HttpServletResponse response,HttpSession session)
 	{
 		int  sId;
 		String returnMessage="";
 		ModelAndView mav = new ModelAndView();
-		if(request.getParameter("searchStaff")==null)//ÆäËû½çÃæÌø×ªµ½²éÑ¯Ò³Ãæ
+		if(request.getParameter("searchStaff")==null)//å…¶ä»–ç•Œé¢è·³è½¬åˆ°æŸ¥è¯¢é¡µé¢
 		{
 			mav.setViewName(toSrc);
 			return mav;	
 		}
-		//²éÑ¯Ò³ÃæÊäÈëidÌá½»ºó£¬°Ñ½á¹û´ø»Ø²éÑ¯Ò³Ãæ	
-		//´¦ÀíÊäÈë·ÇÊı×ÖÇé¿ö
+		//æŸ¥è¯¢é¡µé¢è¾“å…¥idæäº¤åï¼ŒæŠŠç»“æœå¸¦å›æŸ¥è¯¢é¡µé¢	
+		//å¤„ç†è¾“å…¥éæ•°å­—æƒ…å†µ
 		try{
-			sId =Integer.parseInt(request.getParameter("searchStaff"));//»ñµÃÓÃ»§²éÑ¯µÄid,½«id×ª»¯³Éint
-		}catch(Exception e)  //Èç¹ûÓÃ»§ÊäÈëµÄÊÇ·Ç·¨×Ö·û£¬¾Í»áÅ×³öÒì³££¬ÒòÎªintegerÎŞ·¨´¦Àí·ÇÊı×Ö×Ö·û
+			sId =Integer.parseInt(request.getParameter("searchStaff"));//è·å¾—ç”¨æˆ·æŸ¥è¯¢çš„id,å°†idè½¬åŒ–æˆint
+		}catch(Exception e)  //å¦‚æœç”¨æˆ·è¾“å…¥çš„æ˜¯éæ³•å­—ç¬¦ï¼Œå°±ä¼šæŠ›å‡ºå¼‚å¸¸ï¼Œå› ä¸ºintegeræ— æ³•å¤„ç†éæ•°å­—å­—ç¬¦
 		{
 			// e.printStackTrace();
-			 returnMessage="Ô±¹¤IDÎª´¿Êı×Ö";
+			 returnMessage="å‘˜å·¥IDä¸ºçº¯æ•°å­—";
 			 mav.addObject("returnMessage", returnMessage);
 			 mav.setViewName(toSrc);
 			 return mav;
 		}
 		Staff staff=staffservice.get(sId); 
 		if(staff==null){
-			returnMessage="¸ÃÖ°¹¤ID£¨¿¨ºÅ£©²»´æÔÚÅ¶£¡";
+			returnMessage="è¯¥èŒå·¥IDï¼ˆå¡å·ï¼‰ä¸å­˜åœ¨å“¦ï¼";
 		}
 		else{
-			returnMessage="ÒÑËÑË÷µ½IDÎª:  "+sId+"   µÄÔ±¹¤";
+			returnMessage="å·²æœç´¢åˆ°IDä¸º:  "+sId+"   çš„å‘˜å·¥";
 			mav.addObject("staffmessage", staff);
 		}		
 		mav.addObject("returnMessage", returnMessage);
 		mav.setViewName(toSrc);
 		return mav;	
 	}
-	@RequestMapping("toStaffAdd")  //Ìø×ªµ½Ìí¼ÓÖ°¹¤ĞÅÏ¢½çÃæ
+	@RequestMapping("toStaffAdd")  //è·³è½¬åˆ°æ·»åŠ èŒå·¥ä¿¡æ¯ç•Œé¢
 	public ModelAndView toStaffAdd(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
@@ -340,9 +347,9 @@ public class MainOperationController {
 		return mav;
 	}
 	
-	@RequestMapping("StaffAddToSql") //Ìí¼ÓÖ°¹¤ĞÅÏ¢µ½Êı¾İ¿â   ºóÌ¨´¦ÀíÌí¼Ó³É¹¦ ·µ»ØÌí¼Ó½çÃæ
+	@RequestMapping("StaffAddToSql") //æ·»åŠ èŒå·¥ä¿¡æ¯åˆ°æ•°æ®åº“   åå°å¤„ç†æ·»åŠ æˆåŠŸ è¿”å›æ·»åŠ ç•Œé¢
 	public ModelAndView StaffAddToSql(Staff staff,HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
-		/*ÔİÊ±Ã»ÓĞ¼Óµç»°µÈºÏ·¨ĞÔµÄÅĞ¶Ï*/
+		/*æš‚æ—¶æ²¡æœ‰åŠ ç”µè¯ç­‰åˆæ³•æ€§çš„åˆ¤æ–­*/
 		
 		int sId;
 		String returnMessage="";
@@ -352,18 +359,18 @@ public class MainOperationController {
 		try{
 			sId=Integer.parseInt(sIdStr);
 			
-		}catch(Exception e) //´¦ÀíID·Ç·¨ÊäÈë
+		}catch(Exception e) //å¤„ç†IDéæ³•è¾“å…¥
 		{
-			returnMessage="ÊäÈëµÄID  "+sIdStr+"   ²»Îª´¿Êı×Ö";
+			returnMessage="è¾“å…¥çš„ID  "+sIdStr+"   ä¸ä¸ºçº¯æ•°å­—";
 			mav.addObject("returnMessage", returnMessage);
 			mav.setViewName("StaffAdd");
 			return mav;
 		}
 		int sSex=Integer.parseInt(sSexStr);
-		Staff staffCheck=staffservice.get(sId);//¼ì²âIDÊÇ·ñ×¢²áÁË
+		Staff staffCheck=staffservice.get(sId);//æ£€æµ‹IDæ˜¯å¦æ³¨å†Œäº†
 		if(staffCheck!=null)
 		{
-			returnMessage="Ö°¹¤ID   "+sId+"    ÒÑ¾­×¢²áÌí¼Ó£¬Çë»»Ò»¸öID.";
+			returnMessage="èŒå·¥ID   "+sId+"    å·²ç»æ³¨å†Œæ·»åŠ ï¼Œè¯·æ¢ä¸€ä¸ªID.";
 			mav.addObject("returnMessage", returnMessage);
 			mav.setViewName("StaffAdd");
 			return mav;
@@ -378,20 +385,20 @@ public class MainOperationController {
 			return mav;
 		}
 		staffservice.add(staff);
-		returnMessage="Ö°¹¤  "+staff.getsName()+"  Ìí¼Ó³É¹¦£¡ÇëÊäÈëID²é¿´";
+		returnMessage="èŒå·¥  "+staff.getsName()+"  æ·»åŠ æˆåŠŸï¼è¯·è¾“å…¥IDæŸ¥çœ‹";
 		mav.addObject("returnMessage", returnMessage);
 		mav.setViewName("StaffAdd");			
 		return mav;		
 	}
 
-	@RequestMapping("toStaffSelect")  //Ìø×ªµ½²éÑ¯Ö°¹¤ĞÅÏ¢½çÃæ
+	@RequestMapping("toStaffSelect")  //è·³è½¬åˆ°æŸ¥è¯¢èŒå·¥ä¿¡æ¯ç•Œé¢
 	public ModelAndView toStaffSelect(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
 		mav=selectStaff("StaffSelect",request,response,session);
 		return mav;	
 	}
-	@RequestMapping("toStaffUpdate")  //Ìø×ªµ½ĞŞ¸ÄÖ°¹¤ĞÅÏ¢½çÃæ ÒÔ¼°Ö°¹¤½çÃæĞÅÏ¢²éÑ¯
+	@RequestMapping("toStaffUpdate")  //è·³è½¬åˆ°ä¿®æ”¹èŒå·¥ä¿¡æ¯ç•Œé¢ ä»¥åŠèŒå·¥ç•Œé¢ä¿¡æ¯æŸ¥è¯¢
 	public ModelAndView toStaffUpdate(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
@@ -399,43 +406,43 @@ public class MainOperationController {
 		return mav;
 	}
 	
-	@RequestMapping("StaffUpDateToSql")//½«ĞŞ¸ÄºóµÄĞÅÏ¢Ìá½»µ½Êı¾İ¿â
+	@RequestMapping("StaffUpDateToSql")//å°†ä¿®æ”¹åçš„ä¿¡æ¯æäº¤åˆ°æ•°æ®åº“
 	public ModelAndView StaffUpDateToSql(Staff staff,HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
-		//ÔİÊ±²»¼ÓÊÇ·ñÓĞ¸Ä¶¯µÄ¼ì²â£¬¾ÍËãÃ»ÓĞ¸Ä¶¯Ò²µ±¸Ä¶¯À´ Ğ´ÈëÊı¾İ¿â
+		//æš‚æ—¶ä¸åŠ æ˜¯å¦æœ‰æ”¹åŠ¨çš„æ£€æµ‹ï¼Œå°±ç®—æ²¡æœ‰æ”¹åŠ¨ä¹Ÿå½“æ”¹åŠ¨æ¥ å†™å…¥æ•°æ®åº“
 		int sId;
 		String returnMessage="";
 		String sSexStr=request.getParameter("sSex");
 		ModelAndView mav = new ModelAndView();
-		if((request.getParameter("updateStaff")=="")|| (request.getParameter("updateStaff")==null))//Ç°¶ËÍ¨¹ı${}¸³Öµ£¬´Ë´¦²»ÄÜ¸ÄÎªnull Èç¹ûÃ»ÓĞÊäÈëID¾Íµã»÷É¾³ı£¬ÓÉÕâ¾ä´¦Àí
+		if((request.getParameter("updateStaff")=="")|| (request.getParameter("updateStaff")==null))//å‰ç«¯é€šè¿‡${}èµ‹å€¼ï¼Œæ­¤å¤„ä¸èƒ½æ”¹ä¸ºnull å¦‚æœæ²¡æœ‰è¾“å…¥IDå°±ç‚¹å‡»åˆ é™¤ï¼Œç”±è¿™å¥å¤„ç†
 		{
-			returnMessage="ÎªÁË°²È«£¬ÇëÊäÈëĞèÒªĞŞ¸ÄµÄÔ±¹¤ID²¢ËÑË÷ĞÅÏ¢²é¿´È·ÈÏ";
+			returnMessage="ä¸ºäº†å®‰å…¨ï¼Œè¯·è¾“å…¥éœ€è¦ä¿®æ”¹çš„å‘˜å·¥IDå¹¶æœç´¢ä¿¡æ¯æŸ¥çœ‹ç¡®è®¤";
 			mav.addObject("returnMessage",returnMessage);
 			mav.setViewName("StaffUpdate");
 		}
-		else  //²éÑ¯Ò³ÃæÊäÈëidÌá½»ºó£¬°Ñ½á¹û´ø»Ø²éÑ¯Ò³Ãæ
+		else  //æŸ¥è¯¢é¡µé¢è¾“å…¥idæäº¤åï¼ŒæŠŠç»“æœå¸¦å›æŸ¥è¯¢é¡µé¢
 		{
 			try
 			{
-				String updateStaff=request.getParameter("updateStaff");//»ñµÃÓÃ»§²éÑ¯µÄid
+				String updateStaff=request.getParameter("updateStaff");//è·å¾—ç”¨æˆ·æŸ¥è¯¢çš„id
 				sId=Integer.parseInt(updateStaff);
-			}catch(Exception e) //±¾À´ÓÃ»§id±»Ğ´ÈëÊı¾İ¿â£¬ÔÙ¶Á³öÀ´²»»á±»ĞŞ¸Ä£¬µ«ÎÒ°Á½¿¾ÍÒª¼ÓÕâÒ»¾ä
+			}catch(Exception e) //æœ¬æ¥ç”¨æˆ·idè¢«å†™å…¥æ•°æ®åº“ï¼Œå†è¯»å‡ºæ¥ä¸ä¼šè¢«ä¿®æ”¹ï¼Œä½†æˆ‘å‚²å¨‡å°±è¦åŠ è¿™ä¸€å¥
 			{
-				returnMessage="ID½âÎö³ö´í(ÏµÍ³´íÎó)";
+				returnMessage="IDè§£æå‡ºé”™(ç³»ç»Ÿé”™è¯¯)";
 				mav.addObject("returnMessage", returnMessage);
 				mav.setViewName("StaffUpdate");
 				return mav;			
 			}				
 			try{
-				int sSex=Integer.parseInt(sSexStr);//´«¹ıÀ´µÄÊÇstring,ĞèÒª°ÑĞÔ±ğ×ª»»³Éint
-				staff.setsId(sId);					//uiD²»ÊÇ×Ô¶¯·â×°µÄ
-				staff.setsSex(sSex);                //ÉèÖÃuserĞÔ±ğ£¬ÆäËûµÄ¶¼ÊÇ×Ô¶¯·â×°µÄ
+				int sSex=Integer.parseInt(sSexStr);//ä¼ è¿‡æ¥çš„æ˜¯string,éœ€è¦æŠŠæ€§åˆ«è½¬æ¢æˆint
+				staff.setsId(sId);					//uiDä¸æ˜¯è‡ªåŠ¨å°è£…çš„
+				staff.setsSex(sSex);                //è®¾ç½®useræ€§åˆ«ï¼Œå…¶ä»–çš„éƒ½æ˜¯è‡ªåŠ¨å°è£…çš„
 				staffservice.update(staff);
 			}catch(Exception e)
 			{
-				returnMessage="¸üĞÂIDÎª:  "+sId+"   µÄ¿Í»§Ê§°Ü(¿ÉÄÜÊÇĞÔ±ğÉèÖÃ´íÎó)";
+				returnMessage="æ›´æ–°IDä¸º:  "+sId+"   çš„å®¢æˆ·å¤±è´¥(å¯èƒ½æ˜¯æ€§åˆ«è®¾ç½®é”™è¯¯)";
 				e.printStackTrace();
 			}			
-			returnMessage="¸üĞÂIDÎª:  "+sId+"   µÄ¿Í»§³É¹¦,ÇëÊäÈëID²é¿´";
+			returnMessage="æ›´æ–°IDä¸º:  "+sId+"   çš„å®¢æˆ·æˆåŠŸ,è¯·è¾“å…¥IDæŸ¥çœ‹";
 			mav.addObject("returnMessage", returnMessage);
 			mav.setViewName("StaffUpdate");
 		}
@@ -443,7 +450,7 @@ public class MainOperationController {
 	}
 	
 	
-	@RequestMapping("toStaffDelete")  //Ìø×ªµ½É¾³ıÖ°¹¤ĞÅÏ¢½çÃæ ÒÔ¼°  É¾³ı½çÃæ²éÑ¯
+	@RequestMapping("toStaffDelete")  //è·³è½¬åˆ°åˆ é™¤èŒå·¥ä¿¡æ¯ç•Œé¢ ä»¥åŠ  åˆ é™¤ç•Œé¢æŸ¥è¯¢
 	public ModelAndView toStaffDelete(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 		
 		ModelAndView mav = new ModelAndView();
@@ -451,29 +458,29 @@ public class MainOperationController {
 		return mav;	
 	}
 	
-	@RequestMapping("StaffDeleteFromeSql")  //È·ÈÏÉ¾³ı°´Å¥°´ÏÂºó  ´ÓÊı¾İ¿â  É¾³ı¿Í»§ĞÅÏ¢
+	@RequestMapping("StaffDeleteFromeSql")  //ç¡®è®¤åˆ é™¤æŒ‰é’®æŒ‰ä¸‹å  ä»æ•°æ®åº“  åˆ é™¤å®¢æˆ·ä¿¡æ¯
 	public ModelAndView StaffDeleteFromeSql(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
 		String returnMessage="";
-		if((request.getParameter("deleteUser")=="")||(request.getParameter("deleteStaff")==null))//Ç°¶ËÍ¨¹ı${}¸³Öµ£¬´Ë´¦²»ÄÜ¸ÄÎªnull Èç¹ûÃ»ÓĞÊäÈëID¾Íµã»÷É¾³ı£¬ÓÉÕâ¾ä´¦Àí
+		if((request.getParameter("deleteUser")=="")||(request.getParameter("deleteStaff")==null))//å‰ç«¯é€šè¿‡${}èµ‹å€¼ï¼Œæ­¤å¤„ä¸èƒ½æ”¹ä¸ºnull å¦‚æœæ²¡æœ‰è¾“å…¥IDå°±ç‚¹å‡»åˆ é™¤ï¼Œç”±è¿™å¥å¤„ç†
 		{
-			returnMessage="ÎªÁË°²È«£¬ÇëÊäÈëĞèÒªÉ¾³ıµÄ¿Í»§ID²¢ËÑË÷ĞÅÏ¢²é¿´È·ÈÏ";
+			returnMessage="ä¸ºäº†å®‰å…¨ï¼Œè¯·è¾“å…¥éœ€è¦åˆ é™¤çš„å®¢æˆ·IDå¹¶æœç´¢ä¿¡æ¯æŸ¥çœ‹ç¡®è®¤";
 			mav.addObject("returnMessage",returnMessage);
 			mav.setViewName("StaffDelete");
 		}
-		else  //²éÑ¯Ò³ÃæÊäÈëidÌá½»ºó£¬°Ñ½á¹û´ø»Ø²éÑ¯Ò³Ãæ
+		else  //æŸ¥è¯¢é¡µé¢è¾“å…¥idæäº¤åï¼ŒæŠŠç»“æœå¸¦å›æŸ¥è¯¢é¡µé¢
 		{
-			System.out.println("ÄãºÃ£º"+request.getParameter("deleteUser"));
+			System.out.println("ä½ å¥½ï¼š"+request.getParameter("deleteUser"));
 			int sId;
 			try
 			{
-				String deleteStaff=request.getParameter("deleteStaff");//»ñµÃÓÃ»§²éÑ¯µÄid
+				String deleteStaff=request.getParameter("deleteStaff");//è·å¾—ç”¨æˆ·æŸ¥è¯¢çš„id
 				sId=Integer.parseInt(deleteStaff);
-			}catch(Exception e) //²¶»ñÊäÈë·Ç·¨×Ö·ûµÄÇé¿ö
+			}catch(Exception e) //æ•è·è¾“å…¥éæ³•å­—ç¬¦çš„æƒ…å†µ
 			{
 				//e.printStackTrace();
-				returnMessage="IDÓ¦¸ÃÊÇ´¿Êı×Ö";
+				returnMessage="IDåº”è¯¥æ˜¯çº¯æ•°å­—";
 				mav.addObject("returnMessage", returnMessage);
 				mav.setViewName("StaffDelete");
 				return mav;
@@ -483,10 +490,10 @@ public class MainOperationController {
 				userservice.delete(sId);
 			}catch(Exception e)
 			{
-				returnMessage="É¾³ıIDÎª:  "+sId+"   µÄÖ°¹¤Ê§°Ü";
+				returnMessage="åˆ é™¤IDä¸º:  "+sId+"   çš„èŒå·¥å¤±è´¥";
 				e.printStackTrace();
 			}
-			returnMessage="É¾³ıIDÎª:  "+sId+"   µÄÖ°¹¤³É¹¦";
+			returnMessage="åˆ é™¤IDä¸º:  "+sId+"   çš„èŒå·¥æˆåŠŸ";
 			mav.addObject("returnMessage", returnMessage);
 			mav.setViewName("StaffDelete");
 		}
@@ -494,60 +501,60 @@ public class MainOperationController {
 	}
 	
 	/**
-	 * Ö°¹¤ĞÅÏ¢´¦Àí½áÊø
+	 * èŒå·¥ä¿¡æ¯å¤„ç†ç»“æŸ
 	 * */
 	
 	/**
-	 * ÒÔÏÂÎªÉÌÆ·ĞÅÏ¢´¦Àí·şÎñ
+	 * ä»¥ä¸‹ä¸ºå•†å“ä¿¡æ¯å¤„ç†æœåŠ¡
 	 * 
 	 * */
 	
 	/**
-	 * ²éÑ¯£¬ÔÚ²éÑ¯½çÃæµ÷ÓÃ£¬ĞŞ¸Ä£¬É¾³ı£¬½çÃæµÄ×Ó²éÑ¯ÀïÃæµ÷ÓÃ
-	 * ²ÎÊı£ºString toSrc:²éÑ¯Íêºó·µ»ØµÄ½çÃæ
+	 * æŸ¥è¯¢ï¼Œåœ¨æŸ¥è¯¢ç•Œé¢è°ƒç”¨ï¼Œä¿®æ”¹ï¼Œåˆ é™¤ï¼Œç•Œé¢çš„å­æŸ¥è¯¢é‡Œé¢è°ƒç”¨
+	 * å‚æ•°ï¼šString toSrc:æŸ¥è¯¢å®Œåè¿”å›çš„ç•Œé¢
 	 * */
 	public ModelAndView selectGoods(String toSrc,HttpServletRequest request, HttpServletResponse response,HttpSession session)
 	{
 		int  gId;
 		String returnMessage="";
 		ModelAndView mav = new ModelAndView();
-		if(request.getParameter("searchGoods")==null)//ÆäËû½çÃæÌø×ªµ½²éÑ¯Ò³Ãæ
+		if(request.getParameter("searchGoods")==null)//å…¶ä»–ç•Œé¢è·³è½¬åˆ°æŸ¥è¯¢é¡µé¢
 		{
 			System.out.println(request.getParameter("searchGoods"));
 			mav.setViewName(toSrc);
 			return mav;
 		}
-		//²éÑ¯Ò³ÃæÊäÈëidÌá½»ºó£¬°Ñ½á¹û´ø»Ø²éÑ¯Ò³Ãæ	
-		//´¦ÀíÊäÈë·ÇÊı×ÖÇé¿ö
+		//æŸ¥è¯¢é¡µé¢è¾“å…¥idæäº¤åï¼ŒæŠŠç»“æœå¸¦å›æŸ¥è¯¢é¡µé¢	
+		//å¤„ç†è¾“å…¥éæ•°å­—æƒ…å†µ
 		try{
-			gId =Integer.parseInt(request.getParameter("searchGoods"));//»ñµÃÓÃ»§²éÑ¯µÄid,½«id×ª»¯³Éint
-		}catch(Exception e)  //Èç¹ûÓÃ»§ÊäÈëµÄÊÇ·Ç·¨×Ö·û£¬¾Í»áÅ×³öÒì³££¬ÒòÎªintegerÎŞ·¨´¦Àí·ÇÊı×Ö×Ö·û
+			gId =Integer.parseInt(request.getParameter("searchGoods"));//è·å¾—ç”¨æˆ·æŸ¥è¯¢çš„id,å°†idè½¬åŒ–æˆint
+		}catch(Exception e)  //å¦‚æœç”¨æˆ·è¾“å…¥çš„æ˜¯éæ³•å­—ç¬¦ï¼Œå°±ä¼šæŠ›å‡ºå¼‚å¸¸ï¼Œå› ä¸ºintegeræ— æ³•å¤„ç†éæ•°å­—å­—ç¬¦
 		{
-			 returnMessage="ÉÌÆ·IDÎª´¿Êı×Ö";
+			 returnMessage="å•†å“IDä¸ºçº¯æ•°å­—";
 			 mav.addObject("returnMessage", returnMessage);
 			 mav.setViewName(toSrc);
 			 return mav;
 		}
 		Goods goods=goodsservice.get(gId);
 		if(goods==null){
-			returnMessage="¸ÃÉÌÆ·²»´æÔÚÅ¶!";
+			returnMessage="è¯¥å•†å“ä¸å­˜åœ¨å“¦!";
 		}
 		else{
-			returnMessage="ÒÑËÑË÷µ½IDÎª:  "+gId+"   µÄÉÌÆ·";
+			returnMessage="å·²æœç´¢åˆ°IDä¸º:  "+gId+"   çš„å•†å“";
 			mav.addObject("goodsmessage", goods);
 		}		
 		mav.addObject("returnMessage", returnMessage);
 		mav.setViewName(toSrc);
 		return mav;
 	}
-	@RequestMapping("toGoodsAdd")  //Ìø×ªµ½Ìí¼Ó¿Í»§ĞÅÏ¢½çÃæ
+	@RequestMapping("toGoodsAdd")  //è·³è½¬åˆ°æ·»åŠ å®¢æˆ·ä¿¡æ¯ç•Œé¢
 	public ModelAndView toGoodsAdd(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("GoodsAdd");
 		return mav;
 	}	
-	@RequestMapping("GoodsAddToSql")  //Ìí¼Ó¿Í»§ĞÅÏ¢µ½Êı¾İ¿â   Ìí¼Ó³É¹¦·µ»ØÌí¼Ó½çÃæ
+	@RequestMapping("GoodsAddToSql")  //æ·»åŠ å®¢æˆ·ä¿¡æ¯åˆ°æ•°æ®åº“   æ·»åŠ æˆåŠŸè¿”å›æ·»åŠ ç•Œé¢
 	public ModelAndView GoodsAddToSql(Goods goods,HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 	
 		int gId;
@@ -558,24 +565,24 @@ public class MainOperationController {
 		String returnMessage="";
 		ModelAndView mav = new ModelAndView();
 		try{
-			//gNameºÍgRemark×Ô¶¯×ªÈë
+			//gNameå’ŒgRemarkè‡ªåŠ¨è½¬å…¥
 			gId=Integer.parseInt(request.getParameter("gIdStr"));
 			gNum=Integer.parseInt(request.getParameter("gNumStr"));
 			gCost=Integer.parseInt(request.getParameter("gCostStr"));
 			gPrice=Integer.parseInt(request.getParameter("gPriceStr"));
 			gExchange=Integer.parseInt(request.getParameter("gExchangeStr"));
 			
-		}catch(Exception e) //´¦ÀíID·Ç·¨ÊäÈë,Ê±¼ä¹ØÏµÎÒ¾Í²»Ò»Ò»¼ì²âÁË
+		}catch(Exception e) //å¤„ç†IDéæ³•è¾“å…¥,æ—¶é—´å…³ç³»æˆ‘å°±ä¸ä¸€ä¸€æ£€æµ‹äº†
 		{
-			returnMessage="Ò»¸ö»ò¶à¸öÊäÈë²»ºÏ·¨£¬ÇëÖØĞÂÊäÈë";
+			returnMessage="ä¸€ä¸ªæˆ–å¤šä¸ªè¾“å…¥ä¸åˆæ³•ï¼Œè¯·é‡æ–°è¾“å…¥";
 			mav.addObject("returnMessage", returnMessage);
 			mav.setViewName("GoodsAdd");
 			return mav;
 		}
-		Goods goodsCheck=goodsservice.get(gId);//¼ì²âIDÊÇ·ñÌí¼ÓÁË
+		Goods goodsCheck=goodsservice.get(gId);//æ£€æµ‹IDæ˜¯å¦æ·»åŠ äº†
 		if(goodsCheck!=null)
 		{
-			returnMessage="ÉÌÆ·ID   "+gId+"   ÒÑ¾­Ìí¼Ó£¬Çë»»ÁíÒ»¸öID.";
+			returnMessage="å•†å“ID   "+gId+"   å·²ç»æ·»åŠ ï¼Œè¯·æ¢å¦ä¸€ä¸ªID.";
 			mav.addObject("returnMessage", returnMessage);
 			mav.setViewName("GoodsAdd");
 			return mav;
@@ -589,17 +596,17 @@ public class MainOperationController {
 		}catch(Exception e)
 		{
 			e.printStackTrace();
-			returnMessage="ÉÌÆ·     "+goods.getgName()+"    Ìí¼ÓÊ§°Ü,ÇëÖØÊÔ(Î´ÖªÔ­Òò)";
+			returnMessage="å•†å“     "+goods.getgName()+"    æ·»åŠ å¤±è´¥,è¯·é‡è¯•(æœªçŸ¥åŸå› )";
 			mav.setViewName("GoodsAdd");
 			return mav;
 		}
 		goodsservice.add(goods);
-		returnMessage="ÉÌÆ·   "+goods.getgName()+"   Ìí¼Ó³É¹¦£¡ÇëÊäÈëID²é¿´";
+		returnMessage="å•†å“   "+goods.getgName()+"   æ·»åŠ æˆåŠŸï¼è¯·è¾“å…¥IDæŸ¥çœ‹";
 		mav.addObject("returnMessage", returnMessage);
 		mav.setViewName("GoodsAdd");			
 		return mav;		
 	}
-	@RequestMapping("toGoodsSelect")  //Ìø×ªµ½²éÑ¯¿Í»§ĞÅÏ¢½çÃæ
+	@RequestMapping("toGoodsSelect")  //è·³è½¬åˆ°æŸ¥è¯¢å®¢æˆ·ä¿¡æ¯ç•Œé¢
 	public ModelAndView toGoodsSelect(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
@@ -607,7 +614,7 @@ public class MainOperationController {
 		return mav;
 	}
 		
-	@RequestMapping("toGoodsUpdate")  //Ìø×ªµ½ĞŞ¸Ä¿Í»§ĞÅÏ¢½çÃæ ÒÔ¼°ÔÚĞŞ¸ÄÒ³Ãæ²éÑ¯
+	@RequestMapping("toGoodsUpdate")  //è·³è½¬åˆ°ä¿®æ”¹å®¢æˆ·ä¿¡æ¯ç•Œé¢ ä»¥åŠåœ¨ä¿®æ”¹é¡µé¢æŸ¥è¯¢
 	public ModelAndView toGoodsUpdate(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
@@ -615,9 +622,9 @@ public class MainOperationController {
 		return mav;
 	}
 	
-	@RequestMapping("GoodsUpDateToSql")//½«ĞŞ¸ÄºóµÄĞÅÏ¢Ìá½»µ½Êı¾İ¿â
+	@RequestMapping("GoodsUpDateToSql")//å°†ä¿®æ”¹åçš„ä¿¡æ¯æäº¤åˆ°æ•°æ®åº“
 	public ModelAndView GoodsUpDateToSql(Goods goods,HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
-		//ÔİÊ±²»¼ÓÊÇ·ñÓĞ¸Ä¶¯µÄ¼ì²â£¬¾ÍËãÃ»ÓĞ¸Ä¶¯Ò²µ±¸Ä¶¯À´ Ğ´ÈëÊı¾İ¿â
+		//æš‚æ—¶ä¸åŠ æ˜¯å¦æœ‰æ”¹åŠ¨çš„æ£€æµ‹ï¼Œå°±ç®—æ²¡æœ‰æ”¹åŠ¨ä¹Ÿå½“æ”¹åŠ¨æ¥ å†™å…¥æ•°æ®åº“
 		int gId;
 		int gNum;
 		int gCost;
@@ -626,31 +633,31 @@ public class MainOperationController {
 		String returnMessage="";	
 		ModelAndView mav = new ModelAndView();
 		
-		if((request.getParameter("updateGoods")=="")|| (request.getParameter("updateGoods")==null))//Ç°¶ËÍ¨¹ı${}¸³Öµ£¬´Ë´¦²»ÄÜ¸ÄÎªnull Èç¹ûÃ»ÓĞÊäÈëID¾Íµã»÷É¾³ı£¬ÓÉÕâ¾ä´¦Àí
+		if((request.getParameter("updateGoods")=="")|| (request.getParameter("updateGoods")==null))//å‰ç«¯é€šè¿‡${}èµ‹å€¼ï¼Œæ­¤å¤„ä¸èƒ½æ”¹ä¸ºnull å¦‚æœæ²¡æœ‰è¾“å…¥IDå°±ç‚¹å‡»åˆ é™¤ï¼Œç”±è¿™å¥å¤„ç†
 		{
-			returnMessage="ÎªÁË°²È«£¬ÇëÊäÈëĞèÒªĞŞ¸ÄµÄÉÌÆ·ID²¢ËÑË÷ĞÅÏ¢²é¿´È·ÈÏ";
+			returnMessage="ä¸ºäº†å®‰å…¨ï¼Œè¯·è¾“å…¥éœ€è¦ä¿®æ”¹çš„å•†å“IDå¹¶æœç´¢ä¿¡æ¯æŸ¥çœ‹ç¡®è®¤";
 			mav.addObject("returnMessage",returnMessage);
 			mav.setViewName("GoodsUpdate");
 			return mav;
 		}
-		 //²éÑ¯Ò³ÃæÊäÈëidÌá½»ºó£¬°Ñ½á¹û´ø»Ø²éÑ¯Ò³Ãæ
+		 //æŸ¥è¯¢é¡µé¢è¾“å…¥idæäº¤åï¼ŒæŠŠç»“æœå¸¦å›æŸ¥è¯¢é¡µé¢
 		try
 		{
-			//gNameºÍgRemark×Ô¶¯×ªÈë
-			gId=Integer.parseInt(request.getParameter("updateGoods"));//±£Ö¤Id²»»á±»ĞŞ¸Ä
+			//gNameå’ŒgRemarkè‡ªåŠ¨è½¬å…¥
+			gId=Integer.parseInt(request.getParameter("updateGoods"));//ä¿è¯Idä¸ä¼šè¢«ä¿®æ”¹
 			gNum=Integer.parseInt(request.getParameter("gNumStr"));
 			gCost=Integer.parseInt(request.getParameter("gCostStr"));
 			gPrice=Integer.parseInt(request.getParameter("gPriceStr"));
 			gExchange=Integer.parseInt(request.getParameter("gExchangeStr"));
-		}catch(Exception e) //´Ë´¦²»Ò»Ò»¼ìÑéÊÇÄÄÒ»¸öÊäÈë²»ºÏ·¨£¬Ê±¼ä¹ØÏµ
+		}catch(Exception e) //æ­¤å¤„ä¸ä¸€ä¸€æ£€éªŒæ˜¯å“ªä¸€ä¸ªè¾“å…¥ä¸åˆæ³•ï¼Œæ—¶é—´å…³ç³»
 		{
-			returnMessage="Ò»¸ö»ò¶à¸öÊäÈë²»ºÍ·¨,ÇëÖØÊÔ";
+			returnMessage="ä¸€ä¸ªæˆ–å¤šä¸ªè¾“å…¥ä¸å’Œæ³•,è¯·é‡è¯•";
 			mav.addObject("returnMessage", returnMessage);
 			mav.setViewName("GoodsUpdate");
 			return mav;			
 		}				
 		try{
-			//gNameºÍgRemark×Ô¶¯×°Èë
+			//gNameå’ŒgRemarkè‡ªåŠ¨è£…å…¥
 			goods.setgId(gId);
 			goods.setgNum(gNum);
 			goods.setgCost(gCost);
@@ -659,42 +666,42 @@ public class MainOperationController {
 			goodsservice.update(goods);
 		}catch(Exception e)
 		{
-			returnMessage="¸üĞÂIDÎª:  "+gId+"   µÄÉÌÆ·Ê§°Ü(Î´Öª´íÎó)";
+			returnMessage="æ›´æ–°IDä¸º:  "+gId+"   çš„å•†å“å¤±è´¥(æœªçŸ¥é”™è¯¯)";
 			e.printStackTrace();
 		}			
-		returnMessage="¸üĞÂIDÎª:  "+gId+"   µÄÉÌÆ·³É¹¦,ÇëÊäÈëID²é¿´";
+		returnMessage="æ›´æ–°IDä¸º:  "+gId+"   çš„å•†å“æˆåŠŸ,è¯·è¾“å…¥IDæŸ¥çœ‹";
 		mav.addObject("returnMessage", returnMessage);
 		mav.setViewName("GoodsUpdate");
 		return mav;
 	}		
-	@RequestMapping("toGoodsDelete")  //Ìø×ªµ½É¾³ı¿Í»§ĞÅÏ¢½çÃæ ÒÔ¼° ÔÚÉ¾³ı½çÃæµÄ²éÑ¯
+	@RequestMapping("toGoodsDelete")  //è·³è½¬åˆ°åˆ é™¤å®¢æˆ·ä¿¡æ¯ç•Œé¢ ä»¥åŠ åœ¨åˆ é™¤ç•Œé¢çš„æŸ¥è¯¢
 	public ModelAndView toGoodsDelete(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 		
 		ModelAndView mav = new ModelAndView();
 		mav=selectGoods("GoodsDelete",request, response,session);
 		return mav;
 	}
-	@RequestMapping("GoodsDeleteFromeSql")  //È·ÈÏÉ¾³ı°´Å¥°´ÏÂºó  ´ÓÊı¾İ¿â  É¾³ı¿Í»§ĞÅÏ¢
+	@RequestMapping("GoodsDeleteFromeSql")  //ç¡®è®¤åˆ é™¤æŒ‰é’®æŒ‰ä¸‹å  ä»æ•°æ®åº“  åˆ é™¤å®¢æˆ·ä¿¡æ¯
 	public ModelAndView GoodsDeleteFromeSql(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		int gId;
 		String returnMessage="";
 		ModelAndView mav = new ModelAndView();
 		
-		if((request.getParameter("deleteGoods")=="")|| (request.getParameter("deleteGoods")==null))//Ç°¶ËÍ¨¹ı${}¸³Öµ£¬´Ë´¦²»ÄÜ¸ÄÎªnull Èç¹ûÃ»ÓĞÊäÈëID¾Íµã»÷É¾³ı£¬ÓÉÕâ¾ä´¦Àí
+		if((request.getParameter("deleteGoods")=="")|| (request.getParameter("deleteGoods")==null))//å‰ç«¯é€šè¿‡${}èµ‹å€¼ï¼Œæ­¤å¤„ä¸èƒ½æ”¹ä¸ºnull å¦‚æœæ²¡æœ‰è¾“å…¥IDå°±ç‚¹å‡»åˆ é™¤ï¼Œç”±è¿™å¥å¤„ç†
 		{
-			returnMessage="ÎªÁË°²È«£¬ÇëÊäÈëĞèÒªÉ¾³ıµÄÉÌÆ·ID²¢ËÑË÷ĞÅÏ¢²é¿´È·ÈÏ";
+			returnMessage="ä¸ºäº†å®‰å…¨ï¼Œè¯·è¾“å…¥éœ€è¦åˆ é™¤çš„å•†å“IDå¹¶æœç´¢ä¿¡æ¯æŸ¥çœ‹ç¡®è®¤";
 			mav.addObject("returnMessage",returnMessage);
 			mav.setViewName("GoodsDelete");
 			return mav;
 		}
-		 //²éÑ¯Ò³ÃæÊäÈëidÌá½»ºó£¬°Ñ½á¹û´ø»Ø²éÑ¯Ò³Ãæ
+		 //æŸ¥è¯¢é¡µé¢è¾“å…¥idæäº¤åï¼ŒæŠŠç»“æœå¸¦å›æŸ¥è¯¢é¡µé¢
 		try
-		{	//»ñµÃÓÃ»§²éÑ¯µÄid
+		{	//è·å¾—ç”¨æˆ·æŸ¥è¯¢çš„id
 			gId=Integer.parseInt(request.getParameter("deleteGoods"));
-		}catch(Exception e) //²¶»ñÊäÈë·Ç·¨×Ö·ûµÄÇé¿ö,Õâ¸ö²¶»ñÆäÊµ²»ÓÃ¼Ó
+		}catch(Exception e) //æ•è·è¾“å…¥éæ³•å­—ç¬¦çš„æƒ…å†µ,è¿™ä¸ªæ•è·å…¶å®ä¸ç”¨åŠ 
 		{
-			returnMessage="IDÓ¦¸ÃÊÇ´¿Êı×Ö";
+			returnMessage="IDåº”è¯¥æ˜¯çº¯æ•°å­—";
 			mav.addObject("returnMessage", returnMessage);
 			mav.setViewName("GoodsDelete");
 			return mav;			
@@ -703,26 +710,26 @@ public class MainOperationController {
 			goodsservice.delete(gId);
 		}catch(Exception e)
 		{
-			returnMessage="É¾³ıIDÎª:  "+gId+"   µÄÉÌÆ·Ê§°Ü,ÇëÖØÊÔ";
+			returnMessage="åˆ é™¤IDä¸º:  "+gId+"   çš„å•†å“å¤±è´¥,è¯·é‡è¯•";
 			e.printStackTrace();
 		}
-		returnMessage="É¾³ıIDÎª:  "+gId+"   µÄÉÌÆ·³É¹¦";
+		returnMessage="åˆ é™¤IDä¸º:  "+gId+"   çš„å•†å“æˆåŠŸ";
 		mav.addObject("returnMessage", returnMessage);
 		mav.setViewName("GoodsDelete");
 		return mav;
 	}
 	
 	/**
-	 * ÉÌÆ·ĞÅÏ¢´¦Àí½áÊø
+	 * å•†å“ä¿¡æ¯å¤„ç†ç»“æŸ
 	 * */
 	
 	/**
-	 * ¿Í»§Ïû·Ñ´¦Àí¿ªÊ¼
+	 * å®¢æˆ·æ¶ˆè´¹å¤„ç†å¼€å§‹
 	 * */
-	@RequestMapping("toConsumeGoodsSelect")  //Ìø×ªµ½Ìí¼Ó¿Í»§Ïû·Ñ½çÃæ½çÃæ ÒÔ¼° ÔÚÌí¼Ó½çÃæÀï²éÑ¯¿Í»§
+	@RequestMapping("toConsumeGoodsSelect")  //è·³è½¬åˆ°æ·»åŠ å®¢æˆ·æ¶ˆè´¹ç•Œé¢ç•Œé¢ ä»¥åŠ åœ¨æ·»åŠ ç•Œé¢é‡ŒæŸ¥è¯¢å®¢æˆ·
 	public  void toConsumeGoosSelect(HttpServletRequest request) throws Exception {
 		int gId;
-		System.out.println("ÄãºÃ");
+		System.out.println("ä½ å¥½");
 		try{
 			gId =Integer.parseInt("searchGoods");
 		}catch(Exception e)  
@@ -739,32 +746,32 @@ public class MainOperationController {
 		request.setAttribute("goodsmessage", goods);
 	}
 	
-	@RequestMapping("toConsumeAdd")  //Ìø×ªµ½Ìí¼Ó¿Í»§Ïû·Ñ½çÃæ½çÃæ ÒÔ¼° ÔÚÌí¼Ó½çÃæÀï²éÑ¯¿Í»§
+	@RequestMapping("toConsumeAdd")  //è·³è½¬åˆ°æ·»åŠ å®¢æˆ·æ¶ˆè´¹ç•Œé¢ç•Œé¢ ä»¥åŠ åœ¨æ·»åŠ ç•Œé¢é‡ŒæŸ¥è¯¢å®¢æˆ·
 	public ModelAndView toConsumeAdd(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 		
 		ModelAndView mav = new ModelAndView();
-		mav=selectUser("ConsumeAdd",request, response,session);//´¦ÀíÌí¼Ó½çÃæµÄ²éÑ¯
+		mav=selectUser("ConsumeAdd",request, response,session);//å¤„ç†æ·»åŠ ç•Œé¢çš„æŸ¥è¯¢
 		//mav.setViewName("ConsumeAdd");
 		return mav;
 	}
 	
-	@RequestMapping("ConsumeAddToSql")  //Ìø×ªµ½Ìí¼Ó¿Í»§Ïû·Ñ½çÃæ½çÃæ ÒÔ¼° 
+	@RequestMapping("ConsumeAddToSql")  //è·³è½¬åˆ°æ·»åŠ å®¢æˆ·æ¶ˆè´¹ç•Œé¢ç•Œé¢ ä»¥åŠ 
 	public ModelAndView ConsumeAddToSql(Consume consume,HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 		
-		int uId;			//ÓÃ»§ID
-		String cDate;		//Ïû·ÑÈÕÆÚ
-		String cTime;		//Ïû·ÑÊ±¼ä
-		int gId;			//ÉÌÆ·ID
-		int cNum;			//Ïû·ÑÊıÁ¿£¬ÓÃÓÚÍ³¼Æ³É±¾ºÍÓ¯Àû
-		int oTid;			//²Ù×÷ÀàĞÍID
-		int bTid;			//¹ºÂòÀàĞÍID
-		int cRedits;		//»ñµÃ»ı·Ö
-		String cRemark;		//Ïû·Ñ±¸×¢
+		int uId;			//ç”¨æˆ·ID
+		String cDate;		//æ¶ˆè´¹æ—¥æœŸ
+		String cTime;		//æ¶ˆè´¹æ—¶é—´
+		int gId;			//å•†å“ID
+		int cNum;			//æ¶ˆè´¹æ•°é‡ï¼Œç”¨äºç»Ÿè®¡æˆæœ¬å’Œç›ˆåˆ©
+		int oTid;			//æ“ä½œç±»å‹ID
+		int bTid;			//è´­ä¹°ç±»å‹ID
+		int cRedits;		//è·å¾—ç§¯åˆ†
+		String cRemark;		//æ¶ˆè´¹å¤‡æ³¨
 		int sId;	
 		String returnMessage="";
 		ModelAndView mav = new ModelAndView();
 		try{
-			//gNameºÍgRemark×Ô¶¯×ªÈë
+			//gNameå’ŒgRemarkè‡ªåŠ¨è½¬å…¥
 			uId=Integer.parseInt(request.getParameter("uIdStr"));
 			gId=Integer.parseInt(request.getParameter("gIdStr"));
 			cNum=Integer.parseInt(request.getParameter("cNumStr"));
@@ -772,19 +779,19 @@ public class MainOperationController {
 			bTid=Integer.parseInt(request.getParameter("bTidStr"));
 			cRedits=Integer.parseInt(request.getParameter("cReditsStr"));
 			sId=Integer.parseInt(request.getParameter("sIdStr"));
-		}catch(Exception e) //´¦ÀíID·Ç·¨ÊäÈë,Ê±¼ä¹ØÏµÎÒ¾Í²»Ò»Ò»¼ì²âÁË
+		}catch(Exception e) //å¤„ç†IDéæ³•è¾“å…¥,æ—¶é—´å…³ç³»æˆ‘å°±ä¸ä¸€ä¸€æ£€æµ‹äº†
 		{
 			e.printStackTrace();
-			returnMessage="Ò»¸ö»ò¶à¸öÊäÈë²»ºÏ·¨£¬ÇëÖØĞÂÊäÈë";
+			returnMessage="ä¸€ä¸ªæˆ–å¤šä¸ªè¾“å…¥ä¸åˆæ³•ï¼Œè¯·é‡æ–°è¾“å…¥";
 			mav.addObject("returnMessage", returnMessage);
 			mav.setViewName("ConsumeAdd");
 			return mav;
 		}
-		//´Ë´¦²Å·¢¾õÏû·ÑĞÅÏ¢Êı¾İ¿âÉè¼ÆÓĞÎÊÌâ£¬ÊÇ°Ñ¿Í»§uidµ±×öÖ÷¼ü£¬Õâ¾ÍÒâÎ¶×ÅÃ¿¸ö¿Í»§Ö»ÄÜÏû·ÑÒ»´Î
-		//ÒòÎªÖ÷¼üÊı¾İ¿âÖĞÖ»ÄÜÓĞÒ»¸ö£¬£¬ÎÒÈÕÄãÃ´°¡£¬Õû¸ö¼¸°ÑÁË
-		//ËùÒÔÎÒ°ÑÖ÷¼ü¸Ä³ÉÁËcTime.ÓÃÊ±¼äÀ´µ±×öÖ÷¼ü
+		//æ­¤å¤„æ‰å‘è§‰æ¶ˆè´¹ä¿¡æ¯æ•°æ®åº“è®¾è®¡æœ‰é—®é¢˜ï¼Œæ˜¯æŠŠå®¢æˆ·uidå½“åšä¸»é”®ï¼Œè¿™å°±æ„å‘³ç€æ¯ä¸ªå®¢æˆ·åªèƒ½æ¶ˆè´¹ä¸€æ¬¡
+		//å› ä¸ºä¸»é”®æ•°æ®åº“ä¸­åªèƒ½æœ‰ä¸€ä¸ªï¼Œï¼Œæˆ‘æ—¥ä½ ä¹ˆå•Šï¼Œæ•´ä¸ªå‡ æŠŠäº†
+		//æ‰€ä»¥æˆ‘æŠŠä¸»é”®æ”¹æˆäº†cTime.ç”¨æ—¶é—´æ¥å½“åšä¸»é”®
 			
-		try{//Ctime,cDate,cRemark×Ô¶¯×°Èë
+		try{//Ctime,cDate,cRemarkè‡ªåŠ¨è£…å…¥
 			consume.setuId(uId);
 			consume.setgId(gId);
 			consume.setcNum(cNum);
@@ -795,12 +802,12 @@ public class MainOperationController {
 		}catch(Exception e)
 		{
 			e.printStackTrace();
-			returnMessage="¿Í»§Ïû·ÑÌí¼ÓÊ§°Ü,ÇëÖØÊÔ(Î´ÖªÔ­Òò)";
+			returnMessage="å®¢æˆ·æ¶ˆè´¹æ·»åŠ å¤±è´¥,è¯·é‡è¯•(æœªçŸ¥åŸå› )";
 			mav.setViewName("ConseumeAdd");
 			return mav;
 		}
 		consumeservice.add(consume);
-		returnMessage="¿Í»§Ïû·ÑÌí¼Ó³É¹¦£¡ÇëÊäÈë¿Í»§ID²é¿´£¬»¶Ó­ÏÂ´Î¹âÁÙ";
+		returnMessage="å®¢æˆ·æ¶ˆè´¹æ·»åŠ æˆåŠŸï¼è¯·è¾“å…¥å®¢æˆ·IDæŸ¥çœ‹ï¼Œæ¬¢è¿ä¸‹æ¬¡å…‰ä¸´";
 		mav.addObject("returnMessage", returnMessage);
 		mav.setViewName("ConsumeAdd");			
 		return mav;		
@@ -812,27 +819,27 @@ public class MainOperationController {
 		List<Consume> list= consumeservice.get(uId);
 		return list;
 	}
-	@RequestMapping("toConsumeSelect")  //Ìø×ªµ½Ìí¼Ó¿Í»§Ïû·Ñ½çÃæ½çÃæ ÒÔ¼° ÔÚÌí¼Ó½çÃæÀï²éÑ¯¿Í»§
+	@RequestMapping("toConsumeSelect")  //è·³è½¬åˆ°æ·»åŠ å®¢æˆ·æ¶ˆè´¹ç•Œé¢ç•Œé¢ ä»¥åŠ åœ¨æ·»åŠ ç•Œé¢é‡ŒæŸ¥è¯¢å®¢æˆ·
 	public ModelAndView toConsumeSelect(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 		
 		ModelAndView mav = new ModelAndView();
 		int uId;
 		String returnMessage="";
-		mav=selectUser("ConsumeSelect",request, response,session);//´¦ÀíÌí¼Ó½çÃæµÄ²éÑ¯
+		mav=selectUser("ConsumeSelect",request, response,session);//å¤„ç†æ·»åŠ ç•Œé¢çš„æŸ¥è¯¢
 
 			
 		try{
 		 uId=Integer.parseInt(request.getParameter("searchUser"));
 		}catch(Exception e)
 		{
-			returnMessage="ÔİÎŞÏû·ÑĞÅÏ¢";
+			returnMessage="æš‚æ— æ¶ˆè´¹ä¿¡æ¯";
 			mav.addObject("returnMessageOne", returnMessage);
 			return mav;
 		}
 		List<Consume> list= consumeservice.get(uId);
 		if(list==null)
 		{
-			returnMessage="ÔİÎŞÏû·ÑĞÅÏ¢";
+			returnMessage="æš‚æ— æ¶ˆè´¹ä¿¡æ¯";
 			mav.addObject("returnMessageOne", returnMessage);
 			return mav;
 		}
@@ -841,38 +848,94 @@ public class MainOperationController {
 	}
 	
 	/**
-	 * µ¼³ö±í¸ñĞÅÏ¢
+	 * å¯¼å‡ºè¡¨æ ¼ä¿¡æ¯
 	 * */
 	
-	public void Export(String path,Object objectservice)
-	{
+	public boolean writeToexcel(String filePathAndName,String[] title,List<String> strList) {
+		try {
+			Label label = null;
+			int cow=title.length; //åˆ—æ•°
+			File file = new File(filePathAndName+".xls");
+			if(file.exists()) {
+				file.delete();
+			}
+			else 
+				file.createNewFile();			
+			WritableWorkbook workbook = Workbook.createWorkbook(file);
+			WritableSheet sheet = workbook.createSheet("sheet1", 0);
 			
+			for (int i = 0; i < title.length; i++) {
+				label = new Label(i, 0, title[i]);//åˆ—è¡Œå€¼
+				sheet.addCell(label);
+			}	
+			for(int i=0 ; i<strList.size() ; i++) 
+			{				
+				String str =strList.get(i);
+				if("".equals(str))
+					str="null";
+				Label Value = new Label(i%cow,i/cow+1,str);
+				sheet.addCell(Value);
+			}
+			workbook.write();
+			workbook.close();
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}	
+		return true;
 	}
-	@RequestMapping("toExportUserInfo") //Ìøµ½µ¼³ö½çÃæ£¬²¢²éÑ¯
+
+	@RequestMapping("toExportUserInfo") //è·³åˆ°å¯¼å‡ºç•Œé¢ï¼Œå¹¶æŸ¥è¯¢
 	public ModelAndView toExportUserInfo(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception{
 		ModelAndView mav = new ModelAndView();
 		mav=selectUser("ExportExcel/ExportUserInfo",request,response,session);
 		return mav;
 	}
-	@RequestMapping("toExportUser") //Ìøµ½µ¼³ö½çÃæ£¬²¢²éÑ¯
-	public ModelAndView toExport(User user,HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception{
+	@RequestMapping("toExportUser") //è·³åˆ°å¯¼å‡ºç•Œé¢ï¼Œå¹¶æŸ¥è¯¢
+	public ModelAndView toExport(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception{
 		ModelAndView mav = new ModelAndView();
-		user=request.getParameter("usermessage");
+		String returnMessage="";
+		if(request.getParameter("searchUser")==null || (request.getParameter("searchUser")==""))
+		{
+			returnMessage="å…ˆæœç´¢ç¡®è®¤åå†å¯¼å‡º";
+			mav.addObject("returnMessage", returnMessage);
+			mav.setViewName("ExportExcel/ExportUserInfo");
+			return mav;
+		}
 		mav=selectUser("ExportExcel/ExportUserInfo",request,response,session);
-		Goods goods =new Goods();
-
+		Map<String, Object> usermap=mav.getModel();
+		User user=(User)usermap.get("usermessage");
+		List<String> strList=new ArrayList<String>(); //ç”¨æ¥å­˜å­—ç¬¦ä¸²
+		strList.add(user.getuId()+"");
+		strList.add(user.getuName());
+		strList.add(user.getuSex()+"");
+		strList.add(user.getuBirth());
+		strList.add(user.getuTel());
+		strList.add(user.getuPhoNum());	
+		strList.add(user.getuRegDate());
+		strList.add(user.getuAddr());
+		strList.add(user.getuRemark());
+		String[] title={"ID","å§“å","æ€§åˆ«","ç”Ÿæ—¥","ç”µè¯","æ‰‹æœº","æ³¨å†Œæ—¥æœŸ","åœ°å€","å¤‡æ³¨"};
+		if(writeToexcel("F:/"+user.getuName(),title,strList))
+		{
+			returnMessage="å¯¼å‡ºåˆ°"+"F:/"+user.getuName()+".xlsæˆåŠŸ";
+		}else 
+			returnMessage="å¯¼å‡ºå¤±è´¥";
+		mav.addObject("returnMessage", returnMessage);	
+		mav.setViewName("ExportExcel/ExportUserInfo");
 		return mav;
 	}
 	
 	/**
-	 * »ı·ÖÉèÖÃ¿ªÊ¼
+	 * ç§¯åˆ†è®¾ç½®å¼€å§‹
 	 * */
 	@RequestMapping("SetCredits")  
 	public ModelAndView SetCredits(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
 		Credit credit = new Credit();
-		String filePath = new ClassPathResource("credit.properties").getPath();// ÎÄ¼şµÄÂ·¾¶
+		String filePath = new ClassPathResource("credit.properties").getPath();// æ–‡ä»¶çš„è·¯å¾„
 		System.out.println("Read propertiesPath:" + filePath);
 		Properties pps = new Properties();
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath)));
@@ -888,7 +951,7 @@ public class MainOperationController {
 	public ModelAndView SetCreditsToFile(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
-		String filePath = new ClassPathResource("credit.properties").getPath();// ÎÄ¼şµÄÂ·¾¶
+		String filePath = new ClassPathResource("credit.properties").getPath();// æ–‡ä»¶çš„è·¯å¾„
 		System.out.println("Write propertiesPath:" + filePath);
 		Properties pps = new Properties();
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath)));
@@ -899,13 +962,13 @@ public class MainOperationController {
 		pps.setProperty("sponsorAndCostomer", request.getParameter("sponsorAndCostomer"));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new ClassPathResource("credit.properties").getPath())));
 		pps.store(bw,"");
-		mav.addObject("message", "ÉèÖÃ³É¹¦£¡");
-		mav.addObject("nextPage", "SetCredits");//·µ»Øµ½SetCredits
+		mav.addObject("message", "è®¾ç½®æˆåŠŸï¼");
+		mav.addObject("nextPage", "SetCredits");//è¿”å›åˆ°SetCredits
 		mav.setViewName("MessagePage");
 		return mav;
 	}
 		
-	@RequestMapping("toExportExcel")  //Ìø×ªµ½²éÑ¯¿Í»§ĞÅÏ¢½çÃæ
+	@RequestMapping("toExportExcel")  //è·³è½¬åˆ°æŸ¥è¯¢å®¢æˆ·ä¿¡æ¯ç•Œé¢
 	public ModelAndView toExportExcel(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
@@ -913,14 +976,14 @@ public class MainOperationController {
 		return mav;
 	}
 	
-	@RequestMapping("toSystemDescription")  //Ìø×ªµ½ÏµÍ³½çÃæ
+	@RequestMapping("toSystemDescription")  //è·³è½¬åˆ°ç³»ç»Ÿç•Œé¢
 	public ModelAndView toSystemDescriptiom(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("SystemDescription");
 		return mav;
 	}
-	@RequestMapping("toSystemHelp")  //Ìø×ªµ½ÏµÍ³½çÃæ
+	@RequestMapping("toSystemHelp")  //è·³è½¬åˆ°ç³»ç»Ÿç•Œé¢
 	public ModelAndView toSystemHelp(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
