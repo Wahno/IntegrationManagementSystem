@@ -70,7 +70,7 @@
 				<jsp:include page="baseJsp/Header.jsp"></jsp:include>
 				<!-- Item begin -->
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="./Main">控制台</a> <i
+					<li class="breadcrumb-item"><a href="Main">控制台</a> <i
 						class="fa fa-angle-right"></i></li>
 				</ol>
 				<!-- Item end -->
@@ -95,15 +95,7 @@
 					</thead>
 					<tbody>
 					  <tr>
-						<td>Jill Smith</td>
-						<td>25</td>
-						<td>Female</td>
-						<td>5'4</td>
-						<td>British Columbia</td>
-						<td>Volleyball</td>
-					  </tr>
-					  <tr>
-						<td>John Stone</td>
+						<td>wangnima</td>
 						<td>30</td>
 						<td>Male</td>
 						<td>5'9</td>

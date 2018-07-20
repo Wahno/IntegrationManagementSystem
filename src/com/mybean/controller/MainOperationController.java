@@ -23,12 +23,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mybean.data.All;
 import com.mybean.data.Consume;
 import com.mybean.data.Credit;
 import com.mybean.data.Goods;
 import com.mybean.data.Staff;
 import com.mybean.data.User;
 import com.mybean.service.AdminService;
+import com.mybean.service.AllService;
 import com.mybean.service.ConsumeService;
 import com.mybean.service.GoodsService;
 import com.mybean.service.StaffService;
@@ -54,6 +56,8 @@ public class MainOperationController {
 	GoodsService goodsservice;
 	@Autowired
 	ConsumeService consumeservice;
+	@Autowired
+	AllService allservice;
 	
 	@RequestMapping("ConsumeMain")  //客户总界面
 	public ModelAndView ConsumeMain(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
@@ -1275,6 +1279,25 @@ public class MainOperationController {
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("SystemHelp");
+		return mav;
+	}
+	
+	
+	@RequestMapping("toAllUserAllCreditsSelect")  //跳转到系统界面
+	public ModelAndView toAllUserAllCreditsSelect(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		List<User> userList=userservice.list();
+		if(userList==null)
+		{
+			mav.addObject("returnMessage", "暂时无客户，请添加");
+			mav.setViewName("ConsumeCredits");
+			return mav;
+		}
+		List<All> creditsList=allservice.list();
+		mav.addObject("creditsList", creditsList);
+		mav.addObject("userList", userList);
+		mav.setViewName("SystemDescription");
 		return mav;
 	}
 	
