@@ -107,7 +107,7 @@
 							
 								<div class="col-md-12 form-group1 ">
 									<label class="control-label">商品备注</label>
-									<textarea name="gRemark" placeholder="新品说明等备注">value="${goodsmessage.gRemark}"</textarea>
+									<textarea name="gRemark" placeholder="新品说明等备注">${goodsmessage.gRemark}</textarea>
 								</div>
 								<div class="col-md-12 form-group">
 									<input name="updateGoods" type="hidden" value="${goodsmessage.gId}"/>

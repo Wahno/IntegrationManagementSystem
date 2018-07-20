@@ -885,7 +885,15 @@ public class MainOperationController {
 		}	
 		return true;
 	}
+	
+	@RequestMapping("toExportExcel")  //跳转到导出客户信息界面
+	public ModelAndView toExportExcel(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("ExportExcel");
+		return mav;
+	}
+	
 	@RequestMapping("toExportUserInfo") //跳到导出界面，并查询
 	public ModelAndView toExportUserInfo(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception{
 		ModelAndView mav = new ModelAndView();
@@ -927,6 +935,77 @@ public class MainOperationController {
 		return mav;
 	}
 	
+	@RequestMapping("toExportAllUserInfo")  //跳转到导出客户信息界面
+	public ModelAndView toExportAllUserInfo(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		String returnMessage="";
+		List<String> strList=new ArrayList<String>();
+		List<User> list=userservice.list();
+		for(int i=0;i<list.size();i++)
+		{
+			User user=list.get(i);
+			strList.add(user.getuId()+"");
+			strList.add(user.getuName());
+			strList.add(user.getuSex()+"");
+			strList.add(user.getuBirth());
+			strList.add(user.getuTel());
+			strList.add(user.getuPhoNum());	
+			strList.add(user.getuRegDate());
+			strList.add(user.getuAddr());
+			strList.add(user.getuRemark());
+		}
+		String[] title={"ID","姓名","性别","生日","电话","手机","注册日期","地址","备注"};
+		if(writeToexcel("F:/allUserInfo",title,strList))
+		{
+			returnMessage="导出到所有客户信息F:/allUserInfo.xls成功";
+		}else 
+			returnMessage="导出失败";
+		mav.addObject("returnMessage", returnMessage);
+		mav.setViewName("ExportExcel");
+		return mav;
+	}
+	
+	@RequestMapping("toExportGoodsInfo") //跳到导出界面，并查询
+	public ModelAndView toExportGoodsInfo(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception{
+		ModelAndView mav = new ModelAndView();
+		mav=selectGoods("ExportExcel/ExportGoodsInfo",request,response,session);
+		return mav;
+	}
+	
+	@RequestMapping("toExportGoods") //跳到导出界面，并查询
+	public ModelAndView toExportGoods(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception{
+		ModelAndView mav = new ModelAndView();
+		String returnMessage="";
+		if(request.getParameter("searchGoods")==null || (request.getParameter("searchGoods")==""))
+		{
+			returnMessage="先搜索确认后再导出";
+			mav.addObject("returnMessage", returnMessage);
+			mav.setViewName("ExportExcel/ExportGoodsInfo");
+			return mav;
+		}
+		mav=selectGoods("ExportExcel/ExportGoodsInfo",request,response,session);
+		Map<String, Object> goodsmap=mav.getModel();
+		Goods goods=(Goods)goodsmap.get("goodsmessage");
+		List<String> strList=new ArrayList<String>(); //用来存字符串
+		strList.add(goods.getgId()+"");
+		strList.add(goods.getgName());
+		strList.add(goods.getgNum()+"");
+		strList.add(goods.getgCost()+"");
+		strList.add(goods.getgPrice()+"");
+		strList.add(goods.getgExchange()+"");
+		strList.add(goods.getgRemark());
+	
+		String[] title={"商品ID","商品名称","商品数量","成本","售价","兑换所需积分","商品备注"};
+		if(writeToexcel("F:/"+goods.getgName(),title,strList))
+		{
+			returnMessage="导出到"+"F:/"+goods.getgName()+".xls成功";
+		}else 
+			returnMessage="导出失败";
+		mav.addObject("returnMessage", returnMessage);	
+		mav.setViewName("ExportExcel/ExportGoodsInfo");
+		return mav;
+	}
 	/**
 	 * 积分设置开始
 	 * */
@@ -968,13 +1047,8 @@ public class MainOperationController {
 		return mav;
 	}
 		
-	@RequestMapping("toExportExcel")  //跳转到查询客户信息界面
-	public ModelAndView toExportExcel(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("ExportExcel");
-		return mav;
-	}
+	
 	
 	@RequestMapping("toSystemDescription")  //跳转到系统界面
 	public ModelAndView toSystemDescriptiom(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {

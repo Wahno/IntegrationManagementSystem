@@ -49,6 +49,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="panel-heading">
 							<div class="panel-title pn">
 								<h3 class="mtn mb10 fw400">导出表格</h3>
+								<div >
+									<input value="Tip:${returnMessage}" readonly="readonly" style="width:400px;"/>
+								</div>
 							</div>
 						</div>
 						<section id="new">
@@ -59,14 +62,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 
 								<div class="icon-box col-md-3 col-sm-4">
-									<a class="agile-icon" href="DataRestore"><i class="fa fa-repeat"
-										aria-hidden="true"></i> 导出所有用户表格</a>
+									<a class="agile-icon" href="toExportAllUserInfo"><i class="fa fa-repeat"
+										aria-hidden="true"></i>导出所有用户表格</a>
 								</div>
 			
 								<div class="icon-box col-md-3 col-sm-4">
-									<a class="agile-icon" href="#"><i class="fa fa-table"
-										aria-hidden="true"></i> 导出表格信息</a>
+									<a class="agile-icon" href="toExportGoodsInfo"><i class="fa fa-table"
+										aria-hidden="true"></i>导出查询商品表格</a>
 								</div>
+								
 							</div>
 						</section>
 					</div>

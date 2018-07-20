@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <base href="<%=basePath%>">
-<title>导出用户信息</title>
+<title>商品查询</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="" />
@@ -40,15 +40,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<jsp:include page="../baseJsp/Header.jsp"></jsp:include>
 				<!-- Item begin -->
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="Data">数据管理</a><i
-						class="fa fa-angle-right"></i>导出客户信息
+					<li class="breadcrumb-item"><a href="index.html">导出表格</a><i
+						class="fa fa-angle-right"></i>导出查询商品信息
 				</ol>
 				<div class="breadcrumb" style=" height:70px;"> <!-- 这是搜索框后面的白色背景 -->
 					<div class="w3layouts-left" style="width:300px;height:60px;background-color:#ffcc00;float:left;"> 
 						<!--search-box-->
 							<div class="w3-search-box" >
-								<form action="toExportUserInfo" method="post">
-									<input name ="searchUser" type="text" placeholder="输入客户ID搜索" required=""/>	
+								<form action="toExportGoodsInfo" method="post">
+									<input name ="searchGoods" type="text" placeholder="输入商品ID搜索" required=""/>	
 									<input type="submit" value="">					
 								</form>
 							
@@ -56,55 +56,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<!--//end-search-box-->
 					 </div>
 					<div class="w3layouts-left" style="width:120px;height:60px;background-color:#ffcc00;float:left;">
-							<form action="toExportUser" method="post">
-							
-								<input  type="hidden" name="searchUser"value="${usermessage.uId}"/>
+							<form action="toExportGoods" method="post">						
+								<input  type="hidden" name="searchGoods"value="${goodsmessage.gId}"/>
 								<button type="submit" class="btn btn-primary">确认导出</button>
 							</form>
 					</div>			
 				</div>
 			</div>
-				
+			
 				<!-- Item end -->
-				<!-- Main begin -->			
+				<!-- Main begin -->
+					
 				<div class="grid_3 grid_4 w3_agileits_icons_page">
 					<div class="alert alert-warning" >
-						<strong>${returnMessage}</strong>		
-					</div>		
+							<strong>${returnMessage}</strong>		
+					</div>
 					<div class="grid_3 grid_5 w3ls">
-						<h3>客户信息</h3>
-					
+						<h3>商品信息</h3>
 						<div class="alert alert-success" role="alert">
-							<strong>你的卡号：</strong>${usermessage.uId}
+							<strong>商品ID：</strong>${goodsmessage.gId}
 						</div>
 						<div class="alert alert-info" role="alert">
-							<strong>姓名：</strong>${usermessage.uName }
+							<strong>商品名称：</strong>${goodsmessage.gName}
 						</div>
 						<div class="alert alert-warning" role="alert">
-						<%!String sex=""; %>
-						<c:if test="${usermessage.uSex==0}"><%sex="男"; %></c:if>
-						<c:if test="${usermessage.uSex==1}"><%sex="女"; %> </c:if>
-						<strong> 性别：</strong><%=sex %><!-- 不能用el表达式 -->
-						<%sex=""; %><!-- 清空 -->
+							<strong>商品数量：</strong>${goodsmessage.gNum}
+						</div>		
+						<div class="alert alert-success" role="alert">
+							<strong>商品成本：</strong>${goodsmessage.gCost}
+						</div>
+					
+						<div class="alert alert-info" role="alert">
+							<strong>商品售价：</strong>${goodsmessage.gPrice}
 						</div>
 						<div class="alert alert-danger" role="alert">
-							<strong>电话：</strong>${usermessage.uTel}
-						</div>
-						<div class="alert alert-success" role="alert">
-							<strong>手机：</strong>${usermessage.uPhoNum}
-						</div>
+							<strong>商品兑换所需积分：</strong>${goodsmessage.gExchange}
+						</div>	
 						<div class="alert alert-info" role="alert">
-							<strong>生日：</strong>${usermessage.uBirth }
-						</div>
-						<div class="alert alert-info" role="alert">
-							<strong>注册日期：</strong>${usermessage.uRegDate }
-						</div>
-						<div class="alert alert-info" role="alert">
-							<strong>地址：</strong>${usermessage.uAddr }
-						</div>
-						<div class="alert alert-info" role="alert">
-							<strong>备注：</strong>${usermessage.uRemark }
-						</div>			
+							<strong>商品备注：</strong>${goodsmessage.gRemark}
+						</div>							
 				</div>
 				<!-- Main end -->
 				<jsp:include page="../baseJsp/Footer.jsp"></jsp:include>
@@ -114,4 +104,3 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<jsp:include page="../baseJsp/MenuScript.jsp"></jsp:include>
 </body>
-</html>
