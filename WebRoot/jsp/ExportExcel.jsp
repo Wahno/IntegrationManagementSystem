@@ -44,7 +44,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!-- Item end -->
 				<!-- Main begin -->
 							<!--grid-->
-				<div class="grid_3 grid_4 w3_agileits_icons_page">
 					<div class="panel1 button-sizes">
 						<div class="panel-heading">
 							<div class="panel-title pn">
@@ -73,8 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								
 							</div>
 						</section>
-					</div>
-					<div class="panel1 button-sizes">
+					
 						<section id="new">
 							<div class="row fontawesome-icon-list">
 								<div class="icon-box col-md-3 col-sm-4">
@@ -93,8 +91,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 							</div>
 						</section>
+						<section id="new">
+							<div class="row fontawesome-icon-list">
+								<div class="icon-box col-md-3 col-sm-4">
+									<a class="agile-icon" href="toExportStaffInfo"><i class="fa fa-copy"
+										aria-hidden="true"></i>导出查询员工信息</a>
+								</div>
+
+								<div class="icon-box col-md-3 col-sm-4">
+									<a class="agile-icon" href="toExportAllStaffInfo"><i class="fa fa-repeat"
+										aria-hidden="true"></i> 导出所有员工信息</a>
+								</div>
+							</div>
+						</section>
 					</div>
-				</div>
 					<!----->
 				<!-- Main end -->
 				<jsp:include page="baseJsp/Footer.jsp"></jsp:include>

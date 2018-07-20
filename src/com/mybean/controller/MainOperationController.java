@@ -961,6 +961,50 @@ public class MainOperationController {
 		return mav;
 	}
 	
+	@RequestMapping("toExportStaffInfo") //跳到导出界面，并查询
+	public ModelAndView toExportStaffInfo(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception{
+		ModelAndView mav = new ModelAndView();
+		mav=selectStaff("ExportExcel/ExportStaffInfo",request,response,session);
+		return mav;
+	}
+	
+	@RequestMapping("toExportStaff") //跳到导出界面，并查询
+	public ModelAndView toExportStaff(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception{
+		ModelAndView mav = new ModelAndView();
+		String returnMessage="";
+		if(request.getParameter("searchStaff")==null || (request.getParameter("searchStaff")==""))
+		{
+			returnMessage="先搜索确认后再导出";
+			mav.addObject("returnMessage", returnMessage);
+			mav.setViewName("ExportExcel/ExportStaffInfo");
+			return mav;
+		}
+		mav=selectStaff("ExportExcel/ExportStaffInfo",request,response,session);
+		Map<String, Object> map=mav.getModel();
+		Staff staff=(Staff)map.get("staffmessage");
+		List<String> strList=new ArrayList<String>(); //用来存字符串
+		strList.add(staff.getsId()+"");
+		strList.add(staff.getsName());
+		strList.add(staff.getsMark());
+		strList.add(staff.getsSex()+"");
+		strList.add(staff.getsTel());
+		strList.add(staff.getsPhoNum());
+		strList.add(staff.getsAddr());
+		strList.add(staff.getsRegDate());
+		strList.add(staff.getsRemark());
+		
+	
+		String[] title={"员工ID","姓名","助记符","性别","电话","手机号","地址","注册日期","备注"};
+		if(writeToexcel("F:/"+staff.getsName(),title,strList))
+		{
+			returnMessage="导出到"+"F:/"+staff.getsName()+".xls成功";
+		}else 
+			returnMessage="导出失败";
+		mav.addObject("returnMessage", returnMessage);	
+		mav.setViewName("ExportExcel/ExportStaffInfo");
+		return mav;
+	}
+	
 	@RequestMapping("toExportGoodsInfo") //跳到导出界面，并查询
 	public ModelAndView toExportGoodsInfo(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception{
 		ModelAndView mav = new ModelAndView();
