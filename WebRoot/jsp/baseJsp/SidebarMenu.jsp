@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</ul>
 			</li>
 					
-			<li id="menu-academico"><a href="./ConsumeMain"> <i class="fa fa-list-ul"></i> 
+			<li id="menu-academico"><a href="ConsumeMain"> <i class="fa fa-list-ul"></i> 
 				<span>客户信息</span>
 				<span class="fa fa-angle-right" style="float: right"></span>
 				<div class="clearfix"></div></a>

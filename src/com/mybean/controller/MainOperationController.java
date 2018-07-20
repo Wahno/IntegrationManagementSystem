@@ -814,11 +814,7 @@ public class MainOperationController {
 	}
 	/**
 	 * */
-	public List<Consume> selectConsume(int uId)
-	{
-		List<Consume> list= consumeservice.get(uId);
-		return list;
-	}
+
 	@RequestMapping("toConsumeSelect")  //跳转到添加客户消费界面界面 以及 在添加界面里查询客户
 	public ModelAndView toConsumeSelect(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
 		
@@ -826,8 +822,7 @@ public class MainOperationController {
 		int uId;
 		String returnMessage="";
 		mav=selectUser("ConsumeSelect",request, response,session);//处理添加界面的查询
-
-			
+		
 		try{
 		 uId=Integer.parseInt(request.getParameter("searchUser"));
 		}catch(Exception e)
@@ -1033,6 +1028,74 @@ public class MainOperationController {
 		mav.addObject("returnMessage", returnMessage);	
 		mav.setViewName("ExportExcel/ExportGoodsInfo");
 		mav.setViewName("ExportExcel");
+		return mav;
+	}
+	
+	
+	@RequestMapping("toExportConsumeInfo") //跳到导出界面，并查询
+	public ModelAndView toExportConsumeInfo(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception{
+		ModelAndView mav = new ModelAndView();
+		int uId;
+		String returnMessage="";
+		mav=selectUser("ExportExcel/ExportConsumeInfo",request, response,session);//处理添加界面的查询
+		
+		try{
+		 uId=Integer.parseInt(request.getParameter("searchUser"));
+		}catch(Exception e)
+		{
+			returnMessage="暂无消费信息";
+			mav.addObject("returnMessageOne", returnMessage);
+			return mav;
+		}
+		List<Consume> list= consumeservice.get(uId);
+		if(list==null)
+		{
+			returnMessage="暂无消费信息";
+			mav.addObject("returnMessageOne", returnMessage);
+			return mav;
+		}
+		mav.addObject("consumelist",list);
+	return mav;
+	}
+	
+	@RequestMapping("toExportConsume") //跳到导出界面，并查询
+	public ModelAndView toExportConsume(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception{
+		ModelAndView mav = new ModelAndView();
+		String returnMessage="";
+		
+		if(request.getParameter("searchConsume")==null || (request.getParameter("searchConsume")==""))
+		{
+			returnMessage="先搜索确认后再导出";
+			mav.addObject("returnMessage", returnMessage);
+			mav.setViewName("ExportExcel/ExportConsumeInfo");
+			return mav;
+		}
+		int uId=Integer.parseInt(request.getParameter("searchConsume"));
+		List<Consume> list= consumeservice.get(uId);
+		List<String> strList=new ArrayList<String>(); //用来存字符串
+		for(int i=0;i<list.size();i++)
+		{
+			Consume consume=list.get(i);
+			strList.add(consume.getuId()+"");
+			strList.add(consume.getcDate());
+			strList.add(consume.getcTime()+"");
+			strList.add(consume.getgId()+"");
+			strList.add(consume.getcNum()+"");
+			strList.add(consume.getoTid()+"");
+			strList.add(consume.getbTid()+"");
+			strList.add(consume.getcRedits()+"");
+			strList.add(consume.getcRemark());
+			strList.add(consume.getsId()+"");
+		}
+		
+		String[] title={"用户ID","消费日期","消费时间","商品ID","消费数量","操作类型","购买类型","获得积分","购买备注","员工ID"};
+		if(writeToexcel("F:/"+uId,title,strList))
+		{
+			returnMessage="导出到F:/"+uId+".xls成功";
+		}else 
+			returnMessage="导出失败";
+		mav.addObject("returnMessage", returnMessage);	
+		mav.setViewName("ExportExcel/ExportConsumeInfo");
 		return mav;
 	}
 	/**

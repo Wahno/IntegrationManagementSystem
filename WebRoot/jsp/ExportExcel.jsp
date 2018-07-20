@@ -83,8 +83,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 
 								<div class="icon-box col-md-3 col-sm-4">
-									<a class="agile-icon" href="DataRestore"><i class="fa fa-repeat"
-										aria-hidden="true"></i> 恢复数据信息</a>
+									<a class="agile-icon" href="toExportConsumeInfo"><i class="fa fa-repeat"
+										aria-hidden="true"></i> 导出查询消费信息</a>
 								</div>
 					
 								<div class="icon-box col-md-3 col-sm-4">

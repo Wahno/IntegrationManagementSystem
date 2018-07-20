@@ -85,23 +85,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="page-container">
 		<div class="left-content">
 			<div class="mother-grid-inner">
-				<jsp:include page="baseJsp/Header.jsp"></jsp:include>
+				<jsp:include page="../baseJsp/Header.jsp"></jsp:include>
 				<!-- Item begin -->
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="">客户消费</a><i
-						class="fa fa-angle-right"></i>查询客户消费</li>
+					<li class="breadcrumb-item"><a href="Main">导出数据</a><i
+						class="fa fa-angle-right"></i>导出查询客户消费</li>
 				</ol>
 				<div class="breadcrumb" style=" height:70px;"> <!-- 这是搜索框后面的白色背景 -->
 					<div class="w3layouts-left" style="width:300px;height:60px;background-color:#ffcc00;float:left;"> 
 						<!--search-box-->
 							<div class="w3-search-box" >
-								<form action="toConsumeSelect" method="post">
+								<form action="toExportConsumeInfo" method="post">
 									<input name ="searchUser" type="text" placeholder="输入消费客户ID搜索" required=""/>	
 									<input type="submit" value="">					
 								</form>					
 							</div>
 							<!--//end-search-box-->
 					 </div>
+					 <div class="w3layouts-left" style="width:120px;height:60px;background-color:#ffcc00;float:left;">
+							<form action="toExportConsume" method="post">						
+								<input  type="hidden" name="searchConsume"value="${usermessage.uId}"/>
+								<button type="submit" class="btn btn-primary">确认导出</button>
+							</form>
+					</div>		
 					 <div class="alert alert-warning" style="height:60px;" >
 								<strong>Tip:<br>${returnMessage}</strong>		<!-- 这是提示信息显示栏 -->
 					 </div>					
@@ -204,10 +210,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 				</div>
 				<!-- Main end -->
-				<jsp:include page="baseJsp/Footer.jsp"></jsp:include>
+				<jsp:include page="../baseJsp/Footer.jsp"></jsp:include>
 			</div>
 		</div>
-		<jsp:include page="baseJsp/SidebarMenu.jsp"></jsp:include>
-	<jsp:include page="baseJsp/MenuScript.jsp"></jsp:include>
+		<jsp:include page="../baseJsp/SidebarMenu.jsp"></jsp:include>
+	<jsp:include page="../baseJsp/MenuScript.jsp"></jsp:include>
 </body>
 </html>
