@@ -1004,6 +1004,37 @@ public class MainOperationController {
 		mav.setViewName("ExportExcel/ExportStaffInfo");
 		return mav;
 	}
+	@RequestMapping("toExportAllStaffInfo")  //跳转到导出客户信息界面
+	public ModelAndView toExportAllStaffInfo(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		String returnMessage="";
+		List<String> strList=new ArrayList<String>();
+		List<Staff> list=staffservice.list();
+		for(int i=0;i<list.size();i++)
+		{
+			Staff staff=list.get(i);
+			strList.add(staff.getsId()+"");
+			strList.add(staff.getsName());
+			strList.add(staff.getsMark());
+			strList.add(staff.getsSex()+"");
+			strList.add(staff.getsTel());
+			strList.add(staff.getsPhoNum());
+			strList.add(staff.getsAddr());
+			strList.add(staff.getsRegDate());
+			strList.add(staff.getsRemark());
+		}
+		String[] title={"员工ID","姓名","助记符","性别","电话","手机号","地址","注册日期","备注"};
+		if(writeToexcel("F:/allStaffInfo",title,strList))
+		{
+			returnMessage="导出到"+"F:/allStaffInfo.xls成功";
+		}else 
+			returnMessage="导出失败";
+		mav.addObject("returnMessage", returnMessage);	
+		mav.setViewName("ExportExcel");
+		return mav;
+	}
+	
 	
 	@RequestMapping("toExportGoodsInfo") //跳到导出界面，并查询
 	public ModelAndView toExportGoodsInfo(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception{
