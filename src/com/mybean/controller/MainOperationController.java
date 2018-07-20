@@ -1006,6 +1006,35 @@ public class MainOperationController {
 		mav.setViewName("ExportExcel/ExportGoodsInfo");
 		return mav;
 	}
+	@RequestMapping("toExportAllGoodsInfo")  //跳转到导出客户信息界面
+	public ModelAndView toExportAllGoodsInfo(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		String returnMessage="";
+		List<String> strList=new ArrayList<String>();
+		List<Goods> list=goodsservice.list();
+		for(int i=0;i<list.size();i++)
+		{
+			Goods goods=list.get(i);
+			strList.add(goods.getgId()+"");
+			strList.add(goods.getgName());
+			strList.add(goods.getgNum()+"");
+			strList.add(goods.getgCost()+"");
+			strList.add(goods.getgPrice()+"");
+			strList.add(goods.getgExchange()+"");
+			strList.add(goods.getgRemark());
+		}
+		String[] title={"商品ID","商品名称","商品数量","成本","售价","兑换所需积分","商品备注"};
+		if(writeToexcel("F:/allGoodsInfo",title,strList))
+		{
+			returnMessage="导出到F:/allGooodsinfo.xls成功";
+		}else 
+			returnMessage="导出失败";
+		mav.addObject("returnMessage", returnMessage);	
+		mav.setViewName("ExportExcel/ExportGoodsInfo");
+		mav.setViewName("ExportExcel");
+		return mav;
+	}
 	/**
 	 * 积分设置开始
 	 * */

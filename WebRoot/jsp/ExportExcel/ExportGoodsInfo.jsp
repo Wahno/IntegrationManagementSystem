@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <base href="<%=basePath%>">
-<title>商品查询</title>
+<title>商品导出</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="" />
@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<jsp:include page="../baseJsp/Header.jsp"></jsp:include>
 				<!-- Item begin -->
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">导出表格</a><i
+					<li class="breadcrumb-item"><a href="Date">导出数据</a><i
 						class="fa fa-angle-right"></i>导出查询商品信息
 				</ol>
 				<div class="breadcrumb" style=" height:70px;"> <!-- 这是搜索框后面的白色背景 -->

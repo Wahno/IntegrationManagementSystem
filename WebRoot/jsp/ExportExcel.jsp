@@ -75,14 +75,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</section>
 					</div>
 					<div class="panel1 button-sizes">
-						<div class="panel-heading">
-						
-						</div>
 						<section id="new">
 							<div class="row fontawesome-icon-list">
 								<div class="icon-box col-md-3 col-sm-4">
-									<a class="agile-icon" href="DataBackup"><i class="fa fa-copy"
-										aria-hidden="true"></i> 备份数据信息</a>
+									<a class="agile-icon" href="toExportAllGoodsInfo"><i class="fa fa-copy"
+										aria-hidden="true"></i>导出所有商品信息</a>
 								</div>
 
 								<div class="icon-box col-md-3 col-sm-4">
