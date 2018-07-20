@@ -25,11 +25,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="clearfix"></div></a>
 				<ul id="menu-academico-sub">
 					<li id="menu-academico-avaliacoes"><a href="toUserSelect">查询客户信息</a></li>
-					<li id="menu-academico-avaliacoes"><a href="#">查询消费记录</a></li>
+					<li id="menu-academico-avaliacoes"><a href="toConsumeSelect">查询消费记录</a></li>
 					<li id="menu-academico-avaliacoes"><a href="toStaffSelect">查询员工信息</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">查询员工业绩</a></li>
-					<li id="menu-academico-avaliacoes"><a href="#">查询商品信息</a></li>
-					<li id="menu-academico-avaliacoes"><a href="#">查询所有消费记录</a></li>
+					<li id="menu-academico-avaliacoes"><a href="toGoodsSelect">查询商品信息</a></li>
+					<li id="menu-academico-avaliacoes"><a href="toConsumeAllSelect">查询所有消费记录</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">查询所有积分兑换</a></li>
 					<li id="menu-academico-avaliacoes"><a href="ConsumeInfo">查询所有客户信息</a></li>
 					<li id="menu-academico-avaliacoes"><a href="#">查询所有积分</a></li>
@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<ul id="menu-academico-sub">
 					<li id="menu-academico-avaliacoes"><a href="toConsumeAdd">添加消费</a></li>
 					<li id="menu-academico-avaliacoes"><a href="toConsumeSelect">查询消费</a></li>
-					<li id="menu-academico-avaliacoes"><a href="#">导出表格</a></li>
+					<li id="menu-academico-avaliacoes"><a href="toExportExcel">导出表格</a></li>
 				</ul>
 			</li>
 			

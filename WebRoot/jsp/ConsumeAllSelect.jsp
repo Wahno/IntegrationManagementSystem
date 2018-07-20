@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -71,17 +72,17 @@
 				<!-- Item begin -->
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="./Main">控制台</a> <i
-						class="fa fa-angle-right"></i></li>
+						class="fa fa-angle-right"></i>查询所有客户消费</li>				
 				</ol>
-				<!-- Item end -->
+				<!-- Itemend -->
 				<!-- Main begin -->
 
 				<div class="agile-grids">
 					<!-- tables -->
-
+					
 					<div class="agile-tables">
 						<div class="w3l-table-info">
-							<h2>所有消费信息</h2>
+							<h2>所有消费信息${returnMessage}</h2>
 							<table id="table">
 								<thead>
 									<tr>
@@ -97,19 +98,22 @@
 										<th>员工ID</th>
 									</tr>
 								</thead>
+								
 								<tbody>
-									<tr>
-										<td>123</td>
-										<td>一月四号</td>
-										<td>14：36</td>
-										<td>0129</td>
-										<td>3</td>
-										<td>1</td>
-										<td>1</td>
-										<td>50</td>
-										<td>贼爽</td>
-										<td>233</td>
+								<c:forEach var="consumemessage" items="${consumeList}">
+									<tr>	
+										<td>${consumemessage.uId}</td>
+										<td>${consumemessage.cDate}</td>
+										<td>${consumemessage.cTime}</td>
+										<td>${consumemessage.gId}</td>
+										<td>${consumemessage.cNum}</td>
+										<td>${consumemessage.oTid}</td>
+										<td>${consumemessage.bTid}</td>
+										<td>${consumemessage.cRedits}</td>
+										<td>${consumemessage.cRemark}</td>
+										<td>${consumemessage.sId}</td>
 									</tr>
+								</c:forEach>
 								</tbody>
 							</table>
 						</div>

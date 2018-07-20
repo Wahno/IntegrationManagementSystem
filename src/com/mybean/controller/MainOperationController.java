@@ -841,6 +841,20 @@ public class MainOperationController {
 		mav.addObject("consumelist",list);
 	return mav;
 	}
+	@RequestMapping("toConsumeAllSelect")  //跳转到添加客户消费界面界面 以及 在添加界面里查询客户
+	public ModelAndView toConsumeAllSelect(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception {
+		
+		ModelAndView mav = new ModelAndView();
+		List<Consume> consumeList=consumeservice.list();
+		if(consumeList==null)
+		{
+			mav.addObject("returnMessage", "暂无消费信息");
+		}
+		mav.addObject("consumeList", consumeList);
+		mav.setViewName("ConsumeAllSelect");
+		return mav;
+	}
+	
 	
 	/**
 	 * 导出表格信息

@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="#"><i class="fa fa-search"
+					<a class="agile-icon" href="toConsumeSelect"><i class="fa fa-search"
 						aria-hidden="true"></i>
 						查询消费记录</a>
 				</div>
@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="#"><i class="fa fa-search"
+					<a class="agile-icon" href="toConsumeAllSelect"><i class="fa fa-search"
 						aria-hidden="true"></i> 
 						查询所有消费记录</a>
 				</div>
@@ -77,7 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="#"><i class="fa fa-plus"
+					<a class="agile-icon" href="toConsumeAdd"><i class="fa fa-plus"
 						aria-hidden="true"></i>
 						 添加消费记录</a>
 				</div>
@@ -149,7 +149,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="#"><i class="fa fa-table"
+					<a class="agile-icon" href="toExportExcel"><i class="fa fa-table"
 						aria-hidden="true"></i>
 						导出表格信息</a>
 				</div>
@@ -163,19 +163,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="./toSystemDescription"><i class="fa fa-file-text-o"
+					<a class="agile-icon" href="toSystemDescription"><i class="fa fa-file-text-o"
 						aria-hidden="true"></i> 
 						系统说明</a>
 				</div>
 
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="./toSystemHelp"><i class="fa fa-question"
+					<a class="agile-icon" href="toSystemHelp"><i class="fa fa-question"
 						aria-hidden="true"></i> 
 						系统帮助</a>
 				</div>
 				
 				<div class="icon-box col-md-3 col-sm-4">
-					<a class="agile-icon" href="./Logout"><i
+					<a class="agile-icon" href="Logout"><i
 						class="fa fa-sign-out" aria-hidden="true"></i>
 						注销系统</a>
 				</div>
