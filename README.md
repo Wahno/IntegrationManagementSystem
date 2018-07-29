@@ -1,0 +1,2 @@
+# IntegrationManagementSystem
+一个使用SSM框架技术搭建的积分管理系统
