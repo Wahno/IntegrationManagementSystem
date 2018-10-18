@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="copyrights">
 	<p>
 		Copyright &copy; 2018. All rights reserved.| Design by <a
-			href="http://www.haocean.cn">Haocean </a>.
+			href="http://www.haocean.wang">Haocean </a>.
 	</p>
 </div>
 
