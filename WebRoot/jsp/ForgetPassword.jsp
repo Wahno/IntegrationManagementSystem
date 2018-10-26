@@ -43,18 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
 <!-- //lined-icons -->
 
-<script type="application/x-javascript">
-		addEventListener("load", function() {setTimeout(hideURLbar, 0);}, false); 
-		function hideURLbar()
-		{
-			window.scrollTo(0,1);
-		}
-		function tolog() 
-		{
-			var url = "./signup";
-			window.location.href = url;
-		}
-	</script>
+
 </head>
 
 <body>
